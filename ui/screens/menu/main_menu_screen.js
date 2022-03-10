@@ -243,7 +243,7 @@ MainMenuScreen.prototype.show = function (_animate)
 {
     this.mMainMenuModule.showMainMenu(false);
 
-    var bg = ['08', '09', '10'];
+    var bg = ['08', '09', '10', '11'];
 
     this.mBackgroundImage.attr('src', Path.GFX + Asset.BACKGROUND_MAIN_MENU + bg[Math.floor(Math.random() * bg.length)] + '.jpg');
     this.mContainer.removeClass('display-none').addClass('display-block');
