@@ -963,6 +963,10 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 						{
 							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractSuccess, "Protected a caravan as promised");
 						}
+						else if (this.Flags.get("IsStolenGoods"))
+						{
+							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess * 2.0, "Protected a caravan of stolen goods");
+						}
 						else
 						{
 							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractSuccess, "Protected a caravan as promised");
@@ -1007,6 +1011,10 @@ this.escort_caravan_contract <- this.inherit("scripts/contracts/contract", {
 						if (this.World.FactionManager.getFaction(this.Contract.getFaction()).getType() == this.Const.FactionType.OrientalCityState)
 						{
 							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationNobleContractPoor, "Protected a caravan, albeit poorly");
+						}
+						else if (this.Flags.get("IsStolenGoods"))
+						{
+							this.World.FactionManager.getFaction(this.Contract.getFaction()).addPlayerRelation(this.Const.World.Assets.RelationCivilianContractPoor * 2.0, "Protected a caravan of stolen goods, albeit poorly");
 						}
 						else
 						{

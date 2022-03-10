@@ -331,7 +331,7 @@ this.privateering_contract <- this.inherit("scripts/contracts/contract", {
 				}
 
 				this.Contract.m.BulletpointsObjectives.push("Destroy any caravans or patrols of %feudfamily%");
-				this.Contract.m.BulletpointsObjectives.push("Return in %days%");
+				this.Contract.m.BulletpointsObjectives.push("Return after %days%");
 				this.Contract.m.CurrentObjective = null;
 			}
 

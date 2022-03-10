@@ -259,6 +259,7 @@ this.contract_manager <- {
 		}
 
 		this.World.FactionManager.getFaction(this.m.Active.getFaction()).removeContract(this.m.Active);
+		this.World.Assets.getOrigin().onContractFinished(this.m.Active.getType(), _isCancelled);
 		this.m.Active.clear();
 		this.m.Active = null;
 		this.m.LastShown = null;

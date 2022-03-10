@@ -565,7 +565,7 @@ this.arena_tournament_contract <- this.inherit("scripts/contracts/contract", {
 					"Equip up to five of your men with arena collars",
 					"Enter the arena again to start the first round",
 					"Each round will be to the death and you won\'t be able to retreat or loot afterwards",
-					"After each round you can elect to drop out or start the next round right away"
+					"After each round you can elect to drop out for some consolation pay or start the next round right away"
 				];
 				this.Contract.m.BulletpointsPayment = [
 					"Get a famed %prizetype% called %prizename% for winning all three rounds"
