@@ -44,8 +44,24 @@ this.staggered_effect <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		this.m.TurnsLeft = this.Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
-		this.Tactical.TurnSequenceBar.pushEntityBack(this.getContainer().getActor().getID());
+		local actor = this.getContainer().getActor();
+		local statusResisted = actor.getCurrentProperties().IsResistantToAnyStatuses ? this.Math.rand(1, 100) <= 50 : false;
+		statusResisted = statusResisted || actor.getCurrentProperties().IsResistantToPhysicalStatuses ? this.Math.rand(1, 100) <= 33 : false;
+
+		if (statusResisted)
+		{
+			if (!actor.isHiddenToPlayer())
+			{
+				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " shook off being staggered thanks to his unnatural physiology");
+			}
+
+			this.removeSelf();
+		}
+		else
+		{
+			this.m.TurnsLeft = this.Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
+			this.Tactical.TurnSequenceBar.pushEntityBack(actor.getID());
+		}
 	}
 
 	function onRefresh()

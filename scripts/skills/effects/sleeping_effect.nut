@@ -73,22 +73,34 @@ this.sleeping_effect <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		this.m.TurnApplied = this.Time.getRound();
-		local actor = this.m.Container.getActor();
-		this.m.Container.removeByID("effects.shieldwall");
-		this.m.Container.removeByID("effects.spearwall");
-		this.m.Container.removeByID("effects.riposte");
-		this.m.Container.removeByID("effects.return_favor");
-		local actor = this.getContainer().getActor();
-		actor.getFlags().set("Sleeping", true);
-		this.Tactical.TurnSequenceBar.pushEntityBack(this.getContainer().getActor().getID());
-
-		if (this.m.SoundOnUse.len() != 0 && this.Math.rand(1, 100) <= 33)
+		if (this.getContainer().getActor().getCurrentProperties().IsResistantToAnyStatuses && this.Math.rand(1, 100) <= 50)
 		{
-			this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], this.Const.Sound.Volume.RacialEffect * 1.0, this.getContainer().getActor().getPos());
-		}
+			if (!this.getContainer().getActor().isHiddenToPlayer())
+			{
+				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.getContainer().getActor()) + " wakes up thanks to his unnatural physiology");
+			}
 
-		this.m.TurnsLeft = this.Math.max(1, 3 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+			this.removeSelf();
+		}
+		else
+		{
+			this.m.TurnApplied = this.Time.getRound();
+			local actor = this.m.Container.getActor();
+			this.m.Container.removeByID("effects.shieldwall");
+			this.m.Container.removeByID("effects.spearwall");
+			this.m.Container.removeByID("effects.riposte");
+			this.m.Container.removeByID("effects.return_favor");
+			local actor = this.getContainer().getActor();
+			actor.getFlags().set("Sleeping", true);
+			this.Tactical.TurnSequenceBar.pushEntityBack(this.getContainer().getActor().getID());
+
+			if (this.m.SoundOnUse.len() != 0 && this.Math.rand(1, 100) <= 33)
+			{
+				this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], this.Const.Sound.Volume.RacialEffect * 1.0, this.getContainer().getActor().getPos());
+			}
+
+			this.m.TurnsLeft = this.Math.max(1, 3 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+		}
 	}
 
 	function onBeforeActivation()

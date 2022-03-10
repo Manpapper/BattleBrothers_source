@@ -1,14 +1,14 @@
-this.horrified_effect <- this.inherit("scripts/skills/skill", {
+this.reforming_effect <- this.inherit("scripts/skills/skill", {
 	m = {
 		TurnsLeft = 1
 	},
 	function create()
 	{
-		this.m.ID = "effects.horrified";
-		this.m.Name = "Horrified";
-		this.m.Icon = "skills/status_effect_70.png";
-		this.m.IconMini = "status_effect_70_mini";
-		this.m.Overlay = "status_effect_70";
+		this.m.ID = "effects.reforming";
+		this.m.Name = "Reforming";
+		this.m.Icon = "skills/status_effect_05.png";
+		this.m.IconMini = "status_effect_05_mini";
+		this.m.Overlay = "status_effect_05";
 		this.m.Type = this.Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
@@ -16,7 +16,7 @@ this.horrified_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "This character is horrified and unable to act until next turn.";
+		return "This character\'s flesh is reforming and they are temporarily incapacitated for [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s), and unable to act.";
 	}
 
 	function addTurns( _t )
@@ -24,28 +24,11 @@ this.horrified_effect <- this.inherit("scripts/skills/skill", {
 		this.m.TurnsLeft += _t;
 	}
 
-	function onAdded()
+	function setTurns( _t )
 	{
-		if (this.getContainer().getActor().getCurrentProperties().IsResistantToAnyStatuses && this.Math.rand(1, 100) <= 50)
+		if (this.getContainer() != null)
 		{
-			if (!this.getContainer().getActor().isHiddenToPlayer())
-			{
-				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.actor) + " resists being frozen with fear thanks to his unnatural physiology");
-			}
-
-			this.removeSelf();
-		}
-		else if (!this.m.Container.getActor().getCurrentProperties().IsImmuneToStun)
-		{
-			this.m.Container.removeByID("effects.shieldwall");
-			this.m.Container.removeByID("effects.spearwall");
-			this.m.Container.removeByID("effects.riposte");
-			this.m.Container.removeByID("effects.return_favor");
-			this.m.Container.removeByID("effects.possessed_undead");
-		}
-		else
-		{
-			this.m.IsGarbage = true;
+			this.m.TurnsLeft = _t;
 		}
 	}
 
@@ -57,6 +40,8 @@ this.horrified_effect <- this.inherit("scripts/skills/skill", {
 		{
 			actor.getSprite("status_stunned").Visible = false;
 		}
+
+		actor.setDirty(true);
 	}
 
 	function onUpdate( _properties )
@@ -70,7 +55,7 @@ this.horrified_effect <- this.inherit("scripts/skills/skill", {
 
 			if (actor.hasSprite("status_stunned"))
 			{
-				actor.getSprite("status_stunned").setBrush("bust_horror");
+				actor.getSprite("status_stunned").setBrush(this.Const.Combat.StunnedBrush);
 				actor.getSprite("status_stunned").Visible = true;
 			}
 

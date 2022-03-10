@@ -71,6 +71,7 @@ this.berserker_mushrooms_effect <- this.inherit("scripts/skills/skill", {
 	{
 		_properties.MeleeDefense -= 15;
 		_properties.RangedDefense -= 15;
+		_properties.IsAffectedByLosingHitpoints = false;
 	}
 
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
@@ -79,10 +80,6 @@ this.berserker_mushrooms_effect <- this.inherit("scripts/skills/skill", {
 		{
 			_properties.DamageTotalMult *= 1.25;
 		}
-	}
-
-	function onTurnEnd()
-	{
 	}
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )

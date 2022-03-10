@@ -1,6 +1,6 @@
 this.chilled_effect <- this.inherit("scripts/skills/skill", {
 	m = {
-		TurnsLeft = 1
+		TurnsLeft = 2
 	},
 	function create()
 	{
@@ -37,31 +37,43 @@ this.chilled_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/action_points.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-" + 3 * this.m.TurnsLeft + "[/color] Action Points"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-" + (1 + this.m.TurnsLeft) + "[/color] Action Points"
 			},
 			{
 				id = 12,
 				type = "text",
 				icon = "ui/icons/initiative.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-" + 30 * this.m.TurnsLeft + "[/color] Initiative"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-" + (10 + 20 * this.m.TurnsLeft) + "[/color] Initiative"
 			}
 		];
 	}
 
 	function resetTime()
 	{
-		this.m.TurnsLeft = this.Math.max(1, 1 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+		this.m.TurnsLeft = this.Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
 	}
 
 	function onAdded()
 	{
-		this.m.TurnsLeft = this.Math.max(1, 1 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
-
-		if (this.getContainer().getActor().hasSprite("dirt"))
+		if (this.getContainer().getActor().getCurrentProperties().IsResistantToAnyStatuses && this.Math.rand(1, 100) <= 50)
 		{
-			local chilled = this.getContainer().getActor().getSprite("dirt");
-			chilled.setBrush("bust_frozen");
-			chilled.Visible = true;
+			if (!this.getContainer().getActor().isHiddenToPlayer())
+			{
+				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.getContainer().getActor()) + " is unaffected by the cold thanks to his unnatural physiology");
+			}
+
+			this.removeSelf();
+		}
+		else
+		{
+			this.m.TurnsLeft = this.Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+
+			if (this.getContainer().getActor().hasSprite("dirt"))
+			{
+				local chilled = this.getContainer().getActor().getSprite("dirt");
+				chilled.setBrush("bust_frozen");
+				chilled.Visible = true;
+			}
 		}
 	}
 
@@ -77,8 +89,8 @@ this.chilled_effect <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		_properties.ActionPoints -= 3 * this.m.TurnsLeft;
-		_properties.Initiative -= 30 * this.m.TurnsLeft;
+		_properties.ActionPoints -= 1 + this.m.TurnsLeft;
+		_properties.Initiative -= 10 + 20 * this.m.TurnsLeft;
 	}
 
 	function onTurnEnd()

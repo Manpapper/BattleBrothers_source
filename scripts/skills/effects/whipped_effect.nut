@@ -108,7 +108,7 @@ this.whipped_effect <- this.inherit("scripts/skills/skill", {
 		_properties.Bravery += 9 + this.m.Level;
 		_properties.Initiative += 9 + this.m.Level;
 		local actor = this.getContainer().getActor();
-		actor.getSprite("status_sweat").setBrush("bust_slave_whipped");
+		actor.getSprite("status_sweat").setBrush(this.m.TurnsLeft > 1 ? "bust_slave_whipped" : "bust_slave_whipped_expiring");
 		actor.setDirty(true);
 	}
 

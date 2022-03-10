@@ -53,7 +53,7 @@ this.new_knowledge_potion_effect <- this.inherit("scripts/skills/skill", {
 
 	function onCombatFinished()
 	{
-		if (!this.m.IsCountingBattle || this.getContainer().getActor().getPlaceInFormation() > 17)
+		if (!this.m.IsCountingBattle)
 		{
 			return;
 		}

@@ -38,14 +38,15 @@ this.bleeding_effect <- this.inherit("scripts/skills/skill", {
 		if (this.m.LastRoundApplied != this.Time.getRound())
 		{
 			this.m.LastRoundApplied = this.Time.getRound();
-			this.spawnIcon("status_effect_01", this.getContainer().getActor().getTile());
+			local actor = this.getContainer().getActor();
+			this.spawnIcon("status_effect_01", actor.getTile());
 			local hitInfo = clone this.Const.Tactical.HitInfo;
-			hitInfo.DamageRegular = this.m.Damage;
+			hitInfo.DamageRegular = this.m.Damage * (actor.getSkills().hasSkill("effects.hyena_potion") ? 0.5 : 1.0);
 			hitInfo.DamageDirect = 1.0;
 			hitInfo.BodyPart = this.Const.BodyPart.Body;
 			hitInfo.BodyDamageMult = 1.0;
 			hitInfo.FatalityChanceMult = 0.0;
-			this.getContainer().getActor().onDamageReceived(this.getContainer().getActor(), this, hitInfo);
+			actor.onDamageReceived(actor, this, hitInfo);
 
 			if (--this.m.TurnsLeft <= 0)
 			{
@@ -56,11 +57,23 @@ this.bleeding_effect <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		this.m.TurnsLeft = this.Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
-
-		if (this.getContainer().hasSkill("trait.bleeder"))
+		if (this.getContainer().getActor().getCurrentProperties().IsResistantToAnyStatuses && this.Math.rand(1, 100) <= 50)
 		{
-			++this.m.TurnsLeft;
+			if (!this.getContainer().getActor().isHiddenToPlayer())
+			{
+				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.getContainer().getActor()) + " had his bleeding wound quickly close thanks to his unnatural physiology");
+			}
+
+			this.removeSelf();
+		}
+		else
+		{
+			this.m.TurnsLeft = this.Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+
+			if (this.getContainer().hasSkill("trait.bleeder"))
+			{
+				++this.m.TurnsLeft;
+			}
 		}
 	}
 

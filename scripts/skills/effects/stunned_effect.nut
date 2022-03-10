@@ -34,7 +34,19 @@ this.stunned_effect <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		if (!this.m.Container.getActor().getCurrentProperties().IsImmuneToStun)
+		local statusResisted = this.getContainer().getActor().getCurrentProperties().IsResistantToAnyStatuses ? this.Math.rand(1, 100) <= 50 : false;
+		statusResisted = statusResisted || this.getContainer().getActor().getCurrentProperties().IsResistantToPhysicalStatuses ? this.Math.rand(1, 100) <= 33 : false;
+
+		if (statusResisted)
+		{
+			if (!this.getContainer().getActor().isHiddenToPlayer())
+			{
+				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.getContainer().getActor()) + " shook off being stunned thanks to his unnatural physiology");
+			}
+
+			this.removeSelf();
+		}
+		else if (!this.m.Container.getActor().getCurrentProperties().IsImmuneToStun)
 		{
 			this.m.Container.removeByID("effects.shieldwall");
 			this.m.Container.removeByID("effects.spearwall");

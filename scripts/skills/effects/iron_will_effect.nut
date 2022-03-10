@@ -1,5 +1,7 @@
 this.iron_will_effect <- this.inherit("scripts/skills/skill", {
-	m = {},
+	m = {
+		IsCountingBattle = false
+	},
 	function create()
 	{
 		this.m.ID = "effects.iron_will";
@@ -46,6 +48,21 @@ this.iron_will_effect <- this.inherit("scripts/skills/skill", {
 			}
 		];
 		return ret;
+	}
+
+	function onCombatStarted()
+	{
+		this.m.IsCountingBattle = true;
+	}
+
+	function onCombatFinished()
+	{
+		if (!this.m.IsCountingBattle)
+		{
+			return;
+		}
+
+		this.removeSelf();
 	}
 
 	function onUpdate( _properties )

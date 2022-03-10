@@ -56,7 +56,27 @@ this.dazed_effect <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-		this.m.TurnsLeft = this.Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+		local actor = this.getContainer().getActor();
+		local statusResisted = actor.getCurrentProperties().IsResistantToAnyStatuses ? this.Math.rand(1, 100) <= 50 : false;
+		statusResisted = statusResisted || actor.getCurrentProperties().IsResistantToPhysicalStatuses ? this.Math.rand(1, 100) <= 33 : false;
+
+		if (statusResisted)
+		{
+			if (!actor.isHiddenToPlayer())
+			{
+				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " shook off being dazed thanks to his unnatural physiology");
+			}
+
+			this.removeSelf();
+		}
+		else if (!this.m.Container.getActor().getCurrentProperties().IsImmuneToDaze)
+		{
+			this.m.TurnsLeft = this.Math.max(1, 2 + actor.getCurrentProperties().NegativeStatusEffectDuration);
+		}
+		else
+		{
+			this.m.IsGarbage = true;
+		}
 	}
 
 	function onRefresh()
@@ -80,15 +100,23 @@ this.dazed_effect <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		local actor = this.getContainer().getActor();
-		_properties.DamageTotalMult *= 0.75;
-		_properties.InitiativeMult *= 0.75;
-		_properties.StaminaMult *= 0.75;
 
-		if (actor.hasSprite("status_stunned") && !this.getContainer().hasSkill("effects.stunned"))
+		if (!actor.getCurrentProperties().IsImmuneToDaze)
 		{
-			actor.getSprite("status_stunned").setBrush("bust_dazed");
-			actor.getSprite("status_stunned").Visible = true;
-			actor.setDirty(true);
+			_properties.DamageTotalMult *= 0.75;
+			_properties.InitiativeMult *= 0.75;
+			_properties.StaminaMult *= 0.75;
+
+			if (actor.hasSprite("status_stunned") && !this.getContainer().hasSkill("effects.stunned"))
+			{
+				actor.getSprite("status_stunned").setBrush("bust_dazed");
+				actor.getSprite("status_stunned").Visible = true;
+				actor.setDirty(true);
+			}
+		}
+		else
+		{
+			this.removeSelf();
 		}
 	}
 

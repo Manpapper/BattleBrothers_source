@@ -58,6 +58,16 @@ this.overwhelmed_effect <- this.inherit("scripts/skills/skill", {
 
 	function onRefresh()
 	{
+		if (this.getContainer().getActor().getCurrentProperties().IsResistantToAnyStatuses && this.Math.rand(1, 100) <= 50)
+		{
+			if (!this.getContainer().getActor().isHiddenToPlayer())
+			{
+				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(this.getContainer().getActor()) + " resists being overwhelmed thanks to his unnatural physiology");
+			}
+
+			return;
+		}
+
 		++this.m.Count;
 		this.spawnIcon("status_effect_74", this.getContainer().getActor().getTile());
 	}

@@ -97,7 +97,7 @@ this.hex_slave_effect <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
-	function onDeath()
+	function onDeath( _fatalityType )
 	{
 		this.onRemoved();
 	}
