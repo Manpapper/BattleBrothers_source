@@ -136,7 +136,29 @@ this.faction_manager <- {
 	{
 		if (this.m.Factions[_f] != null)
 		{
-			return this.m.Factions[_f].getAllies();
+			if (!this.m.Factions[_f].isTemporaryEnemy())
+			{
+				return this.m.Factions[_f].getAllies();
+			}
+			else
+			{
+				local ret = clone this.m.Factions[_f].getAllies();
+				local idx = ret.find(1);
+
+				if (idx != null)
+				{
+					ret.remove(idx);
+				}
+
+				idx = ret.find(2);
+
+				if (idx != null)
+				{
+					ret.remove(idx);
+				}
+
+				return ret;
+			}
 		}
 		else
 		{

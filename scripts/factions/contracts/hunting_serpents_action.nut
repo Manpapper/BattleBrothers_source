@@ -21,6 +21,11 @@ this.hunting_serpents_action <- this.inherit("scripts/factions/faction_action", 
 			return;
 		}
 
+		if (this.World.Assets.getBusinessReputation() < 450)
+		{
+			return;
+		}
+
 		if (this.World.getTime().Days <= 5 || this.Math.rand(1, 100) > 30)
 		{
 			return;

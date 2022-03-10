@@ -169,6 +169,11 @@ this.send_beast_roamers_action <- this.inherit("scripts/factions/faction_action"
 			this.m.Options.push(beast);
 			beast = function ( _action, _nearTile = null )
 			{
+				if (this.World.getTime().Days < 15 && _nearTile == null)
+				{
+					return false;
+				}
+
 				local disallowedTerrain = [];
 
 				for( local i = 0; i < this.Const.World.TerrainType.COUNT; i = ++i )
