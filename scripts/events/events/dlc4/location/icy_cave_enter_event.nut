@@ -105,7 +105,7 @@ this.icy_cave_enter_event <- this.inherit("scripts/events/event", {
 				{
 					local bro = roster[i];
 					this.Options.push({
-						Text = "I need you to scout ahead, %champion%.",
+						Text = "I need you to scout ahead, " + bro.getName() + ".",
 						function getResult( _event )
 						{
 							_event.m.Champion = bro;
@@ -113,7 +113,7 @@ this.icy_cave_enter_event <- this.inherit("scripts/events/event", {
 						}
 
 					});
-					  // [036]  OP_CLOSE          0      5    0    0
+					  // [041]  OP_CLOSE          0      5    0    0
 				}
 
 				$[stack offset 0].Options.push({

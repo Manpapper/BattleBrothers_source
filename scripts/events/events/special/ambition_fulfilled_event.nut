@@ -17,8 +17,10 @@ this.ambition_fulfilled_event <- this.inherit("scripts/events/event", {
 			{
 				this.Music.setTrackList(this.Const.Music.VictoryTracks, this.Const.Music.CrossFadeTime);
 				local active = this.World.Ambitions.getActiveAmbition();
+				local isOath = !active.isCancelable() && active.isRepeatable();
+				local bonusAchieved = isOath && active.getRenownOnSuccess() > this.Const.World.Assets.ReputationOnOathAmbition;
 
-				if (!active.isDone())
+				if (!active.isDone() || active.isRepeatable())
 				{
 					active.succeed();
 				}
@@ -55,6 +57,15 @@ this.ambition_fulfilled_event <- this.inherit("scripts/events/event", {
 						icon = "ui/icons/special.png",
 						text = "The company gained renown"
 					});
+
+					if (isOath && bonusAchieved)
+					{
+						this.List.insert(1, {
+							id = 10,
+							icon = "ui/icons/special.png",
+							text = "You went above and beyond in fulfilling the Oath"
+						});
+					}
 				}
 
 				if (active.isShowingMood())
@@ -70,6 +81,11 @@ this.ambition_fulfilled_event <- this.inherit("scripts/events/event", {
 							});
 						}
 					}
+				}
+
+				if (isOath)
+				{
+					_event.m.Title = active.getOathName() + " Fulfilled";
 				}
 			}
 

@@ -286,6 +286,7 @@ this.event_manager <- {
 		// Function is a generator.
 		local score = 0;
 		local eventToFire;
+		local isNewsReady = this.World.Statistics.isNewsReady();
 
 		for( local i = 0; i < this.m.Events.len(); i = ++i )
 		{
@@ -303,7 +304,7 @@ this.event_manager <- {
 				yield false;
 			}
 
-			if (this.m.Events[i].getScore() <= 0 || this.World.Statistics.isNewsReady() && this.m.Events[i].getScore() < 2000 || this.Time.getVirtualTimeF() - this.m.LastBattleTime < 5.0 && this.m.Events[i].getScore() < 500)
+			if (this.m.Events[i].getScore() <= 0 || isNewsReady && this.m.Events[i].getScore() < 2000 || this.Time.getVirtualTimeF() - this.m.LastBattleTime < 5.0 && this.m.Events[i].getScore() < 500)
 			{
 			}
 			else
@@ -317,7 +318,7 @@ this.event_manager <- {
 
 		for( local i = 0; i < this.m.Events.len(); i = ++i )
 		{
-			if (this.m.Events[i].getScore() <= 0 || this.World.Statistics.isNewsReady() && this.m.Events[i].getScore() < 2000 || this.Time.getVirtualTimeF() - this.m.LastBattleTime < 5.0 && this.m.Events[i].getScore() < 500)
+			if (this.m.Events[i].getScore() <= 0 || isNewsReady && this.m.Events[i].getScore() < 2000 || this.Time.getVirtualTimeF() - this.m.LastBattleTime < 5.0 && this.m.Events[i].getScore() < 500)
 			{
 			}
 			else
@@ -334,7 +335,7 @@ this.event_manager <- {
 
 		if (eventToFire == null)
 		{
-			this.logDebug("no event????");
+			this.logDebug("no event???");
 			return true;
 		}
 

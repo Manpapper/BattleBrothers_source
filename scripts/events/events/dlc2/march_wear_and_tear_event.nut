@@ -223,7 +223,7 @@ this.march_wear_and_tear_event <- this.inherit("scripts/events/event", {
 			Characters = [],
 			Options = [
 				{
-					Text = "What were were fighting about again?",
+					Text = "What were we complaining about again?",
 					function getResult( _event )
 					{
 						return 0;
