@@ -66,7 +66,8 @@ this.medium_fishing_village <- this.inherit("scripts/entity/world/settlement", {
 			"vagabond_background",
 			"cripple_background",
 			"eunuch_background",
-			"sellsword_background"
+			"sellsword_background",
+			"anatomist_background"
 		];
 		this.m.UIDescription = "A larger spread out village relying on fishing and a little trade";
 		this.m.Description = "A larger spread out village relying on fishing and a little trade.";

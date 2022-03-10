@@ -56,7 +56,8 @@ this.medium_coast_fort <- this.inherit("scripts/entity/world/settlement", {
 			"raider_background",
 			"retired_soldier_background",
 			"sellsword_background",
-			"swordmaster_background"
+			"swordmaster_background",
+			"paladin_background"
 		];
 		this.m.UIDescription = "A stone keep that controls a strategically important port and protects nearby trading routes";
 		this.m.Description = "This stone keep controls a strategically important sea access and protects nearby trading routes.";

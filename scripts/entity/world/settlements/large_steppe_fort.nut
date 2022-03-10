@@ -75,7 +75,8 @@ this.large_steppe_fort <- this.inherit("scripts/entity/world/settlement", {
 			"sellsword_background",
 			"sellsword_background",
 			"swordmaster_background",
-			"hedge_knight_background"
+			"hedge_knight_background",
+			"paladin_background"
 		];
 
 		if (this.Const.DLC.Desert)

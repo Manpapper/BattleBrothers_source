@@ -77,7 +77,8 @@ this.large_tundra_fort <- this.inherit("scripts/entity/world/settlement", {
 			"cripple_background",
 			"eunuch_background",
 			"hedge_knight_background",
-			"hedge_knight_background"
+			"hedge_knight_background",
+			"paladin_background"
 		];
 		this.m.UIDescription = "A large citadel towering high over the surrounding tundra";
 		this.m.Description = "A large citadel towering high over the surrounding tundra and securing the large and open region. Many come here to resupply, make repairs and rest until venturing on.";

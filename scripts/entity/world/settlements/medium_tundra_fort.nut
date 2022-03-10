@@ -60,7 +60,8 @@ this.medium_tundra_fort <- this.inherit("scripts/entity/world/settlement", {
 			"raider_background",
 			"retired_soldier_background",
 			"retired_soldier_background",
-			"sellsword_background"
+			"sellsword_background",
+			"paladin_background"
 		];
 		this.m.UIDescription = "A stone keep securing the surrounding tundra";
 		this.m.Description = "A stone keep that is the seat of power in the surrounding tundra. It acts as a base of operations for a decently sized garrison.";

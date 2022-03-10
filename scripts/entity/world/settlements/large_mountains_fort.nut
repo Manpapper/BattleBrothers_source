@@ -73,7 +73,8 @@ this.large_mountains_fort <- this.inherit("scripts/entity/world/settlement", {
 			"swordmaster_background",
 			"cripple_background",
 			"hedge_knight_background",
-			"hedge_knight_background"
+			"hedge_knight_background",
+			"paladin_background"
 		];
 		this.m.UIDescription = "A massive stone citadel built into the steep mountains";
 		this.m.Description = "This massive stone citadel is built into the steep mountains. A large number of men are stationed here to hold a firm grip on the land.";

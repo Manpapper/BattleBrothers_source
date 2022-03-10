@@ -60,7 +60,8 @@ this.large_coast_fort <- this.inherit("scripts/entity/world/settlement", {
 			"squire_background",
 			"swordmaster_background",
 			"cripple_background",
-			"eunuch_background"
+			"eunuch_background",
+			"paladin_background"
 		];
 		this.m.UIDescription = "This massive citadel guards a warport and the surrounding trade routes";
 		this.m.Description = "This massive citadel guards a warport and the surrounding trade routes. It is a seat of power for nobility and home to a large garrison.";

@@ -64,7 +64,8 @@ this.large_tundra_village <- this.inherit("scripts/entity/world/settlement", {
 			"disowned_noble_background",
 			"raider_background",
 			"sellsword_background",
-			"swordmaster_background"
+			"swordmaster_background",
+			"anatomist_background"
 		];
 		this.m.UIDescription = "A large city and trading hub surrounded by barren tundra";
 		this.m.Description = "Surrounded by barren tundra, this large city has lasted as an important trading hub and home to thinkers and fine arts.";

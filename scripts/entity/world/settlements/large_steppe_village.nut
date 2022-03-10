@@ -66,7 +66,8 @@ this.large_steppe_village <- this.inherit("scripts/entity/world/settlement", {
 			"sellsword_background",
 			"swordmaster_background",
 			"cripple_background",
-			"eunuch_background"
+			"eunuch_background",
+			"anatomist_background"
 		];
 
 		if (this.Const.DLC.Unhold)
