@@ -60,6 +60,7 @@ this.town_barber_dialog_module <- this.inherit("scripts/ui/screens/ui_module", {
 			"beard",
 			"hair",
 			"tattoo_body",
+			"tattoo_head",
 			"beard_top"
 		]);
 		temp.setDirty(true);
@@ -148,7 +149,6 @@ this.town_barber_dialog_module <- this.inherit("scripts/ui/screens/ui_module", {
 		else if (_layerID == "body")
 		{
 			this.changeIndex(this.Const.Bodies.Barber, temp.getSprite("body"), _change);
-			this.changeIndexEx(this.Const.Tattoos.All, temp.getSprite("tattoo_body"), 0, "", "", temp.getSprite("body").getBrush().Name);
 		}
 		else if (_layerID == "head")
 		{
