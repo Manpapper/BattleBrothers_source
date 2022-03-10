@@ -89,6 +89,16 @@ this.hex_skill <- this.inherit("scripts/skills/skill", {
 		local _user = _tag.User;
 		local target = _targetTile.getEntity();
 
+		if (target.getCurrentProperties().IsResistantToAnyStatuses && this.Math.rand(1, 100) <= 50)
+		{
+			if (!_user.isHiddenToPlayer() && !target.isHiddenToPlayer())
+			{
+				this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(target) + " resists being hexed thanks to his unnatural physiology");
+			}
+
+			return false;
+		}
+
 		if (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer)
 		{
 			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " hexes " + this.Const.UI.getColorizedEntityName(target));

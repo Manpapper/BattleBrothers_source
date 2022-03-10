@@ -61,6 +61,15 @@ this.split <- this.inherit("scripts/skills/skill", {
 				text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-5%[/color] chance to hit"
 			});
 		}
+		else
+		{
+			ret.push({
+				id = 6,
+				type = "text",
+				icon = "ui/icons/hitchance.png",
+				text = "Has [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit"
+			});
+		}
 
 		return ret;
 	}
@@ -120,6 +129,10 @@ this.split <- this.inherit("scripts/skills/skill", {
 			if (!this.getContainer().getActor().getCurrentProperties().IsSpecializedInSwords)
 			{
 				_properties.MeleeSkill -= 5;
+			}
+			else
+			{
+				_properties.MeleeSkill += 5;
 			}
 		}
 	}
