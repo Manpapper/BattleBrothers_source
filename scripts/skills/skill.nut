@@ -43,6 +43,7 @@ this.skill <- {
 		IsStacking = false,
 		IsAttack = false,
 		IsWeaponSkill = false,
+		IsOffensiveToolSkill = false,
 		IsTargetingActor = true,
 		IsVisibleTileNeeded = true,
 		IsRanged = false,
@@ -410,8 +411,8 @@ this.skill <- {
 		];
 		local damage_regular_min = this.Math.floor(p.DamageRegularMin * p.DamageRegularMult * p.DamageTotalMult * (this.m.IsRanged ? p.RangedDamageMult : p.MeleeDamageMult) * p.DamageTooltipMinMult);
 		local damage_regular_max = this.Math.floor(p.DamageRegularMax * p.DamageRegularMult * p.DamageTotalMult * (this.m.IsRanged ? p.RangedDamageMult : p.MeleeDamageMult) * p.DamageTooltipMaxMult);
-		local damage_direct_min = this.Math.floor(damage_regular_min * this.Math.minf(1.0, p.DamageDirectMult * (this.m.DirectDamageMult + p.DamageDirectAdd)));
-		local damage_direct_max = this.Math.floor(damage_regular_max * this.Math.minf(1.0, p.DamageDirectMult * (this.m.DirectDamageMult + p.DamageDirectAdd)));
+		local damage_direct_min = this.Math.floor(damage_regular_min * this.Math.minf(1.0, p.DamageDirectMult * (this.m.DirectDamageMult + p.DamageDirectAdd + (this.m.IsRanged ? p.DamageDirectRangedAdd : p.DamageDirectMeleeAdd))));
+		local damage_direct_max = this.Math.floor(damage_regular_max * this.Math.minf(1.0, p.DamageDirectMult * (this.m.DirectDamageMult + p.DamageDirectAdd + (this.m.IsRanged ? p.DamageDirectRangedAdd : p.DamageDirectMeleeAdd))));
 		local damage_armor_min = this.Math.floor(p.DamageRegularMin * p.DamageArmorMult * p.DamageTotalMult * (this.m.IsRanged ? p.RangedDamageMult : p.MeleeDamageMult) * p.DamageTooltipMinMult);
 		local damage_armor_max = this.Math.floor(p.DamageRegularMax * p.DamageArmorMult * p.DamageTotalMult * (this.m.IsRanged ? p.RangedDamageMult : p.MeleeDamageMult) * p.DamageTooltipMaxMult);
 
@@ -453,6 +454,16 @@ this.skill <- {
 			});
 		}
 
+		if (this.m.Container.getActor().getSkills().hasSkill("trait.oath_of_honor") && (this.m.IsWeaponSkill && this.m.IsRanged || this.m.IsOffensiveToolSkill))
+		{
+			ret.push({
+				id = 9,
+				type = "hint",
+				icon = "ui/tooltips/warning.png",
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Can not be used because this character has taken an oath precluding the use of ranged weapons or tools[/color]"
+			});
+		}
+
 		return ret;
 	}
 
@@ -475,7 +486,7 @@ this.skill <- {
 
 	function isUsable()
 	{
-		return this.m.IsUsable && this.m.Container.getActor().getCurrentProperties().IsAbleToUseSkills && (!this.m.IsWeaponSkill || this.m.Container.getActor().getCurrentProperties().IsAbleToUseWeaponSkills) && !this.isHidden();
+		return this.m.IsUsable && this.m.Container.getActor().getCurrentProperties().IsAbleToUseSkills && (!this.m.IsWeaponSkill || this.m.Container.getActor().getCurrentProperties().IsAbleToUseWeaponSkills) && !this.isHidden() && !(this.m.Container.getActor().getSkills().hasSkill("trait.oath_of_honor") && (this.m.IsWeaponSkill && this.m.IsRanged || this.m.IsOffensiveToolSkill));
 	}
 
 	function isAffordable()
@@ -678,7 +689,7 @@ this.skill <- {
 		local critical = 1.0 + p.getHitchance(this.Const.BodyPart.Head) / 100.0 * (p.DamageAgainstMult[this.Const.BodyPart.Head] - 1.0);
 		local armor = _target.getArmor(this.Const.BodyPart.Head) * (p.getHitchance(this.Const.BodyPart.Head) / 100.0) + _target.getArmor(this.Const.BodyPart.Body) * (this.Math.max(0, p.getHitchance(this.Const.BodyPart.Body)) / 100.0);
 		local armorDamage = this.Math.min(armor, p.getArmorDamageAverage());
-		local directDamage = this.Math.max(0, p.getRegularDamageAverage() * (p.DamageDirectMult * (this.m.DirectDamageMult + p.DamageDirectAdd)) * critical - (p.DamageDirectMult * (this.m.DirectDamageMult + p.DamageDirectAdd) < 1.0 ? (armor - armorDamage) * this.Const.Combat.ArmorDirectDamageMitigationMult : 0));
+		local directDamage = this.Math.max(0, p.getRegularDamageAverage() * (p.DamageDirectMult * (this.m.DirectDamageMult + p.DamageDirectAdd + (this.m.IsRanged ? p.DamageDirectRangedAdd : p.DamageDirectMeleeAdd))) * critical - (p.DamageDirectMult * (this.m.DirectDamageMult + p.DamageDirectAdd + (this.m.IsRanged ? p.DamageDirectRangedAdd : p.DamageDirectMeleeAdd)) < 1.0 ? (armor - armorDamage) * this.Const.Combat.ArmorDirectDamageMitigationMult : 0));
 		local hitpointDamage = this.Math.max(0, p.getRegularDamageAverage() * critical - directDamage - armorDamage);
 		armorDamage = armorDamage * (d.DamageReceivedArmorMult * d.DamageReceivedTotalMult);
 		directDamage = directDamage * (d.DamageReceivedDirectMult * d.DamageReceivedTotalMult);
@@ -770,7 +781,11 @@ this.skill <- {
 	{
 	}
 
-	function onDeath()
+	function onDeath( _fatalityType )
+	{
+	}
+
+	function onDismiss()
 	{
 	}
 
@@ -1029,6 +1044,21 @@ this.skill <- {
 					text = "Fast Adaption"
 				});
 			}
+
+			local oath = this.m.Container.getSkillByID("trait.oath_of_wrath");
+
+			if (oath != null)
+			{
+				local main = user.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
+
+				if (main != null && main.isItemType(this.Const.Items.ItemType.MeleeWeapon) && main.isItemType(this.Const.Items.ItemType.TwoHanded || user.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand) == null && !user.getItem().hasBlockedSlot(this.Const.ItemSlot.Offhand)))
+				{
+					ret.push({
+						icon = "ui/tooltips/positive.png",
+						text = "Oath of Wrath"
+					});
+				}
+			}
 		}
 
 		if (this.m.IsTooCloseShown && this.m.HitChanceBonus < 0)
@@ -1116,7 +1146,7 @@ this.skill <- {
 			}
 		}
 
-		if (this.m.IsAttack && _targetTile.IsOccupiedByActor && (targetEntity.getFlags().has("skeleton") || targetEntity.getSkills().hasSkill("racial.golem")))
+		if (this.m.IsAttack && _targetTile.IsOccupiedByActor && targetEntity.getFlags().has("skeleton"))
 		{
 			if (this.m.IsRanged)
 			{
@@ -1717,7 +1747,7 @@ this.skill <- {
 		local damageArmor = this.Math.rand(_info.Properties.DamageRegularMin, _info.Properties.DamageRegularMax) * _info.Properties.DamageArmorMult;
 		damageRegular = this.Math.max(0, damageRegular + _info.DistanceToTarget * _info.Properties.DamageAdditionalWithEachTile);
 		damageArmor = this.Math.max(0, damageArmor + _info.DistanceToTarget * _info.Properties.DamageAdditionalWithEachTile);
-		local damageDirect = this.Math.minf(1.0, _info.Properties.DamageDirectMult * (this.m.DirectDamageMult + _info.Properties.DamageDirectAdd));
+		local damageDirect = this.Math.minf(1.0, _info.Properties.DamageDirectMult * (this.m.DirectDamageMult + _info.Properties.DamageDirectAdd + (this.m.IsRanged ? _info.Properties.DamageDirectRangedAdd : _info.Properties.DamageDirectMeleeAdd)));
 		local injuries;
 
 		if (this.m.InjuriesOnBody != null && bodyPart == this.Const.BodyPart.Body)

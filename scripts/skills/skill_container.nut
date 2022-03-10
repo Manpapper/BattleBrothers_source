@@ -906,7 +906,7 @@ this.skill_container <- {
 		this.update();
 	}
 
-	function onDeath()
+	function onDeath( _fatalityType )
 	{
 		this.m.IsUpdating = true;
 		this.m.IsBusy = false;
@@ -919,7 +919,27 @@ this.skill_container <- {
 				continue;
 			}
 
-			skill.onDeath();
+			skill.onDeath(_fatalityType);
+		}
+
+		this.m.IsUpdating = false;
+		this.update();
+	}
+
+	function onDismiss()
+	{
+		this.m.IsUpdating = true;
+		this.m.IsBusy = false;
+		this.m.BusyStack = 0;
+
+		foreach( skill in this.m.Skills )
+		{
+			if (skill.isGarbage())
+			{
+				continue;
+			}
+
+			skill.onDismiss();
 		}
 
 		this.m.IsUpdating = false;

@@ -74,7 +74,7 @@ this.alp_racial <- this.inherit("scripts/skills/skill", {
 		this.Time.scheduleEvent(this.TimeUnit.Virtual, 30, this.teleport.bindenv(this), null);
 	}
 
-	function onDeath()
+	function onDeath( _fatalityType )
 	{
 		this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], this.Const.Sound.Volume.Skill);
 		this.Time.scheduleEvent(this.TimeUnit.Virtual, 30, this.teleport.bindenv(this), null);
@@ -88,16 +88,6 @@ this.alp_racial <- this.inherit("scripts/skills/skill", {
 		{
 			if (a.getHitpoints() > 0 && a.getType() == this.Const.EntityType.Alp)
 			{
-				if (!a.getAIAgent().hasKnownOpponent())
-				{
-					local strategy = a.getAIAgent().getStrategy().update();
-
-					do
-					{
-					}
-					while (!resume strategy);
-				}
-
 				local b = a.getAIAgent().getBehavior(this.Const.AI.Behavior.ID.AlpTeleport);
 				b.onEvaluate(a);
 				b.onExecute(a);
