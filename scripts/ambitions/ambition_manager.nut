@@ -1,7 +1,9 @@
 this.ambition_manager <- {
 	m = {
 		Ambitions = [],
+		OathAmbitions = [],
 		ActiveAmbition = null,
+		LastPickedAmbitionID = "",
 		Completed = 0,
 		Done = 0,
 		Selection = null,
@@ -18,6 +20,11 @@ this.ambition_manager <- {
 	function getActiveAmbition()
 	{
 		return this.m.ActiveAmbition;
+	}
+
+	function getLastPickedAmbitionID()
+	{
+		return this.m.LastPickedAmbitionID;
 	}
 
 	function getSelection()
@@ -50,6 +57,14 @@ this.ambition_manager <- {
 			}
 		}
 
+		foreach( o in this.m.OathAmbitions )
+		{
+			if (o.getID() == _id)
+			{
+				return o;
+			}
+		}
+
 		return null;
 	}
 
@@ -77,6 +92,16 @@ this.ambition_manager <- {
 			this.m.Ambitions.push(this.new(scriptFile));
 		}
 
+		scriptFiles = this.IO.enumerateFiles("scripts/ambitions/oaths/");
+
+		foreach( scriptFile in scriptFiles )
+		{
+			if (scriptFile != "oath_ambition")
+			{
+				this.m.OathAmbitions.push(this.new(scriptFile));
+			}
+		}
+
 		this.m.LastTime = this.Time.getVirtualTimeF();
 	}
 
@@ -102,7 +127,7 @@ this.ambition_manager <- {
 			return false;
 		}
 
-		if (this.World.getTime().Days < 2)
+		if (this.World.getTime().Days < 2 && this.World.Assets.getOrigin().getID() != "scenario.paladins")
 		{
 			return false;
 		}
@@ -154,6 +179,7 @@ this.ambition_manager <- {
 					this.m.Selection = null;
 					this.m.Thread = null;
 					this.World.TopbarAmbitionModule.setText(null);
+					this.World.Assets.resetToDefaults();
 					this.setDelay(24);
 					++this.m.Completed;
 					this.m.LastTime = this.Time.getVirtualTimeF();
@@ -190,12 +216,21 @@ this.ambition_manager <- {
 	{
 		// Function is a generator.
 		local done = 0;
+		local useOaths = ("State" in this.World) && this.World.State != null && this.World.Assets.getOrigin().getID() == "scenario.paladins";
+		local ambitions = useOaths ? this.m.OathAmbitions : this.m.Ambitions;
 
-		for( local i = 0; i < this.m.Ambitions.len(); i = ++i )
+		for( local i = 0; i < ambitions.len(); i = ++i )
 		{
-			this.m.Ambitions[i].update();
+			if (ambitions[i].getID() != "ambition.none" && ambitions[i].getID() != this.m.LastPickedAmbitionID)
+			{
+				ambitions[i].update();
+			}
+			else
+			{
+				ambitions[i].clear();
+			}
 
-			if (this.m.Ambitions[i].isDone())
+			if (ambitions[i].isDone())
 			{
 				done = ++done;
 			}
@@ -204,25 +239,25 @@ this.ambition_manager <- {
 		yield false;
 		this.m.Done = done;
 
-		for( local i = 0; i < this.m.Ambitions.len(); i = ++i )
+		for( local i = 0; i < ambitions.len(); i = ++i )
 		{
-			this.m.Ambitions[i].update();
+			ambitions[i].update();
 		}
 
 		yield false;
-		this.m.Ambitions.sort(this.onScoreCompare);
+		ambitions.sort(this.onScoreCompare);
 		local selection = [];
 
-		for( local i = 0; i != 4; i = ++i )
+		for( local i = 0; i != (useOaths ? 3 : 4); i = ++i )
 		{
-			if (i >= this.m.Ambitions.len())
+			if (i >= ambitions.len())
 			{
 				break;
 			}
 
-			if (this.m.Ambitions[i].getScore() != 0)
+			if (ambitions[i].getScore() != 0)
 			{
-				selection.push(this.m.Ambitions[i]);
+				selection.push(ambitions[i]);
 			}
 			else
 			{
@@ -235,7 +270,7 @@ this.ambition_manager <- {
 			return true;
 		}
 
-		if (this.getAmbition("ambition.make_nobles_aware").isDone())
+		if (this.getAmbition("ambition.make_nobles_aware").isDone() && !useOaths)
 		{
 			if (selection.len() >= 4)
 			{
@@ -245,12 +280,25 @@ this.ambition_manager <- {
 			selection.push(this.getAmbition("ambition.none"));
 		}
 
+		if (useOaths)
+		{
+			if (ambitions.len() > 3)
+			{
+				for( local i = 2; i < ambitions.len(); i = ++i )
+				{
+					ambitions[i].skip();
+				}
+			}
+		}
+
 		this.m.Selection = selection;
 		return true;
 	}
 
 	function setAmbition( _ambition )
 	{
+		this.m.LastPickedAmbitionID = _ambition.getID();
+
 		if (_ambition.getID() == "ambition.none")
 		{
 			this.setDelay(24 * 3);
@@ -279,6 +327,11 @@ this.ambition_manager <- {
 	function cancelAmbition( _delayed = true )
 	{
 		if (!this.hasActiveAmbition())
+		{
+			return;
+		}
+
+		if (!this.m.ActiveAmbition.isCancelable())
 		{
 			return;
 		}
@@ -363,6 +416,16 @@ this.ambition_manager <- {
 			a.onSerialize(_out);
 		}
 
+		_out.writeU32(this.m.OathAmbitions.len());
+
+		foreach( o in this.m.OathAmbitions )
+		{
+			_out.writeString(o.getID());
+			o.onSerialize(_out);
+		}
+
+		_out.writeString(this.m.LastPickedAmbitionID);
+
 		if (this.m.ActiveAmbition != null)
 		{
 			_out.writeString(this.m.ActiveAmbition.getID());
@@ -396,7 +459,41 @@ this.ambition_manager <- {
 				_in.readF32();
 				_in.readF32();
 				_in.readBool();
+
+				if (_in.getMetaData().getVersion() >= 64)
+				{
+					_in.readBool();
+					_in.readBool();
+					_in.readU32();
+				}
 			}
+		}
+
+		if (_in.getMetaData().getVersion() >= 64)
+		{
+			local numOathAmbitions = _in.readU32();
+
+			for( local i = 0; i < numOathAmbitions; i = ++i )
+			{
+				local name = _in.readString();
+				local o = this.getAmbition(name);
+
+				if (o != null)
+				{
+					o.onDeserialize(_in);
+				}
+				else
+				{
+					_in.readF32();
+					_in.readF32();
+					_in.readBool();
+					_in.readBool();
+					_in.readBool();
+					_in.readU32();
+				}
+			}
+
+			this.m.LastPickedAmbitionID = _in.readString();
 		}
 
 		this.m.ActiveAmbition = this.getAmbition(_in.readString());
