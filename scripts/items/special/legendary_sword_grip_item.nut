@@ -2,6 +2,7 @@ this.legendary_sword_grip_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.legendary_sword_grip";
 		this.m.Name = "Sword Grip";
 		this.m.Description = "A masterfully crafted sword grip covered in mysterious blue stones. The stones seem to have a glimmering light emerging from deep within. Perhaps the sword could be reforged if you had both parts.";

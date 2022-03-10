@@ -2,6 +2,7 @@ this.fountain_of_youth_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.bodily_reward";
 		this.m.Name = "Water Skin";
 		this.m.Description = "A leather water skin filled up with the liquid from under a bizarre human-shaped tree. It whispered in your head that you should drink it to heal.";

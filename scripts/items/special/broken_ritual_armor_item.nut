@@ -2,6 +2,7 @@ this.broken_ritual_armor_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.broken_ritual_armor";
 		this.m.Name = "Broken Ritual Armor";
 		this.m.Description = "The broken remains of a heavy barbarian armor, covered in ritual runes. It\'s unusable like this, and yet you feel that there\'s something special about it. Perhaps there is some way to mend it?";

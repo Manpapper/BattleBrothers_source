@@ -2,6 +2,7 @@ this.trade_jug_01_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.trade_jug";
 		this.m.Name = "Mysterious Jug";
 		this.m.Description = "Traded for with a mysterious traveler named Yuchi, the contents of this jug promises to be a magical drink that grants strength beyond imagining.";

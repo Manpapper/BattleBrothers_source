@@ -2,6 +2,7 @@ this.legendary_sword_blade_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.legendary_sword_blade";
 		this.m.Name = "Sword Blade";
 		this.m.Description = "The glimmering blade of a broken sword you retrieved from the Kraken. In all your years of fighting you never encountered such a masterfully crafted blade. Perhaps the sword could be reforged if you had both parts.";

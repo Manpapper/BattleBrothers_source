@@ -2,6 +2,7 @@ this.spiritual_reward_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.spiritual_reward";
 		this.m.Name = "Blue Vial";
 		this.m.Description = "Traded for with a malevolent witch at the expense of another man\'s life, this mysterious concoction promises to be a magical drink for the spirit, and to grant wisdom and insight as if having fought a dozen battles.";

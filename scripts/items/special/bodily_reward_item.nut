@@ -2,6 +2,7 @@ this.bodily_reward_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.bodily_reward";
 		this.m.Name = "Green Vial";
 		this.m.Description = "Traded for with a malevolent witch at the expense of another man\'s life, this mysterious concoction promises to be a magical drink for the body, and to instantly heal any injury that would also heal on its own.";
