@@ -689,6 +689,21 @@ gt.Const.Strings.MasterArcherNames <- [
 	"%randomname% Truestrike",
 	"%randomname% the True Shot"
 ];
+gt.Const.Strings.OathbringerNames <- [
+	"The Oathkeeper",
+	"%randomname% the Oathbringer",
+	"Anselm\'s Hammer",
+	"Anselm\'s Shield",
+	"Anselm\'s Sword",
+	"Anselm\'s Stolen Valor",
+	"%randomname% the Oathsworn",
+	"%randomname% the Crusader",
+	"%randomname% the Zealot",
+	"%randomname% the Pious",
+	"%randomname% the Devoted",
+	"%randomname% the Paladin",
+	"%randomname% the Righteous"
+];
 gt.Const.Strings.MasonTitles <- [
 	"the Builder",
 	"Bricklayer",

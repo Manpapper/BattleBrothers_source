@@ -20,34 +20,35 @@ gt.Const.Items.Default <- {
 };
 gt.Const.Items.ItemType <- {
 	None = 0,
-	Legendary = 1,
-	Named = 2,
-	Armor = 4,
-	Helmet = 8,
-	Shield = 16,
+	Loot = 1,
+	Crafting = 2,
+	Misc = 4,
+	Legendary = 8,
+	Named = 16,
 	Defensive = 32,
-	Weapon = 64,
-	OneHanded = 128,
-	TwoHanded = 256,
-	MeleeWeapon = 512,
-	RangedWeapon = 1024,
-	Ammo = 2048,
-	Tool = 4096,
-	Accessory = 8192,
-	Usable = 16384,
-	Misc = 32768,
-	Loot = 65536,
-	Crafting = 131072,
+	Shield = 64,
+	TwoHanded = 128,
+	OneHanded = 256,
+	RangedWeapon = 512,
+	MeleeWeapon = 1024,
+	Weapon = 2048,
+	Helmet = 4096,
+	Armor = 8192,
+	Ammo = 16384,
+	Accessory = 32768,
+	Tool = 65536,
+	Usable = 131072,
 	Supply = 262144,
 	Food = 524288,
-	TradeGood = 1048576
+	TradeGood = 1048576,
+	Quest = 2097152
 };
 gt.Const.Items.ItemFilter <- {
 	Weapons = this.Const.Items.ItemType.Weapon | this.Const.Items.ItemType.Accessory | this.Const.Items.ItemType.Tool | this.Const.Items.ItemType.Ammo,
 	Armor = this.Const.Items.ItemType.Armor | this.Const.Items.ItemType.Helmet | this.Const.Items.ItemType.Shield,
-	Misc = this.Const.Items.ItemType.Supply | this.Const.Items.ItemType.Food | this.Const.Items.ItemType.Misc | this.Const.Items.ItemType.TradeGood | this.Const.Items.ItemType.Loot | this.Const.Items.ItemType.Crafting,
+	Misc = this.Const.Items.ItemType.Supply | this.Const.Items.ItemType.Food | this.Const.Items.ItemType.Misc | this.Const.Items.ItemType.TradeGood | this.Const.Items.ItemType.Loot | this.Const.Items.ItemType.Crafting | this.Const.Items.ItemType.Quest,
 	Usable = this.Const.Items.ItemType.Usable,
-	All = 1 | 2 | 4 | 8 | 16 | 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096 | 8192 | 16384 | 32768 | 65536 | 131072 | 262144 | 524288 | 1048576
+	All = 1 | 2 | 4 | 8 | 16 | 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096 | 8192 | 16384 | 32768 | 65536 | 131072 | 262144 | 524288 | 1048576 | 2097152
 };
 gt.Const.Items.AmmoType <- {
 	None = 0,

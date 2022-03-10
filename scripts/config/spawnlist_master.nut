@@ -1057,6 +1057,16 @@ gt.Const.World.Spawn.Troops <- {
 		Cost = 0,
 		Row = 3,
 		Script = "scripts/entity/tactical/objective/donkey_southern"
+	},
+	Oathbringer = {
+		ID = this.Const.EntityType.Oathbringer,
+		Variant = 1,
+		Strength = 40,
+		Cost = 40,
+		Row = 1,
+		Script = "scripts/entity/tactical/humans/oathbringer",
+		NameList = this.Const.Strings.OathbringerNames,
+		TitleList = null
 	}
 };
 gt.Const.World.Spawn.Caravan <- [

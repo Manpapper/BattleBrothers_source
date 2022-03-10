@@ -765,6 +765,8 @@ gt.Const.AI <- {
 		MoveTailMaxDistanceToHead = 1,
 		MoveTailCurrentTileBonus = 0.1,
 		CommandUndeadRefreshMult = 0.33,
+		CommandUndeadStunnedMult = 0.25,
+		CommandUndeadYetToActMult = 1.15,
 		CommandUndeadEngagedMult = 0.5,
 		CommandUndeadTargetsInRangeMult = 1.0,
 		CommandUndeadHitpointsMult = 1.0,

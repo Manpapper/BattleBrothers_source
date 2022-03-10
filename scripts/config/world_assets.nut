@@ -25,6 +25,8 @@ gt.Const.World.Assets <- {
 	ReputationOnContractFail = -75,
 	ReputationOnContractBetrayal = -200,
 	ReputationOnAmbition = 100,
+	ReputationOnOathAmbition = 50,
+	ReputationOnOathBonusObjective = 100,
 	ReputationOnArenaCancel = -50,
 	ReputationDaily = -3,
 	RelationDecayPerDayCivilian = 0.25,

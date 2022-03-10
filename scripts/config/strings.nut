@@ -237,7 +237,8 @@ gt.Const.Strings.EntityName <- [
 	"Lorekeeper\'s Apparition",
 	"Phylactery",
 	"Lost Treasure Hunter",
-	"Screaming Skull"
+	"Screaming Skull",
+	"Oathbringer"
 ];
 gt.Const.Strings.EntityNamePlural <- [
 	"Necromancers",
@@ -345,7 +346,8 @@ gt.Const.Strings.EntityNamePlural <- [
 	"Lorekeeper\'s Apparition",
 	"Phylacteries",
 	"Lost Treasure Hunters",
-	"Screaming Skulls"
+	"Screaming Skulls",
+	"Oathbringers"
 ];
 gt.Const.Strings.Tactical.EntityName <- {
 	Boulder = "Boulder",
@@ -1331,8 +1333,8 @@ gt.Const.Strings.PerkDescription <- {
 	Indomitable = "Unlocks the \'Indomitable\' skill which grants a [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color] damage reduction and immunity to being stunned, knocked back or grabbed for one turn.",
 	RallyTheTroops = "Unlocks the \'Rally\' skill which can rally fleeing allies, and raise morale of all nearby allies to a steady level. The higher the Resolve of the character using the skill, the higher the chance to succeed.",
 	Adrenaline = "Unlocks the \'Adrenaline\' skill which puts you first in the turn order for the next round, to have another turn before your enemies do. Feel the adrenaline rushing through your veins!",
-	Fearsome = "Make them scatter and flee! Any attack that inflicts at least 1 point of damage to hitpoints triggers a morale check for the opponent with a penalty equal to [color=" + this.Const.UI.Color.NegativeValue + "]20%[/color] of your Resolve, as opposed to with no penalty and only if at or above 15 points of damage.",
-	HeadHunter = "Go for the head! Hitting the head of a target will give you a guaranteed hit to the head also with your next attack. Connecting with your hit, or missing with your attack, will reset the effect.",
+	Fearsome = "Make them scatter and flee! Any attack that inflicts at least 1 point of damage to hitpoints triggers a morale check for the opponent with a penalty equal to [color=" + this.Const.UI.Color.NegativeValue + "]20%[/color] of your Resolve - 10, as opposed to with no penalty and only if at or above 15 points of damage.",
+	HeadHunter = "Go for the head! Hitting the head of a target will give you a guaranteed hit to the head also with your next attack. Connecting with your hit will reset the effect.",
 	SunderingStrikes = "Effectiveness vs. Armor is increased by [color=" + this.Const.UI.Color.PositiveValue + "]+20%[/color] for any weapon used.",
 	FastAdaption = "Adapt to your opponent\'s moves! Gain an additional stacking [color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] chance to hit with each attack that misses an opponent. Bonus is reset upon landing a hit.",
 	Weaponmaster = "All attacks cost [color=" + this.Const.UI.Color.NegativeValue + "]-20%[/color] Fatigue to use and weapon condition degrades only half as fast. Dance gracefully with your weapon and make every hit count. ",
@@ -1377,16 +1379,16 @@ gt.Const.Strings.PerkDescription <- {
 	Overwhelm = "Learn to take advantage of your high Initiative and prevent the enemy from attacking effectively by overwhelming them with your attacks!\n\nWith every attack, hit or miss, against an opponent that acts after you in the current round, inflict the \'Overwhelmed\' status effect which lowers both Melee Skill and Ranged Skill by [color=" + this.Const.UI.Color.NegativeValue + "]10%[/color] for one turn.\n\nThe effect stacks with each attack, and can be applied to multiple targets at once with a single attack.",
 	SpecBow = "Master the art of archery and pelting your opponents with arrows from afar. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nView range and maximum firing range with bows is increased by [color=" + this.Const.UI.Color.PositiveValue + "]+1[/color].",
 	SpecCrossbow = "Master crossbows and firearms, and learn where to aim best. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nAn additional [color=" + this.Const.UI.Color.PositiveValue + "]20%[/color] of damage inflicted with crossbows ignores armor.\n\nHandgonnes now require [color=" + this.Const.UI.Color.NegativeValue + "]6[/color] Action Points to reload and can be fired every turn instead of every other turn.",
-	SpecThrowing = "Master throwing weapons to wound or kill the enemy before they even get close. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nDamage is increased by [color=" + this.Const.UI.Color.PositiveValue + "]40%[/color] when attacking at 2 tiles of distance.\n\nDamage is increased by [color=" + this.Const.UI.Color.PositiveValue + "]20%[/color] when attacking at 3 tiles of distance.",
+	SpecThrowing = "Master throwing weapons to wound or kill the enemy before they even get close. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nDamage is increased by [color=" + this.Const.UI.Color.PositiveValue + "]30%[/color] when attacking at 2 tiles of distance.\n\nDamage is increased by [color=" + this.Const.UI.Color.PositiveValue + "]20%[/color] when attacking at 3 tiles of distance.",
 	SpecAxe = "Master combat with axes and destroying shields. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nSplit Shield damage to shields is increased by [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color] when used with axes.\n\nRound Swing gains [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit.\n\nThe Longaxe no longer has a penalty for attacking targets directly adjacent.",
 	SpecCleaver = "Master cleavers to inflict gruesome wounds. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nBleeding damage inflicted by cleavers and whips is doubled to [color=" + this.Const.UI.Color.PositiveValue + "]10[/color] and [color=" + this.Const.UI.Color.PositiveValue + "]20[/color] per turn, respectively.\n\nDisarm only has half the penalty to hit.",
 	SpecDagger = "Master swift and deadly daggers. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nStab, Puncture and Deathblow have a reduced Action Point cost to allow for an additional attack each turn.",
-	SpecSword = "Master the art of swordfighting and using your opponent\'s mistakes to your advantage. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nRiposte no longer has a penalty to hitchance.\n\nGash has a [color=" + this.Const.UI.Color.NegativeValue + "]50%[/color] lower threshold to inflict injuries.\n\nSplit and Swing gain [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit.",
+	SpecSword = "Master the art of swordfighting and using your opponent\'s mistakes to your advantage. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nRiposte no longer has a penalty to hitchance.\n\nGash has a [color=" + this.Const.UI.Color.NegativeValue + "]50%[/color] lower threshold to inflict injuries.\n\nSplit and Swing gain [color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] chance to hit.",
 	SpecSpear = "Master fighting with spears and keeping the enemy at bay. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nSpearwall is no longer disabled once an opponent manages to overcome it. Instead, Spearwall can still be used and continues to give free attacks on any further opponent attempting to enter the Zone of Control.\n\nThe Spetum and Warfork no longer have a penalty for attacking targets directly adjacent.",
 	SpecPolearm = "Master polearms and keeping the enemy at bay. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nPolearm skills have their Action Point cost reduced to [color=" + this.Const.UI.Color.NegativeValue + "]5[/color], and no longer have a penalty for attacking targets directly adjacent.",
 	SpecHammer = "Master hammers and fighting against heavily armored opponents. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nDestroy Armor and Demolish Armor inflict [color=" + this.Const.UI.Color.PositiveValue + "]33%[/color] more damage against armor.\n\nShatter gains [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit.\n\nThe Polehammer no longer has a penalty for attacking targets directly adjacent.",
 	SpecMace = "Master maces to beat your opponents into submission, armored or not. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nKnock Out, Knock Over and Strike Down have a [color=" + this.Const.UI.Color.PositiveValue + "]100%[/color] chance to stun the target if not immune.\n\nThe Polemace no longer has a penalty for attacking targets directly adjacent.",
-	SpecFlail = "Master flails and circumvent your opponent\'s shield. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nLash and Hail ignore the defense bonus of shields.\n\nThresh gains [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit."
+	SpecFlail = "Master flails and circumvent your opponent\'s shield. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nLash and Hail ignore the defense bonus of shields.\n\nPound ignores an additional [color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] of armor on head hits.\n\nThresh gains [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit."
 };
 gt.Const.Strings.Tooltip <- {
 	World = {

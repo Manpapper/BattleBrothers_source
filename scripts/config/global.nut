@@ -1,6 +1,6 @@
 local gt = this.getroottable();
 gt.Const.Serialization <- {
-	Version = 63
+	Version = 64
 };
 gt.Const.DLC <- {
 	Mask = 0,
@@ -13,6 +13,7 @@ gt.Const.DLC <- {
 	WildmenSupporter = false,
 	Desert = false,
 	DesertSupporter = false,
+	Paladins = false,
 	function isCompatible( _meta )
 	{
 		local maskInSave = _meta.getInt("dlc");
@@ -53,6 +54,12 @@ this.Const.DLC.Info[6] = {
 	Icon = "ui/images/dlc_6.png",
 	IconDisabled = "ui/images/dlc_6_sw.png",
 	URL = this.isSteamBuild() ? "https://store.steampowered.com/app/1361280/Battle_Brothers__Blazing_Deserts" : "https://www.gog.com/game/battle_brothers_blazing_deserts"
+};
+this.Const.DLC.Info[8] = {
+	Announce = true,
+	Icon = "ui/images/dlc_8.png",
+	IconDisabled = "ui/images/dlc_8_sw.png",
+	URL = this.isSteamBuild() ? "https://store.steampowered.com/app/1910050/Battle_Brothers__Of_Flesh_and_Faith" : "https://www.gog.com/game/battle_brothers_of_flesh_and_faith"
 };
 gt.Const.Direction <- {
 	N = 0,
@@ -326,6 +333,7 @@ gt.Const.EntityType <- {
 	SkeletonPhylactery = 103,
 	ZombieTreasureHunter = 104,
 	FlyingSkull = 105,
+	Oathbringer = 106,
 	function convertOldToNew( _id )
 	{
 		switch(_id)
@@ -594,6 +602,7 @@ gt.Const.EntityIcon <- [
 	"skeleton_07_orientation",
 	"phylactery_orientation",
 	"zombie_04_orientation",
-	"skeleton_08_orientation"
+	"skeleton_08_orientation",
+	"oathbringer_orientation"
 ];
 

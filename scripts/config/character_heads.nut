@@ -492,6 +492,8 @@ gt.Const.Beards.ZombieExtended <- [
 ];
 gt.Const.Tattoos.All <- [
 	"",
+	"scar_01",
+	"scar_02",
 	"tattoo_01",
 	"warpaint_01"
 ];

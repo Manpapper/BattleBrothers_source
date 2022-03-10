@@ -352,4 +352,23 @@ gt.Const.Tactical.Actor.Cultist <- {
 	],
 	FatigueRecoveryRate = 15
 };
+gt.Const.Tactical.Actor.Oathbringer <- {
+	XP = 375,
+	ActionPoints = 9,
+	Hitpoints = 125,
+	Bravery = 130,
+	Stamina = 145,
+	MeleeSkill = 80,
+	RangedSkill = 50,
+	MeleeDefense = 20,
+	RangedDefense = 5,
+	Initiative = 135,
+	FatigueEffectMult = 1.0,
+	MoraleEffectMult = 1.0,
+	Armor = [
+		0,
+		0
+	],
+	FatigueRecoveryRate = 25
+};
 
