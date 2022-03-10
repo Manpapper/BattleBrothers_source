@@ -105,6 +105,16 @@ this.ai_buff_command_undead <- this.inherit("scripts/ai/tactical/behavior", {
 					score = score * this.Const.AI.Behavior.CommandUndeadRefreshMult;
 				}
 
+				if (a.getCurrentProperties().IsStunned || !a.getCurrentProperties().IsAbleToUseWeaponSkills)
+				{
+					score = score * this.Const.AI.Behavior.CommandUndeadStunnedMult;
+				}
+
+				if (!a.isTurnDone())
+				{
+					score = score * this.Const.AI.Behavior.CommandUndeadYetToActMult;
+				}
+
 				potentialTargets.push({
 					Target = a,
 					Score = score,

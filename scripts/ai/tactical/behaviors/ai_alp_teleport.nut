@@ -69,6 +69,8 @@ this.ai_alp_teleport <- this.inherit("scripts/ai/tactical/behavior", {
 		{
 			this.Const.Tactical.Actor.Alp.TeleportTargets = [];
 			this.Const.Tactical.Actor.Alp.TeleportFrame = this.Time.getFrame();
+			this.getStrategy().cleanUpKnownOpponents();
+			this.getStrategy().compileKnownOpponents();
 			local targets = this.getAgent().getKnownOpponents();
 
 			foreach( t in targets )

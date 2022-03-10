@@ -191,7 +191,7 @@ this.roam_order <- this.inherit("scripts/ai/world/world_behavior", {
 		local path;
 		local pivotTile;
 
-		if (this.m.Pivot && !this.m.Pivot.isNull())
+		if (this.m.Pivot && !this.m.Pivot.isNull() && this.m.Pivot.isAlive())
 		{
 			pivotTile = this.m.Pivot.getTile();
 		}
