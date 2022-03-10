@@ -146,6 +146,7 @@ this.retinue_manager <- {
 	function setFollower( _slot, _follower )
 	{
 		this.m.Slots[_slot] = _follower;
+		this.World.Assets.resetToDefaults();
 		this.update();
 
 		if (this.getNumberOfCurrentFollowers() == this.m.Slots.len())
@@ -188,8 +189,6 @@ this.retinue_manager <- {
 
 	function update()
 	{
-		this.World.Assets.resetToDefaults();
-
 		foreach( p in this.m.Slots )
 		{
 			if (p != null)
@@ -294,6 +293,7 @@ this.retinue_manager <- {
 		}
 
 		this.m.InventoryUpgrades = _in.readU8();
+		this.World.Assets.resetToDefaults();
 		this.update();
 	}
 
