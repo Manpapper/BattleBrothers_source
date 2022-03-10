@@ -4,7 +4,7 @@ this.manhunters_scenario <- this.inherit("scripts/scenarios/world/starting_scena
 	{
 		this.m.ID = "scenario.manhunters";
 		this.m.Name = "Manhunters";
-		this.m.Description = "[p=c][img]gfx/ui/events/event_172.png[/img][/p][p]Constant conflict between city states and nomads makes for good business. The bulk of your outfit are captives, forced to fight to earn their freedom, and their ranks grow after each battle.\n\n[color=#bcad8c]Army of Captives:[/color] Start with two manhunters and four indebted. Take up to 16 men into battle at once. Having equal or fewer indebted than non-indebted will make your men dissatisfied.\n[color=#bcad8c]Overseers:[/color] All non-indebted can whip indebted in combat to reset their morale and buff their stats.\n[color=#bcad8c]Captives:[/color] Indebted earn 25% less experience, are capped at level 7, and will die if struck down.[/p]";
+		this.m.Description = "[p=c][img]gfx/ui/events/event_172.png[/img][/p][p]Constant conflict between city states and nomads makes for good business. The bulk of your outfit are captives, forced to fight to earn their freedom, and their ranks grow after each battle.\n\n[color=#bcad8c]Army of Captives:[/color] Start with two manhunters and four indebted. Take up to 16 men into battle at once. Having equal or fewer indebted than non-indebted will make your men dissatisfied.\n[color=#bcad8c]Overseers:[/color] All non-indebted can whip indebted in combat to reset their morale and buff their stats.\n[color=#bcad8c]Captives:[/color] Indebted earn 10% more experience, are capped at level 7, and will die if struck down.[/p]";
 		this.m.Difficulty = 3;
 		this.m.Order = 89;
 		this.m.IsFixedLook = true;
@@ -128,6 +128,7 @@ this.manhunters_scenario <- this.inherit("scripts/scenarios/world/starting_scena
 		this.World.Assets.getStash().add(this.new("scripts/items/supplies/rice_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/supplies/rice_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/supplies/rice_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/manhunters_ledger_item"));
 		this.World.Assets.getStash().resize(this.World.Assets.getStash().getCapacity() + 9);
 		this.World.Assets.m.Money = this.World.Assets.m.Money;
 		this.World.Assets.m.ArmorParts = this.World.Assets.m.ArmorParts / 2;
@@ -185,6 +186,7 @@ this.manhunters_scenario <- this.inherit("scripts/scenarios/world/starting_scena
 		}
 		while (1);
 
+		this.countIndebted();
 		this.World.State.m.Player = this.World.spawnEntity("scripts/entity/world/player_party", randomVillageTile.Coords.X, randomVillageTile.Coords.Y);
 		this.World.Assets.updateLook(18);
 		this.World.getCamera().setPos(this.World.State.m.Player.getPos());
@@ -201,7 +203,126 @@ this.manhunters_scenario <- this.inherit("scripts/scenarios/world/starting_scena
 	{
 		this.World.Assets.m.BrothersMax = 25;
 		this.World.Assets.m.BrothersMaxInCombat = 16;
-		this.World.Assets.m.BrothersScaleMax = 16;
+		this.World.Assets.m.BrothersScaleMax = 14;
+	}
+
+	function onHired( _bro )
+	{
+		if (_bro.getBackground().getID() != "background.slave")
+		{
+			_bro.getSkills().add(this.new("scripts/skills/actives/whip_slave_skill"));
+		}
+		else
+		{
+			_bro.getSprite("miniboss").setBrush("bust_miniboss_indebted");
+		}
+
+		this.countIndebted();
+	}
+
+	function onCombatFinished()
+	{
+		this.countIndebted();
+		return true;
+	}
+
+	function onUnlockPerk( _bro, _perkID )
+	{
+		if (_bro.getLevel() == 7 && _bro.getBackground().getID() == "background.slave" && _perkID == "perk.student")
+		{
+			_bro.setPerkPoints(_bro.getPerkPoints() + 1);
+		}
+	}
+
+	function onUpdateLevel( _bro )
+	{
+		if (_bro.getLevel() == 7 && _bro.getBackground().getID() == "background.slave" && _bro.getSkills().hasSkill("perk.student"))
+		{
+			_bro.setPerkPoints(_bro.getPerkPoints() + 1);
+		}
+	}
+
+	function onGetBackgroundTooltip( _background, _tooltip )
+	{
+		if (_background.getID() != "background.slave")
+		{
+			if (_background.getID() == "background.wildman")
+			{
+				_tooltip.pop();
+				_tooltip.push({
+					id = 16,
+					type = "text",
+					icon = "ui/icons/xp_received.png",
+					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] Experience Gain"
+				});
+			}
+			else if (_background.getID() == "background.apprentice")
+			{
+				_tooltip.pop();
+			}
+			else if (_background.getID() == "background.historian")
+			{
+				_tooltip.pop();
+				_tooltip.push({
+					id = 16,
+					type = "text",
+					icon = "ui/icons/xp_received.png",
+					text = "[color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] Experience Gain"
+				});
+			}
+			else
+			{
+				_tooltip.push({
+					id = 16,
+					type = "text",
+					icon = "ui/icons/xp_received.png",
+					text = "[color=" + this.Const.UI.Color.NegativeValue + "]-10%[/color] Experience Gain"
+				});
+			}
+		}
+		else
+		{
+			_tooltip.push({
+				id = 16,
+				type = "text",
+				icon = "ui/icons/xp_received.png",
+				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] Experience Gain"
+			});
+			_tooltip.push({
+				id = 17,
+				type = "text",
+				icon = "ui/icons/xp_received.png",
+				text = "Limited to character level 7"
+			});
+			_tooltip.push({
+				id = 18,
+				type = "text",
+				icon = "ui/icons/days_wounded.png",
+				text = "Is permanently dead if struck down and will not survive with a permanent injury"
+			});
+		}
+	}
+
+	function countIndebted()
+	{
+		local roster = this.World.getPlayerRoster().getAll();
+		local indebted = 0;
+		local nonIndebted = [];
+
+		foreach( bro in roster )
+		{
+			if (bro.getBackground().getID() == "background.slave")
+			{
+				indebted++;
+			}
+			else
+			{
+				nonIndebted.push(bro);
+			}
+		}
+
+		this.World.Statistics.getFlags().set("ManhunterIndebted", indebted);
+		this.World.Statistics.getFlags().set("ManhunterNonIndebted", nonIndebted.len());
 	}
 
 });

@@ -15,7 +15,7 @@ this.scenario_manager <- {
 
 			local s = this.new(scriptFile);
 
-			if (s.isValid() && (this.Const.DLC.Wildmen || this.m.Scenarios.len() < 3 + (this.Const.DLC.Desert ? 3 : 0)))
+			if (s.isValid() && (this.Const.DLC.Wildmen || this.m.Scenarios.len() < 3 + (this.Const.DLC.Desert ? 3 : 0) + (this.Const.DLC.Paladins ? 2 : 0)))
 			{
 				this.m.Scenarios.push(s);
 			}
