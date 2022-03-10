@@ -34,7 +34,7 @@ this.teamplayer_trait <- this.inherit("scripts/skills/traits/character_trait", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Has a [color=" + this.Const.UI.Color.NegativeValue + "]50%[/color] lower chance to inflict friendly fire"
+				text = "Has a [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color] lower chance to inflict friendly fire"
 			}
 		];
 	}
