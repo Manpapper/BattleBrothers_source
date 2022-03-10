@@ -2,6 +2,7 @@ this.ancient_gold_coins_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.ancient_gold_coins";
 		this.m.Name = "Ancient Gold Coins";
 		this.m.Description = "Thick gold coins with various ancient imprints. Should be worth a lot if you can find a buyer.";

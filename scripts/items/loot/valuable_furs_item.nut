@@ -2,6 +2,7 @@ this.valuable_furs_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.valuable_furs";
 		this.m.Name = "Valuable Furs";
 		this.m.Description = "A pack of valuable furs and pelts from various small animals. A very sought-after commodity, especially in larger settlements.";

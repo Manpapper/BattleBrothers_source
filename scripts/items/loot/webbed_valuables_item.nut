@@ -2,6 +2,7 @@ this.webbed_valuables_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.webbed_valuables";
 		this.m.Name = "Webbed Valuables";
 		this.m.Description = "Within the thick webs of webknechts sometimes valuables that once belonged to their unfortunate victims can be discoverd - if one is brave enough to search through the sticky deathtraps.";

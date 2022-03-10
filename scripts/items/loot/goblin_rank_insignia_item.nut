@@ -2,6 +2,7 @@ this.goblin_rank_insignia_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.goblin_rank_insignia";
 		this.m.Name = "Golden Rank Insignia";
 		this.m.Description = "Golden rank insignia like these are worn by high-ranking goblin officials. Should be worth something to a collector.";

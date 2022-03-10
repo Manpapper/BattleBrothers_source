@@ -2,6 +2,7 @@ this.signet_ring_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.signet_ring";
 		this.m.Name = "Signet Ring";
 		this.m.Description = "A jeweled signet ring. Should fetch a good price at the next city.";

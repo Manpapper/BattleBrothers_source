@@ -2,6 +2,7 @@ this.bone_figurines_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.bone_figurines";
 		this.m.Name = "Bone Figurines";
 		this.m.Description = "Small carved figurines made from various rare bones. A collector might pay decent coin for this.";

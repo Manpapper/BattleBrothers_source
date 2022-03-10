@@ -2,6 +2,7 @@ this.ancient_amber_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.ancient_amber";
 		this.m.Name = "Ancient Amber";
 		this.m.Description = "Particularly old schrats grow small splinters of extremely pure amber on their bark. These sell for quite a price to a trader.";

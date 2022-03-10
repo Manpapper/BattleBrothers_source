@@ -2,6 +2,7 @@ this.goblin_carved_ivory_iconographs_item <- this.inherit("scripts/items/item", 
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.goblin_carved_ivory_iconographs";
 		this.m.Name = "Carved Ivory Iconographs";
 		this.m.Description = "Artfully carved ivory iconographs depicting revered members of goblin society.";

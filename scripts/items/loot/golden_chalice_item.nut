@@ -2,6 +2,7 @@ this.golden_chalice_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.golden_chalice";
 		this.m.Name = "Golden Chalice";
 		this.m.Description = "A drinking cup made from massive gold. Should be worth a lot if you can find a buyer.";

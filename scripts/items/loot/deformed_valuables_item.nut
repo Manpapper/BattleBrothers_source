@@ -2,6 +2,7 @@ this.deformed_valuables_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.deformed_valuables";
 		this.m.Name = "Deformed Valuables";
 		this.m.Description = "Unholds are clumsy but strong creatures, and they tend to crush and mash valuables they find into a handy, twisted ball.";

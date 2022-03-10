@@ -2,6 +2,7 @@ this.soul_splinter_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.soul_splinter";
 		this.m.Name = "Soul Splinter";
 		this.m.Description = "In the dusty remains of Alps sometimes these pitch black splinters can be found. It looks like the stars are shimmering deep within these stones.";

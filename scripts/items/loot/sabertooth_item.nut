@@ -2,6 +2,7 @@ this.sabertooth_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.sabertooth";
 		this.m.Name = "Sabertooth";
 		this.m.Description = "An extraordinarily large tooth that can probably be sold for some crowns to people who\'d want to pretend that they hunted down a fearsome beast.";

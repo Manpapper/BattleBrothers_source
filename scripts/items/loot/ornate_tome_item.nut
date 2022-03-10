@@ -2,6 +2,7 @@ this.ornate_tome_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.ornate_tome";
 		this.m.Name = "Ornate Tome";
 		this.m.Description = "A well preserved tome with a massive golden book cover. Should fetch a good price from the kind of people that study dusty old tomes.";

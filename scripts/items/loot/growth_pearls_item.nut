@@ -2,6 +2,7 @@ this.growth_pearls_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.growth_pearls";
 		this.m.Name = "Growth Pearls";
 		this.m.Description = "The fast growth of Nachzehrer tissue sometimes engulfs small particles or debris and turns them into shimmering pearls that can be found within the creatures. Should fetch a good price at the next city.";

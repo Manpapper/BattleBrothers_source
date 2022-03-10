@@ -2,6 +2,7 @@ this.bead_necklace_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.bead_necklace";
 		this.m.Name = "Bead Necklace";
 		this.m.Description = "A necklace made from various beads typical of northern barbarian tribes.";

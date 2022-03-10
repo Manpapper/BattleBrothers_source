@@ -2,6 +2,7 @@ this.silver_bowl_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.silver_bowl";
 		this.m.Name = "Silver Bowl";
 		this.m.Description = "A large silver bowl of remarkable weight. Should fetch a good price at the next city.";

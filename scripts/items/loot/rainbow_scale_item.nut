@@ -2,6 +2,7 @@ this.rainbow_scale_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.rainbow_scale";
 		this.m.Name = "Rainbow Scale";
 		this.m.Description = "Desert serpents sometimes have particularly colorful and shiny scales embedded in their shimmering skin. These are sought after by jewelers and trophy hunters around the lands.";

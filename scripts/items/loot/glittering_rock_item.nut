@@ -2,6 +2,7 @@ this.glittering_rock_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.glittering_rock";
 		this.m.Name = "Glittering Rock";
 		this.m.Description = "Among the scattered rocks that remain of a defeated Ifrit, sometimes a rock shimmering with gold can be found. It makes for a valuable trophy.";
