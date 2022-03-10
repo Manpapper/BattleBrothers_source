@@ -45,7 +45,7 @@ this.unhold <- this.inherit("scripts/entity/tactical/actor", {
 			"sounds/enemies/unhold_confused_03.wav",
 			"sounds/enemies/unhold_confused_04.wav"
 		];
-		this.m.SoundPitch = this.Math.rand(0.9, 1.1);
+		this.m.SoundPitch = this.Math.rand(9, 11) * 0.1;
 		this.m.SoundVolumeOverall = 1.25;
 		this.m.AIAgent = this.new("scripts/ai/tactical/agents/unhold_agent");
 		this.m.AIAgent.setActor(this);

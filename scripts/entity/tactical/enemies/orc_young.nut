@@ -261,6 +261,8 @@ this.orc_young <- this.inherit("scripts/entity/tactical/actor", {
 		{
 			this.m.Skills.add(this.new("scripts/skills/actives/wake_ally_skill"));
 		}
+
+		this.m.Skills.add(this.new("scripts/skills/effects/captain_effect"));
 	}
 
 	function onFinish()

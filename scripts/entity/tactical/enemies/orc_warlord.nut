@@ -257,10 +257,13 @@ this.orc_warlord <- this.inherit("scripts/entity/tactical/actor", {
 		this.m.Skills.add(this.new("scripts/skills/actives/hand_to_hand_orc"));
 		this.m.Skills.add(this.new("scripts/skills/actives/warcry"));
 		this.m.Skills.add(this.new("scripts/skills/actives/line_breaker"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_captain"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_battering_ram"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_hold_out"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_stalwart"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_shield_bash"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_fearsome"));
+		this.m.Skills.add(this.new("scripts/skills/effects/captain_effect"));
 	}
 
 	function onFinish()

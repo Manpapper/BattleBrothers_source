@@ -158,7 +158,7 @@ this.kraken <- this.inherit("scripts/entity/tactical/actor", {
 		}
 
 		local hitInfo = clone this.Const.Tactical.HitInfo;
-		hitInfo.DamageRegular = this.Math.max(15, 190 - (this.m.TentaclesDestroyed - 1) * 5);
+		hitInfo.DamageRegular = this.Math.max(35, 190 - (this.m.TentaclesDestroyed - 1) * 5);
 		hitInfo.DamageDirect = 1.0;
 		hitInfo.BodyPart = this.Const.BodyPart.Head;
 		hitInfo.BodyDamageMult = 1.0;
@@ -315,7 +315,6 @@ this.kraken <- this.inherit("scripts/entity/tactical/actor", {
 		this.setSpriteOffset("arrow", this.createVec(20, 190));
 		this.m.Skills.add(this.new("scripts/skills/actives/kraken_devour_skill"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_hold_out"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_fearsome"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_steel_brow"));
 		local myTile = this.getTile();
 

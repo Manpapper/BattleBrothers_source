@@ -45,6 +45,7 @@ this.bandit_leader <- this.inherit("scripts/entity/tactical/human", {
 		b.IsSpecializedInHammers = true;
 		b.IsSpecializedInSpears = true;
 		b.IsSpecializedInCleavers = true;
+		b.IsSpecializedInDaggers = true;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;

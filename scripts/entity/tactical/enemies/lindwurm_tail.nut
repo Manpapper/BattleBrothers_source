@@ -199,7 +199,7 @@ this.lindwurm_tail <- this.inherit("scripts/entity/tactical/actor", {
 			this.getTile().addVisibilityForFaction(this.Const.Faction.Player);
 		}
 
-		local p = this.m.Body.m.Skills.buildPropertiesForBeingHit(_attacker, _skill, _hitInfo.BodyPart);
+		local p = this.m.Body.m.Skills.buildPropertiesForBeingHit(_attacker, _skill, _hitInfo);
 		_hitInfo.DamageRegular *= p.DamageReceivedRegularMult * p.DamageReceivedTotalMult;
 		_hitInfo.DamageArmor *= p.DamageReceivedArmorMult * p.DamageReceivedTotalMult;
 		local armor = 0;
@@ -379,7 +379,7 @@ this.lindwurm_tail <- this.inherit("scripts/entity/tactical/actor", {
 				this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(this) + "\'s " + this.Const.Strings.BodyPartName[_hitInfo.BodyPart] + " is hit for [b]" + this.Math.floor(damage) + "[/b] damage");
 			}
 
-			if (this.m.Body.m.MoraleState != this.Const.MoraleState.Ignore && damage > this.Const.Morale.OnHitMinDamage && this.getCurrentProperties().IsAffectedByLosingHitpoints)
+			if (this.m.Body.m.MoraleState != this.Const.MoraleState.Ignore && damage >= this.Const.Morale.OnHitMinDamage && this.getCurrentProperties().IsAffectedByLosingHitpoints)
 			{
 				this.checkMorale(-1, this.Const.Morale.OnHitBaseDifficulty * (1.0 - this.getHitpoints() / this.getHitpointsMax()), this.Const.MoraleCheckType.Default, "", true);
 			}
