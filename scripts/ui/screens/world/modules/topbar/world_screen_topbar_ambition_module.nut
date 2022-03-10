@@ -28,6 +28,11 @@ this.world_screen_topbar_ambition_module <- this.inherit("scripts/ui/screens/ui_
 			return;
 		}
 
+		if (!this.World.Ambitions.getActiveAmbition().isCancelable())
+		{
+			return;
+		}
+
 		this.World.State.showDialogPopup("Cancel Ambition", "Cancelling an ambition will allow you to choose a new one, but it will also leave your men disappointed in you as a leader.\n\nAre you sure you want to cancel?", this.onCancelAmbition.bindenv(this), null);
 	}
 
