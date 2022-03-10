@@ -6,7 +6,7 @@ this.item <- {
 		IconLarge = "",
 		Description = "",
 		Categories = "",
-		MagicNumber = this.Math.rand(1, 100),
+		MagicNumber = 0,
 		Variant = 0,
 		Condition = 1.0,
 		ConditionMax = 1.0,
@@ -560,6 +560,11 @@ this.item <- {
 	{
 	}
 
+	function create()
+	{
+		this.m.MagicNumber = this.Math.rand(1, 100);
+	}
+
 	function onFactionChanged( _faction )
 	{
 		this.m.LastEquippedByFaction = _faction;
@@ -628,6 +633,10 @@ this.item <- {
 	}
 
 	function onMovementFinished()
+	{
+	}
+
+	function onCombatStarted()
 	{
 	}
 
