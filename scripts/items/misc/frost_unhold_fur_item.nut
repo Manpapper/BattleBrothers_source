@@ -2,6 +2,7 @@ this.frost_unhold_fur_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.frost_unhold_fur";
 		this.m.Name = "Thick White Fur";
 		this.m.Description = "Thick white fur formerly belonging to an Unhold of the frozen north.";

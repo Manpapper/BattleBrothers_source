@@ -2,6 +2,7 @@ this.sulfurous_rocks_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.sulfurous_rock";
 		this.m.Name = "Sulfurous Rocks";
 		this.m.Description = "An offensive stench is emitted by these brittle rocks, which are prized highly by alchemists.";

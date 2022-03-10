@@ -2,6 +2,7 @@ this.potion_of_oblivion_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.potion_of_oblivion";
 		this.m.Name = "Potion of Oblivion";
 		this.m.Description = "Better not ask how this concoction of the rarest and most bizarre ingredients tastes! Anybody who drinks this is said to be able to relive his life, changing the decisions he made along the way.";

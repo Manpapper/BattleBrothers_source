@@ -2,6 +2,7 @@ this.lindwurm_blood_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.lindwurm_blood";
 		this.m.Name = "Lindwurm Blood";
 		this.m.Description = "The corroding blood of a Lindwurm that eats away at metal in no time. Luckily it can be safely transported in glass vials.";

@@ -2,6 +2,7 @@ this.acidic_saliva_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.acidic_saliva";
 		this.m.Name = "Acidic Saliva";
 		this.m.Description = "The saliva of the wild desert hyenas is priced by southern alchemists for its unique properties.";

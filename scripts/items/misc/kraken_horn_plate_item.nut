@@ -2,6 +2,7 @@ this.kraken_horn_plate_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.kraken_horn_plate";
 		this.m.Name = "Horn Plate";
 		this.m.Description = "Taken from the the head of the legendary kraken, this large and hard horn plate is a trophy few in this world can claim.";

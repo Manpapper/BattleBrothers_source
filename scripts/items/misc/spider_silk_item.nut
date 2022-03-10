@@ -2,6 +2,7 @@ this.spider_silk_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.spider_silk";
 		this.m.Name = "Gossamer";
 		this.m.Description = "Gossamer gathered from the remains of a Webknecht. Light and strong, it is superior to most common materials. If only it weren\'t so sticky...";

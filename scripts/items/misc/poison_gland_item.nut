@@ -2,6 +2,7 @@ this.poison_gland_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.poison_gland";
 		this.m.Name = "Poison Gland";
 		this.m.Description = "The poison gland of a Webknecht. Should not be carried close to any food or drink.";

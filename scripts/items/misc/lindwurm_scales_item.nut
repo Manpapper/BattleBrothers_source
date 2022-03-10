@@ -2,6 +2,7 @@ this.lindwurm_scales_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.lindwurm_scales";
 		this.m.Name = "Lindwurm Scales";
 		this.m.Description = "The shimmering green scales of a Lindwurm are among the most reputable trophies a beast hunter can bring home from his adventures.";

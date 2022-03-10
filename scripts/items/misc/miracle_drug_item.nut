@@ -2,7 +2,8 @@ this.miracle_drug_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
-		this.m.ID = "misc.miracle_drug_";
+		this.item.create();
+		this.m.ID = "misc.miracle_drug";
 		this.m.Name = "Apothecary\'s Miracle";
 		this.m.Description = "A powerful remedy against many common illnesses and diseases, to reduce inflammation, and to support the body\'s natural healing.\n\nCharacters treated with this drug will recover faster from injuries, just like if they\'ve been treated at a temple.";
 		this.m.Icon = "consumables/pills_01.png";

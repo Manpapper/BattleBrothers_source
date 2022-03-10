@@ -2,6 +2,7 @@ this.paint_remover_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.paint_remover";
 		this.m.Name = "Paint Remover";
 		this.m.Description = "A bucket of paint remover. Can be used to remove paint from many common helmets.";

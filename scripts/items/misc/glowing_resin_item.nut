@@ -2,6 +2,7 @@ this.glowing_resin_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.glowing_resin";
 		this.m.Name = "Glowing Resin";
 		this.m.Description = "These amber resin shards have a light orange hue to them. If melted, the material makes for a strong adhesive.";

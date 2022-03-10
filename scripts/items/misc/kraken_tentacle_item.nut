@@ -2,6 +2,7 @@ this.kraken_tentacle_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.kraken_tentacle";
 		this.m.Name = "Severed Tentacle";
 		this.m.Description = "The shriveled remains of a legendary kraken\'s tentacle, slimy and squishy but highly sought-after by alchemists for its supposed rare properties.";

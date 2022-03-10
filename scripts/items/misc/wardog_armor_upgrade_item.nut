@@ -2,6 +2,7 @@ this.wardog_armor_upgrade_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.wardog_armor_upgrade";
 		this.m.Name = "Wardog Armor";
 		this.m.Description = "A simple leather coat that can be donned by any wardog to give it some protection in combat.";

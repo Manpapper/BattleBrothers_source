@@ -2,6 +2,7 @@ this.ghoul_teeth_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.ghoul_teeth";
 		this.m.Name = "Jagged Fangs";
 		this.m.Description = "A handful of jagged fangs taken from a Nachzehrer. Infected with rot but hard enough to chew through any bone. Might fetch some coin from alchemists on the market place.";

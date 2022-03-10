@@ -2,6 +2,7 @@ this.poisoned_apple_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.poisoned_apple";
 		this.m.Name = "Poisoned Apple";
 		this.m.Description = "Looks delicious!";

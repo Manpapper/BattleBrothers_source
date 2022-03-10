@@ -2,6 +2,7 @@ this.paint_black_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.paint_black";
 		this.m.Name = "Black Paint";
 		this.m.Description = "A bucket of black paint. Can be used to paint many common helmets.";
@@ -11,7 +12,7 @@ this.paint_black_item <- this.inherit("scripts/items/item", {
 		this.m.IsDroppedAsLoot = true;
 		this.m.IsAllowedInBag = false;
 		this.m.IsUsable = true;
-		this.m.Value = 120;
+		this.m.Value = 75;
 	}
 
 	function getTooltip()

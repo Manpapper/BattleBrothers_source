@@ -2,6 +2,7 @@ this.hyena_fur_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.hyena_fur";
 		this.m.Name = "Raging Hyena Fur";
 		this.m.Description = "The colorful fur of a desert hyena makes for an impressive and exotic addition to any mercenary armor, if not a sophisticated one.";

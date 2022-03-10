@@ -2,6 +2,7 @@ this.ghoul_brain_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.ghoul_brain";
 		this.m.Name = "Nachzehrer Brain";
 		this.m.Description = "The greasy brain of a slain Nachzehrer. What could you possibly want with this?";

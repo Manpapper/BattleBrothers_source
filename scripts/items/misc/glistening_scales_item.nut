@@ -2,6 +2,7 @@ this.glistening_scales_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.glistening_scales";
 		this.m.Name = "Glistening Scales";
 		this.m.Description = "These scales are shimmering and glistening beautifully in all the colors as you turn them towards the sun.";

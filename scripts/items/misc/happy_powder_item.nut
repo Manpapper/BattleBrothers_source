@@ -2,6 +2,7 @@ this.happy_powder_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.happy_powder";
 		this.m.Name = "Happy Powder";
 		this.m.Description = "This miraculous powder instantly turns a grumpy, ill-tempered mercenary into an happy and energetic one. Do not operate heavy machinery while under the influence.";

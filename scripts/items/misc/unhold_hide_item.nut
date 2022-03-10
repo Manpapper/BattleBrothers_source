@@ -2,6 +2,7 @@ this.unhold_hide_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.unhold_hide";
 		this.m.Name = "Unhold Hide";
 		this.m.Description = "Hide is the basis of most armors, and this thick hide taken from an Unhold is especially sturdy.";

@@ -2,6 +2,7 @@ this.serpent_skin_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.serpent_skin";
 		this.m.Name = "Serpent Skin";
 		this.m.Description = "The scaly skin of a large serpent. A skilled craftsman could turn this into something useful.";

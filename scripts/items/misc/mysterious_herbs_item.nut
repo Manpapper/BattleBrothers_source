@@ -2,6 +2,7 @@ this.mysterious_herbs_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.mysterious_herbs";
 		this.m.Name = "Mysterious Herbs";
 		this.m.Description = "These herbs do not look or smell like any known to you. Their scent is intriguing and appalling at the same time.";

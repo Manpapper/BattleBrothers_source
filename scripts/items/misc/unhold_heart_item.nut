@@ -2,6 +2,7 @@ this.unhold_heart_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.unhold_heart";
 		this.m.Name = "Unhold\'s Heart";
 		this.m.Description = "The large and heavy heart of an Unhold. Rumored to have magical properties, alchemists are prepared to pay a tidy sum to get it into their hands.";

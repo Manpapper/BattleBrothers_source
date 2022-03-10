@@ -2,6 +2,7 @@ this.ghoul_horn_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.ghoul_horn";
 		this.m.Name = "Nachzehrer Horn";
 		this.m.Description = "Nachzehrers can grow impressive horns, and these in turn make for impressive trophies.";

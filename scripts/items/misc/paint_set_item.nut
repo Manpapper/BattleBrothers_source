@@ -2,6 +2,7 @@ this.paint_set_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.paint_set_shields";
 		this.m.Name = "Paint Set";
 		this.m.Description = "A palette of several vibrant colors and a set of brushes. Can be used to paint common shields in your company\'s colors.";
@@ -11,7 +12,7 @@ this.paint_set_item <- this.inherit("scripts/items/item", {
 		this.m.IsDroppedAsLoot = true;
 		this.m.IsAllowedInBag = false;
 		this.m.IsUsable = true;
-		this.m.Value = 120;
+		this.m.Value = 75;
 	}
 
 	function getTooltip()

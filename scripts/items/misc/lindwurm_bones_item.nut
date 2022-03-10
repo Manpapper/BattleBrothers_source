@@ -2,6 +2,7 @@ this.lindwurm_bones_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.lindwurm_bones";
 		this.m.Name = "Lindwurm Bones";
 		this.m.Description = "The bones of the Lindwurm are mostly hollow from the inside, making them an easy to carry trophy despite their size.";

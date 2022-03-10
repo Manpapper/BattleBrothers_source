@@ -2,6 +2,7 @@ this.snake_oil_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.snake_oil";
 		this.m.Name = "Snake Oil";
 		this.m.Description = "A mysterious concoction said to help against hair loss, syphilis, deafness, impotence, skin rash, pox and writer\'s block. A true miracle potion if only you believe in it. Can be sold everywhere for a tidy sum.";

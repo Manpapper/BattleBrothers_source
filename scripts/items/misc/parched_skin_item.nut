@@ -2,6 +2,7 @@ this.parched_skin_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "misc.parched_skin";
 		this.m.Name = "Parched Skin";
 		this.m.Description = "This skin taken from an Alp is paperthin and glitters in the sunlight.";
