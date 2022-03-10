@@ -542,6 +542,11 @@ this.asset_manager <- {
 		{
 			local injuries = bro.getSkills().query(this.Const.SkillType.TemporaryInjury);
 
+			if (bro.getSkills().hasSkill("injury.sickness"))
+			{
+				injuries.push(bro.getSkills().getSkillByID("injury.sickness"));
+			}
+
 			foreach( inj in injuries )
 			{
 				local ht = inj.getHealingTime();
@@ -663,10 +668,16 @@ this.asset_manager <- {
 		this.m.IsSurvivalGuaranteed = false;
 		this.m.IsShowingExtendedFootprints = false;
 		this.m.IsBlacksmithed = false;
+		this.World.Retinue.update();
 
 		if (this.m.Origin != null)
 		{
 			this.m.Origin.onInit();
+		}
+
+		if (this.World.Ambitions.hasActiveAmbition())
+		{
+			this.World.Ambitions.getActiveAmbition().onUpdateEffect();
 		}
 	}
 
@@ -1353,7 +1364,7 @@ this.asset_manager <- {
 		return ret;
 	}
 
-	function updateFormation()
+	function updateFormation( considerMaxBros = false )
 	{
 		local NOT_IN_FORMATION = 255;
 		local formation = [];
@@ -1364,7 +1375,7 @@ this.asset_manager <- {
 
 		foreach( b in roster )
 		{
-			if (b.getPlaceInFormation() != NOT_IN_FORMATION && formation[b.getPlaceInFormation()] == false)
+			if (b.getPlaceInFormation() != NOT_IN_FORMATION && formation[b.getPlaceInFormation()] == false && (!considerMaxBros || inCombat < this.m.BrothersMaxInCombat))
 			{
 				formation[b.getPlaceInFormation()] = true;
 
@@ -1635,7 +1646,7 @@ this.asset_manager <- {
 			data.Text += this.addBrotherEnding(brothers, excludedBackgrounds, true);
 			data.Text += "\n\n{The other day, a hermit came up to your cabin asking if you knew of the %companyname%. You shook your head and feigned interest. The wildman says it is the greatest company in all the land. You asked him if he was totally sure about that. The hermit shrank back as if you\'d insulted him personally.%SPEECH_ON%Am I sure? Mister, you\'d best sit down. Let me tell you all about the %companyname%. First off, they say the man who ran it was seven-feet tall and made of all muscle. Went by the name of...%SPEECH_OFF% | It wasn\'t the easiest move to leave the company behind, but there\'s a room in your keep that lets you swim around in gold crowns so it\'s not too bad. | Now you spend your days not even sure what to do with all your gold. A lot of people come by the keep. Wenches of all shapes and sizes... strange men with even stranger, gold-sucking ideas... and a great deal of cloaked noble princes humbling themselves by asking for advice on warfare. Some days, while chopping away in your garden, you think about getting back into the field. Boredom, as it turns out, is the most sickly and nasty of beasts you\'ve faced yet. | A man came by your keep the other day. He wanted help on starting a mercenary band, obviously taking inspiration from your own feats. You asked how many other successful sellswords he\'d talked to. He shrugged.%SPEECH_ON%You\'re the only one so far.%SPEECH_OFF%You nodded back.%SPEECH_ON%That\'s right. I\'m the only one despite hundreds of men like me having been out there. Maybe it\'s cause I\'m that good, but I think the truth is that I\'m just that lucky. So if you want my advice on starting a mercenary company, don\'t. That\'s all. One of my servants will show you the door. Good day now.%SPEECH_OFF% | While tending to your garden, you find a mouse nibbling on one of your tomatoes. It\'s so buzzed on the flavors you easily capture the rodent and hold it in both hands. Despondent defeatism spreads across its face as you stare at it, half its maw still gnawing away on a bit of tomato. A servant rushes over.%SPEECH_ON%I can rid you of that, my lord.%SPEECH_OFF%You stare at the servant and then back at the mouse.%SPEECH_ON%No, no I think I\'ll keep it. I could use a friend.%SPEECH_OFF%The servant looks down. You slap him on the shoulder.%SPEECH_ON%Cheer up now. You\'re my friend, too!%SPEECH_OFF%The servant smiles.%SPEECH_ON%Thank you, my lord.%SPEECH_OFF%}";
 		}
-		else if (this.World.Statistics.getFlags().get("GreaterEvilsDefeated") == 1)
+		else if (this.World.Statistics.getFlags().get("GreaterEvilsDefeated") >= 1)
 		{
 			this.Music.setTrackList(this.Const.Music.Retirement3Tracks, this.Const.Music.CrossFadeTime);
 			this.updateAchievement("LeavingAMark", 1, 1);
@@ -2112,6 +2123,11 @@ this.asset_manager <- {
 		{
 			_in.readI32();
 			this.m.SeedString = "Unknown";
+		}
+
+		if (_in.getMetaData().getVersion() < 64 && this.m.Origin != null && this.m.Origin.getID() == "scenario.manhunters")
+		{
+			this.m.Stash.add(this.new("scripts/items/misc/manhunters_ledger_item"));
 		}
 
 		this.m.Money = _in.readF32();
