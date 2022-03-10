@@ -308,6 +308,7 @@ this.character_screen <- {
 
 		if (bro != null)
 		{
+			bro.getSkills().onDismiss();
 			this.World.Statistics.getFlags().increment("BrosDismissed");
 
 			if (bro.getSkills().hasSkillOfType(this.Const.SkillType.PermanentInjury) && bro.getBackground().getID() != "background.slave")
@@ -378,6 +379,28 @@ this.character_screen <- {
 						other.worsenMood(this.Const.MoodChange.BrotherDismissed, "Dismissed " + bro.getName());
 					}
 				}
+			}
+
+			if (("State" in this.World) && this.World.State != null && this.World.Assets.getOrigin().getID() == "scenario.manhunters")
+			{
+				local playerRoster = this.World.getPlayerRoster().getAll();
+				local indebted = 0;
+				local nonIndebted = [];
+
+				foreach( bro in playerRoster )
+				{
+					if (bro.getBackground().getID() == "background.slave")
+					{
+						indebted++;
+					}
+					else
+					{
+						nonIndebted.push(bro);
+					}
+				}
+
+				this.World.Statistics.getFlags().set("ManhunterIndebted", indebted);
+				this.World.Statistics.getFlags().set("ManhunterNonIndebted", nonIndebted.len());
 			}
 
 			bro.getItems().transferToStash(this.World.Assets.getStash());
