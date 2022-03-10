@@ -26,5 +26,13 @@ this.perk_coup_de_grace <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
+	function onBeforeTargetHit( _skill, _targetEntity, _hitInfo )
+	{
+		if (_skill.isAttack() && _targetEntity != null && _targetEntity.getSkills().hasSkillOfType(this.Const.SkillType.TemporaryInjury))
+		{
+			this.spawnIcon("perk_16", this.getContainer().getActor().getTile());
+		}
+	}
+
 });
 

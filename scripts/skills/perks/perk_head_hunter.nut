@@ -18,7 +18,7 @@ this.perk_head_hunter <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "This character is guaranteed to land a hit to the head if the next attack connects.";
+		return "This character is guaranteed to land a hit to the head on the next attack that connects.";
 	}
 
 	function onUpdate( _properties )
@@ -45,15 +45,6 @@ this.perk_head_hunter <- this.inherit("scripts/skills/skill", {
 				this.m.Stacks = 0;
 			}
 
-			this.getContainer().getActor().setDirty(true);
-		}
-	}
-
-	function onTargetMissed( _skill, _targetEntity )
-	{
-		if (this.m.Stacks != 0)
-		{
-			this.m.Stacks = 0;
 			this.getContainer().getActor().setDirty(true);
 		}
 	}

@@ -15,7 +15,7 @@ this.perk_backstabber <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		_properties.SurroundedBonus = 10;
+		_properties.SurroundedBonusMult = 2.0;
 	}
 
 });
