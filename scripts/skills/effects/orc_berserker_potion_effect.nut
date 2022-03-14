@@ -109,7 +109,7 @@ this.orc_berserker_potion_effect <- this.inherit("scripts/skills/skill", {
 
 	function onDamageReceived( _attacker, _damageHitpoints, _damageArmor )
 	{
-		if (_damageHitpoints > 0)
+		if (_attacker != null && _attacker.getID() != this.getContainer().getActor().getID() && _damageHitpoints > 0)
 		{
 			this.addRage(2);
 		}

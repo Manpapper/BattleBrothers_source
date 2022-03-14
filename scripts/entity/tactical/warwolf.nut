@@ -182,6 +182,11 @@ this.warwolf <- this.inherit("scripts/entity/tactical/actor", {
 
 			foreach( bro in brothers )
 			{
+				if (bro.getCurrentProperties().IsAllyXPBlocked)
+				{
+					return;
+				}
+
 				bro.addXP(this.Math.max(1, this.Math.floor(XPgroup / brothers.len())));
 			}
 		}

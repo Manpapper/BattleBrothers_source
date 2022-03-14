@@ -919,6 +919,7 @@ gt.Const.CharacterProperties <- {
 	IsSpecializedInDaggers = false,
 	IsSpecializedInShields = false,
 	IsContentWithBeingInReserve = false,
+	IsAllyXPBlocked = false,
 	DailyWage = 0,
 	DailyWageMult = 1.0,
 	DailyFood = 2.0,
