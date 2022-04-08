@@ -655,6 +655,11 @@ this.settlement <- this.inherit("scripts/entity/world/location", {
 		return this.m.Modifiers.FoodPriceMult;
 	}
 
+	function getBeastPartsPriceMult()
+	{
+		return this.m.Modifiers.BeastPartsPriceMult;
+	}
+
 	function getPriceMult()
 	{
 		local p;
