@@ -20,6 +20,7 @@ this.sellsword_gets_better_deal_event <- this.inherit("scripts/events/event", {
 					Text = "I see, time to part ways then.",
 					function getResult( _event )
 					{
+						_event.m.Sellsword.getSkills().onDeath(this.Const.FatalityType.None);
 						this.World.getPlayerRoster().remove(_event.m.Sellsword);
 						return 0;
 					}
@@ -95,6 +96,7 @@ this.sellsword_gets_better_deal_event <- this.inherit("scripts/events/event", {
 					text = _event.m.Sellsword.getName() + " leaves the " + this.World.Assets.getName()
 				});
 				_event.m.Sellsword.getItems().transferToStash(this.World.Assets.getStash());
+				_event.m.Sellsword.getSkills().onDeath(this.Const.FatalityType.None);
 				this.World.getPlayerRoster().remove(_event.m.Sellsword);
 			}
 
