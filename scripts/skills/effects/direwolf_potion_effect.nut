@@ -102,7 +102,7 @@ this.direwolf_potion_effect <- this.inherit("scripts/skills/skill", {
 	{
 		local SkillsUsed = _tag.Skill.getSkillsUsed();
 
-		if (_tag.SkillCounter in SkillsUsed)
+		if ((_tag.SkillCounter in SkillsUsed) && _tag.Actor.isAlive() && this.Tactical.TurnSequenceBar.getActiveEntity().getID() == _tag.Actor.getID())
 		{
 			_tag.Actor.setFatigue(_tag.Actor.getFatigue() - SkillsUsed[_tag.SkillCounter]);
 			_tag.Actor.setDirty(true);

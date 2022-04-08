@@ -1,8 +1,8 @@
 this.ifrit_potion_effect <- this.inherit("scripts/skills/skill", {
 	m = {
-		HeadArmorBoost = 20,
+		HeadArmorBoost = 25,
 		HeadDamageTaken = 0,
-		BodyArmorBoost = 20,
+		BodyArmorBoost = 25,
 		BodyDamageTaken = 0
 	},
 	function create()
@@ -41,7 +41,7 @@ this.ifrit_potion_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/armor_body.png",
-				text = "This character\'s skin is hard and stone-like, granting [color=" + this.Const.UI.Color.PositiveValue + "]20[/color] points of natural armor"
+				text = "This character\'s skin is hard and stone-like, granting [color=" + this.Const.UI.Color.PositiveValue + "]25[/color] points of natural armor"
 			},
 			{
 				id = 12,

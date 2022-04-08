@@ -1,6 +1,6 @@
 this.necrosavant_potion_effect <- this.inherit("scripts/skills/skill", {
 	m = {
-		SlayDamage = 0
+		ShouldHeal = false
 	},
 	function create()
 	{
@@ -55,16 +55,39 @@ this.necrosavant_potion_effect <- this.inherit("scripts/skills/skill", {
 		return ret;
 	}
 
+	function onCombatStarted()
+	{
+		this.m.ShouldHeal = false;
+	}
+
+	function onCombatFinished()
+	{
+		this.m.ShouldHeal = false;
+	}
+
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
+		local actor = this.m.Container.getActor();
+
+		if (actor.getHitpoints() == actor.getHitpointsMax())
+		{
+			return;
+		}
+
 		if (_damageInflictedHitpoints <= 0)
 		{
 			return;
 		}
 
+		if (this.m.ShouldHeal)
+		{
+			this.lifesteal(_damageInflictedHitpoints);
+			this.m.ShouldHeal = false;
+			return;
+		}
+
 		if (_targetEntity == null || !_targetEntity.isAlive())
 		{
-			this.m.SlayDamage = _damageInflictedHitpoints;
 			return;
 		}
 
@@ -73,33 +96,12 @@ this.necrosavant_potion_effect <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
-		local actor = this.m.Container.getActor();
-
 		if (actor.getTile().getDistanceTo(_targetEntity.getTile()) != 1)
 		{
 			return;
 		}
 
-		if (actor.getHitpoints() == actor.getHitpointsMax())
-		{
-			return;
-		}
-
-		this.spawnIcon("status_effect_09", actor.getTile());
-		local hitpointsHealed = this.Math.round(_damageInflictedHitpoints * 0.25);
-
-		if (!actor.isHiddenToPlayer())
-		{
-			if (this.m.SoundOnUse.len() != 0)
-			{
-				this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], this.Const.Sound.Volume.RacialEffect, actor.getPos());
-			}
-
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " heals for " + this.Math.min(actor.getHitpointsMax() - actor.getHitpoints(), hitpointsHealed) + " points");
-		}
-
-		actor.setHitpoints(this.Math.min(actor.getHitpointsMax(), actor.getHitpoints() + hitpointsHealed));
-		actor.onUpdateInjuryLayer();
+		this.lifesteal(_damageInflictedHitpoints);
 	}
 
 	function onTargetKilled( _targetEntity, _skill )
@@ -121,8 +123,14 @@ this.necrosavant_potion_effect <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
+		this.m.ShouldHeal = true;
+	}
+
+	function lifesteal( _damageInflictedHitpoints )
+	{
+		local actor = this.m.Container.getActor();
 		this.spawnIcon("status_effect_09", actor.getTile());
-		local hitpointsHealed = this.Math.round(this.m.SlayDamage * 0.25);
+		local hitpointsHealed = this.Math.round(_damageInflictedHitpoints * 0.25);
 
 		if (!actor.isHiddenToPlayer())
 		{

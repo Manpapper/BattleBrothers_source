@@ -1,5 +1,6 @@
 this.orc_berserker_potion_effect <- this.inherit("scripts/skills/skill", {
 	m = {
+		SkillCount = 0,
 		RageStacks = 0
 	},
 	function create()
@@ -83,7 +84,7 @@ this.orc_berserker_potion_effect <- this.inherit("scripts/skills/skill", {
 
 	function addRage( _r )
 	{
-		this.m.RageStacks += _r;
+		this.m.RageStacks = this.Math.min(this.m.RageStacks + _r, 15);
 		local actor = this.getContainer().getActor();
 
 		if (!actor.isHiddenToPlayer())
@@ -109,19 +110,28 @@ this.orc_berserker_potion_effect <- this.inherit("scripts/skills/skill", {
 
 	function onDamageReceived( _attacker, _damageHitpoints, _damageArmor )
 	{
+		if (this.m.SkillCount == this.Const.SkillCounter)
+		{
+			return;
+		}
+
+		this.m.SkillCount = this.Const.SkillCounter;
+
 		if (_attacker != null && _attacker.getID() != this.getContainer().getActor().getID() && _damageHitpoints > 0)
 		{
-			this.addRage(2);
+			this.addRage(3);
 		}
 	}
 
 	function onCombatStarted()
 	{
+		this.m.SkillCount = 0;
 		this.m.RageStacks = 0;
 	}
 
 	function onCombatFinished()
 	{
+		this.m.SkillCount = 0;
 		this.m.RageStacks = 0;
 	}
 

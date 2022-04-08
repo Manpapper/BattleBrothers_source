@@ -54,10 +54,16 @@ this.shieldwall_effect <- this.inherit("scripts/skills/skill", {
 		local bonus = this.getBonus();
 		local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
 		local mult = 1.0;
+		local proficiencyBonus = 0;
 
 		if (this.getContainer().getActor().getCurrentProperties().IsSpecializedInShields)
 		{
 			mult = mult * 1.25;
+		}
+
+		if (this.getContainer().getActor().getCurrentProperties().IsProficientWithShieldSkills)
+		{
+			proficiencyBonus = 5;
 		}
 
 		return [
@@ -75,13 +81,13 @@ this.shieldwall_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.Math.floor(item.getMeleeDefense() * mult + bonus) + "[/color] Melee Defense"
+				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.Math.floor(item.getMeleeDefense() * mult + bonus + proficiencyBonus) + "[/color] Melee Defense"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/ranged_defense.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.Math.floor(item.getRangedDefense() * mult + bonus) + "[/color] Ranged Defense"
+				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.Math.floor(item.getRangedDefense() * mult + bonus + proficiencyBonus) + "[/color] Ranged Defense"
 			}
 		];
 	}
@@ -103,14 +109,20 @@ this.shieldwall_effect <- this.inherit("scripts/skills/skill", {
 		if (item.isItemType(this.Const.Items.ItemType.Shield) && item.getCondition() > 0)
 		{
 			local mult = 1.0;
+			local proficiencyBonus = 0;
 
 			if (this.getContainer().getActor().getCurrentProperties().IsSpecializedInShields)
 			{
 				mult = mult * 1.25;
 			}
 
-			_properties.MeleeDefense += this.Math.floor(item.getMeleeDefense() * mult);
-			_properties.RangedDefense += this.Math.floor(item.getRangedDefense() * mult);
+			if (this.getContainer().getActor().getCurrentProperties().IsProficientWithShieldSkills)
+			{
+				proficiencyBonus = 5;
+			}
+
+			_properties.MeleeDefense += this.Math.floor(item.getMeleeDefense() * mult) + proficiencyBonus;
+			_properties.RangedDefense += this.Math.floor(item.getRangedDefense() * mult) + proficiencyBonus;
 		}
 	}
 
