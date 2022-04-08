@@ -63,6 +63,17 @@ this.add_random_situation_action <- this.inherit("scripts/factions/faction_actio
 				{
 					possible_situations.push("cultist_procession_situation");
 				}
+
+				if (!this.m.Settlement.isMilitary())
+				{
+					possible_situations.push("collectors_situation");
+
+					if (this.m.Settlement.hasBuilding("building.taxidermist"))
+					{
+						possible_situations.push("collectors_situation");
+						possible_situations.push("collectors_situation");
+					}
+				}
 			}
 		}
 

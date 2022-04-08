@@ -53,7 +53,7 @@ this.hunting_serpents_action <- this.inherit("scripts/factions/faction_action", 
 				local tile = this.World.getTileSquare(x, y);
 				local d = villageTile.getDistanceTo(tile);
 
-				if (d > 5 && tile.Type == this.Const.World.TerrainType.Oasis)
+				if (d >= 5 && d <= 14 && tile.Type == this.Const.World.TerrainType.Oasis)
 				{
 					numOasis = ++numOasis;
 					break;
