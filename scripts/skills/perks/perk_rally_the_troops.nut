@@ -26,7 +26,7 @@ this.perk_rally_the_troops <- this.inherit("scripts/skills/skill", {
 		this.m.Container.removeByID("actives.rally_the_troops");
 	}
 
-	function onUpdated( _properties )
+	function onUpdate( _properties )
 	{
 		_properties.TargetAttractionMult *= 1.33;
 	}

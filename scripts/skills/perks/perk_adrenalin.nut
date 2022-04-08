@@ -26,7 +26,7 @@ this.perk_adrenalin <- this.inherit("scripts/skills/skill", {
 		this.m.Container.removeByID("actives.adrenaline");
 	}
 
-	function onUpdated( _properties )
+	function onUpdate( _properties )
 	{
 		_properties.TargetAttractionMult *= 1.1;
 	}

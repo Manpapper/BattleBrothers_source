@@ -43,7 +43,7 @@ this.perk_berserk <- this.inherit("scripts/skills/skill", {
 		this.m.IsSpent = false;
 	}
 
-	function onUpdated( _properties )
+	function onUpdate( _properties )
 	{
 		_properties.TargetAttractionMult *= 1.1;
 	}
