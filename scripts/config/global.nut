@@ -495,6 +495,145 @@ gt.Const.EntityType <- {
 		return _id;
 	}
 
+	function getDefaultFaction( _id )
+	{
+		switch(_id)
+		{
+		case this.Const.EntityType.Necromancer:
+		case this.Const.EntityType.Zombie:
+		case this.Const.EntityType.ZombieYeoman:
+		case this.Const.EntityType.ZombieKnight:
+		case this.Const.EntityType.ZombieBetrayer:
+		case this.Const.EntityType.ZombieBoss:
+		case this.Const.EntityType.ZombieTreasureHunter:
+			return this.Const.FactionType.Zombies;
+
+		case this.Const.EntityType.SkeletonLight:
+		case this.Const.EntityType.SkeletonMedium:
+		case this.Const.EntityType.SkeletonHeavy:
+		case this.Const.EntityType.SkeletonPriest:
+		case this.Const.EntityType.SkeletonBoss:
+		case this.Const.EntityType.Vampire:
+		case this.Const.EntityType.Ghost:
+		case this.Const.EntityType.SkeletonLich:
+		case this.Const.EntityType.SkeletonLichMirrorImage:
+		case this.Const.EntityType.FlyingSkull:
+			return this.Const.FactionType.Undead;
+
+		case this.Const.EntityType.OrcYoung:
+		case this.Const.EntityType.OrcBerserker:
+		case this.Const.EntityType.OrcWarrior:
+		case this.Const.EntityType.OrcWarlord:
+			return this.Const.FactionType.Orcs;
+
+		case this.Const.EntityType.Militia:
+		case this.Const.EntityType.MilitiaRanged:
+		case this.Const.EntityType.MilitiaVeteran:
+		case this.Const.EntityType.MilitiaCaptain:
+		case this.Const.EntityType.Peasant:
+		case this.Const.EntityType.CaravanHand:
+		case this.Const.EntityType.CaravanGuard:
+		case this.Const.EntityType.CaravanDonkey:
+			return this.Const.FactionType.Settlement;
+
+		case this.Const.EntityType.Footman:
+		case this.Const.EntityType.Greatsword:
+		case this.Const.EntityType.Billman:
+		case this.Const.EntityType.Arbalester:
+		case this.Const.EntityType.StandardBearer:
+		case this.Const.EntityType.Sergeant:
+		case this.Const.EntityType.Knight:
+		case this.Const.EntityType.MilitaryDonkey:
+			return this.Const.FactionType.NobleHouse;
+
+		case this.Const.EntityType.BountyHunter:
+		case this.Const.EntityType.Wardog:
+		case this.Const.EntityType.ArmoredWardog:
+		case this.Const.EntityType.Mercenary:
+		case this.Const.EntityType.MercenaryRanged:
+		case this.Const.EntityType.Swordmaster:
+		case this.Const.EntityType.HedgeKnight:
+		case this.Const.EntityType.MasterArcher:
+		case this.Const.EntityType.GreenskinCatapult:
+		case this.Const.EntityType.Cultist:
+		case this.Const.EntityType.Warhound:
+		case this.Const.EntityType.SkeletonPhylactery:
+		case this.Const.EntityType.Oathbringer:
+			return this.Const.FactionType.Generic;
+
+		case this.Const.EntityType.BanditThug:
+		case this.Const.EntityType.BanditPoacher:
+		case this.Const.EntityType.BanditMarksman:
+		case this.Const.EntityType.BanditRaider:
+		case this.Const.EntityType.BanditLeader:
+			return this.Const.FactionType.Bandits;
+
+		case this.Const.EntityType.GoblinAmbusher:
+		case this.Const.EntityType.GoblinFighter:
+		case this.Const.EntityType.GoblinLeader:
+		case this.Const.EntityType.GoblinShaman:
+		case this.Const.EntityType.GoblinWolfrider:
+		case this.Const.EntityType.Wolf:
+			return this.Const.FactionType.Goblins;
+
+		case this.Const.EntityType.Ghoul:
+		case this.Const.EntityType.Direwolf:
+		case this.Const.EntityType.Lindwurm:
+		case this.Const.EntityType.Unhold:
+		case this.Const.EntityType.UnholdFrost:
+		case this.Const.EntityType.UnholdBog:
+		case this.Const.EntityType.Spider:
+		case this.Const.EntityType.SpiderEggs:
+		case this.Const.EntityType.Alp:
+		case this.Const.EntityType.Hexe:
+		case this.Const.EntityType.Schrat:
+		case this.Const.EntityType.SchratSmall:
+		case this.Const.EntityType.Kraken:
+		case this.Const.EntityType.KrakenTentacle:
+		case this.Const.EntityType.AlpShadow:
+		case this.Const.EntityType.TricksterGod:
+		case this.Const.EntityType.Serpent:
+		case this.Const.EntityType.SandGolem:
+		case this.Const.EntityType.Hyena:
+			return this.Const.FactionType.Beasts;
+
+		case this.Const.EntityType.Wildman:
+		case this.Const.EntityType.BarbarianThrall:
+		case this.Const.EntityType.BarbarianMarauder:
+		case this.Const.EntityType.BarbarianChampion:
+		case this.Const.EntityType.BarbarianDrummer:
+		case this.Const.EntityType.BarbarianBeastmaster:
+		case this.Const.EntityType.BarbarianUnhold:
+		case this.Const.EntityType.BarbarianUnholdFrost:
+		case this.Const.EntityType.BarbarianChosen:
+		case this.Const.EntityType.BarbarianMadman:
+			return this.Const.FactionType.Barbarians;
+
+		case this.Const.EntityType.Conscript:
+		case this.Const.EntityType.Gunner:
+		case this.Const.EntityType.Officer:
+		case this.Const.EntityType.Engineer:
+		case this.Const.EntityType.Assassin:
+		case this.Const.EntityType.Slave:
+		case this.Const.EntityType.Gladiator:
+		case this.Const.EntityType.Mortar:
+		case this.Const.EntityType.PeasantSouthern:
+			return this.Const.FactionType.OrientalCityState;
+
+		case this.Const.EntityType.NomadCutthroat:
+		case this.Const.EntityType.NomadOutlaw:
+		case this.Const.EntityType.NomadSlinger:
+		case this.Const.EntityType.NomadArcher:
+		case this.Const.EntityType.NomadLeader:
+		case this.Const.EntityType.DesertStalker:
+		case this.Const.EntityType.Executioner:
+		case this.Const.EntityType.DesertDevil:
+			return this.Const.FactionType.OrientalBandits;
+		}
+
+		return this.Const.FactionType.Generic;
+	}
+
 };
 gt.Const.EntityIcon <- [
 	"human_01_orientation",
