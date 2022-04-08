@@ -147,7 +147,6 @@ this.retinue_manager <- {
 	{
 		this.m.Slots[_slot] = _follower;
 		this.World.Assets.resetToDefaults();
-		this.update();
 
 		if (this.getNumberOfCurrentFollowers() == this.m.Slots.len())
 		{
@@ -294,7 +293,6 @@ this.retinue_manager <- {
 
 		this.m.InventoryUpgrades = _in.readU8();
 		this.World.Assets.resetToDefaults();
-		this.update();
 	}
 
 };
