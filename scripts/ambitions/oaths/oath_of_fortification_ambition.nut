@@ -10,7 +10,7 @@ this.oath_of_fortification_ambition <- this.inherit("scripts/ambitions/oaths/oat
 		this.m.SuccessText = "[img]gfx/ui/events/event_180.png[/img]{Texts of the Ancient Empire tell of military formations so tightly knit and compact that they were like roving castles on legs: hundreds of shields held together like the scales of a snake or the shell of a tortoise. The %companyname% tried its best to replicate these theories. It always took a few moments to piece the elements together, but you never intended for it to be an exercise in excellence. The ancients had an empire for a reason, and you\'re a company of misfits and Oathtakers. But by your estimation, which mostly starts and ends on whether or not the company still has a pulse, this oath was an outstanding success.\n\nNow it is time to lower the shields and the Ancient Empire-fervor and take on a new Oath!}";
 		this.m.SuccessButtonText = "{For Young Anselm! | As Oathtakers! | And death to the Oathbringers!}";
 		this.m.OathName = "Oath of Fortification";
-		this.m.OathBoonText = "Your men build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue when using shield skills. The \'Knock Back\' skill now staggers targets on hit.";
+		this.m.OathBoonText = "Your men build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue when using shield skills. The \'Shield Wall\' skill now grants an additional [color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Melee Defense and [color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Ranged Defense. The \'Knock Back\' skill now staggers targets on hit.";
 		this.m.OathBurdenText = "Your men cannot move in the first round of combat.";
 	}
 
@@ -59,6 +59,8 @@ this.oath_of_fortification_ambition <- this.inherit("scripts/ambitions/oaths/oat
 			bro.getSkills().add(this.new("scripts/skills/traits/oath_of_fortification_trait"));
 			bro.getSkills().add(this.new("scripts/skills/special/oath_of_fortification_warning"));
 		}
+
+		this.World.Statistics.getFlags().set("OathtakersBrosDead", 0);
 	}
 
 	function onReward()
@@ -71,6 +73,8 @@ this.oath_of_fortification_ambition <- this.inherit("scripts/ambitions/oaths/oat
 			bro.getSkills().removeByID("trait.oath_of_fortification");
 			bro.getSkills().removeByID("special.oath_of_fortification_warning");
 		}
+
+		this.World.Statistics.getFlags().set("OathtakersBrosDead", 0);
 	}
 
 });
