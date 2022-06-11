@@ -121,7 +121,7 @@ this.ai_mortar <- this.inherit("scripts/ai/tactical/behavior", {
 				}
 				else
 				{
-					tiles.push(target.Actor.getTile());
+					tiles.push(target.Actor.getTile().getNextTile(i));
 				}
 			}
 		}
