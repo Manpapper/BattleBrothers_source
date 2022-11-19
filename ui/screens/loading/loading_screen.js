@@ -55,11 +55,6 @@ LoadingScreen.prototype.createDIV = function (_parentDiv)
 	var header = $('<div class="screen-header ui-control"/>');
 	this.mContainer.append(header);
 
-/* NOTE: Not needed
-	var content = $('<div class="screen-content"></div>');
-    this.mContainer.append(content);
-*/
-
 	this.mBackgroundImage = this.mContainer.createImage(null, function (_image)
 	{
         _image.removeClass('display-none').addClass('display-block');
