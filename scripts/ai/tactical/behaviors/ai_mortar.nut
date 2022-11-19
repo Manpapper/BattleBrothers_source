@@ -128,7 +128,7 @@ this.ai_mortar <- this.inherit("scripts/ai/tactical/behavior", {
 
 		foreach( tile in tiles )
 		{
-			if (myTile.getDistanceTo(tile) < this.m.Skill.getMinRange())
+			if (!this.m.Skill.isUsableOn(tile))
 			{
 				continue;
 			}
