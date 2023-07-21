@@ -335,9 +335,25 @@ TacticalScreenTurnSequenceBarModule.prototype.destroyDIV = function ()
     this.mEndTurnButton.remove();
     this.mEndTurnButton = null;
 
+    this.mEndTurnButtonContainer.empty();
+    this.mEndTurnButtonContainer.remove();
+    this.mEndTurnButtonContainer = null;
+
+    this.mEndTurnAllButton.empty();
+    this.mEndTurnAllButton.remove();
+    this.mEndTurnAllButton = null;
+
+    this.mEndTurnAllButtonContainer.empty();
+    this.mEndTurnAllButtonContainer.remove();
+    this.mEndTurnAllButtonContainer = null;    
+
     this.mWaitTurnButton.empty();
     this.mWaitTurnButton.remove();
     this.mWaitTurnButton = null;
+
+    this.mWaitTurnButtonContainer.empty();
+    this.mWaitTurnButtonContainer.remove();
+    this.mWaitTurnButtonContainer = null;
 
     this.mSkillsContainer.empty();
     this.mSkillsContainer.remove();
