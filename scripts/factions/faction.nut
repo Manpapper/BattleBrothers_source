@@ -526,7 +526,7 @@ this.faction <- {
 		return this.Const.Strings.Quantity[i] + " " + _name;
 	}
 
-	function spawnEntity( _tile, _name, _uniqueName, _template, _resources )
+	function spawnEntity( _tile, _name, _uniqueName, _template, _resources, _minibossify = 0 )
 	{
 		local party = this.World.spawnEntity("scripts/entity/world/party", _tile.Coords);
 		party.setFaction(this.getID());
@@ -541,7 +541,7 @@ this.faction <- {
 
 		if (_template != null)
 		{
-			t = this.Const.World.Common.assignTroops(party, _template, _resources);
+			t = this.Const.World.Common.assignTroops(party, _template, _resources, _minibossify);
 		}
 
 		party.getSprite("base").setBrush(this.m.Base);
