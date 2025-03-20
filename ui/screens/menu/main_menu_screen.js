@@ -111,6 +111,8 @@ MainMenuScreen.prototype.createDIV = function (_parentDiv)
     this.mDLC = $('<div class="dlc-container"/>');
     this.mContainer.append(this.mDLC);
 
+    // -> marketing here
+
     this.mMOTDContainer = $('<div class="motd-container"/>');
     this.mContainer.append(this.mMOTDContainer);
 
@@ -340,6 +342,21 @@ MainMenuScreen.prototype.hideOptionsMenu = function ()
 {
     this.mMainMenuModule.show();
     this.mOptionsMenuModule.hide();
+};
+
+MainMenuScreen.prototype.addCrossMarketing = function ()
+{
+    this.mMarketingContainer = $('<div class="marketing-container"/>');
+    this.mContainer.append(this.mMarketingContainer);
+
+    this.mMarketing = $('<div class="marketing text-font-medium font-color-subtitle">Wishlist our new game!</>');
+    this.mMarketingContainer.append(this.mMarketing);
+
+    this.setDLCClickHandler(this.mMarketing, 'steam://advertise/2432860');
+
+    var img = this.mDLC.createImage(null, null, null, 'marketing-image');
+    img.attr('src', Path.GFX + 'ui/images/cross_marketing.jpg');
+    this.mMarketing.append(img);      
 };
 
 MainMenuScreen.prototype.setVersion = function (_v)

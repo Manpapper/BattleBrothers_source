@@ -65,3 +65,12 @@ var queryStackTrace = function() {
     */
     return Error().stack;
 };
+
+var ResponseCode =
+{
+    // Global UI Response Codes
+    CanSwap: 0,
+    ConfirmReplaceSwap: 1,
+    ConfirmNoReplaceSwap: 2,
+    DoNotSwap: 3
+};

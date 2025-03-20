@@ -11,172 +11,71 @@
 
 .world-screen .topbar-options-module
 {
-	top : 0;
+	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	width: 100%;
 	height: 100%;
 	position: absolute;
-    margin: auto;
+	margin: auto 0.5rem;
+
+	display: flex;
+	justify-content: space-between;
 }
 
-
-.world-screen .topbar-options-module .asset-container
+.world-screen .topbar-options-module .l-button-container
 {
-    top: 0.0rem;
-    bottom: 0;
-    width: 9.0rem;
-    height: 4.3rem;
-    position: absolute;
-    margin: auto;
+	display: flex;
+	margin-right: 1.5rem;
 }
 
-.world-screen .topbar-options-module .asset-container.has-frame
+.world-screen .topbar-options-module .l-button-container .l-image-button
 {
-    /*border: 1px rgba(130, 130, 130, 1) solid;
-    border-radius: 5px 5px 5px 5px;
-    box-shadow: inset 0 0 4px rgba(0, 0, 0, 1);*/
-}
-
-.world-screen .topbar-options-module .asset-container.is-brothers
-{
-    top: 0.3rem;
-    left: 1.0rem;
-    width: 9.8rem;
-}
-
-.world-screen .topbar-options-module .l-assets-container
-{
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-}
-
-.world-screen .topbar-options-module .l-assets-container img
-{
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 2.8rem;
-    height: 2.8rem;
-    margin: auto;
-    margin-left: 1.0rem;
-    position: absolute;
-}
-
-.world-screen .topbar-options-module .l-assets-container .label
-{
-    top: -0.5rem;
-    bottom: 0;
-    left: 3.2rem;
-    width: 6.0rem;
-    height: 3.0rem;
-    margin: auto;
-    margin-left: 1.5rem;
-    position: absolute;
-
-    text-align : left;
-    line-height: 3.4rem;
-}
-
-.world-screen .topbar-options-module .l-active-contract-button
-{
-    top: 0.3rem;
-    left: 12.0rem;
-    bottom: 0;
-    width: 4.5rem;
-    height: 4.1rem;
-    position: absolute;
-    margin: auto 0;
-}
-
-.world-screen .topbar-options-module .l-center-button
-{
-    top: 0.3rem;
-    left: 11.0rem;
-    bottom: 0;
-    width: 4.5rem;
-    height: 4.1rem;
-    position: absolute;
-    margin: auto 0;
-}
-
-.world-screen .topbar-options-module .l-cameralock-button
-{
-    top: 0.3rem;
-    left: 15.0rem;
-    bottom: 0;
-    width: 4.5rem;
-    height: 4.1rem;
-    position: absolute;
-    margin: auto 0;
-}
-
-.world-screen .topbar-options-module .l-tracking-button
-{
-    top: 0.3rem;
-    left: 19.0rem;
-    bottom: 0;
-    width: 4.5rem;
-    height: 4.1rem;
-    position: absolute;
-    margin: auto 0;
-}
-
-.world-screen .topbar-options-module .l-camp-button
-{
-    top: 0.3rem;
-    left: 23.0rem;
-    bottom: 0;
-    width: 4.5rem;
-    height: 4.1rem;
-    position: absolute;
-    margin: auto 0;
-}
-
-.world-screen .topbar-options-module .l-perks-button
-{
-    top: 0.3rem;
-    left: 27.0rem;
-    bottom: 0;
-    width: 4.5rem;
-    height: 4.1rem;
-    position: absolute;
-    margin: auto 0;
-}
-
-.world-screen .topbar-options-module .l-obituary-button
-{
-    top: 0.3rem;
-    left: 31.0rem;
-    bottom: 0;
-    width: 4.5rem;
-    height: 4.1rem;
-    position: absolute;
-    margin: auto 0;
-}
-
-.world-screen .topbar-options-module .l-relations-button
-{
-    top: 0.3rem;
-    left: 35.0rem;
-    bottom: 0;
-    width: 4.5rem;
-    height: 4.1rem;
-    position: absolute;
-    margin: auto 0;
-}
-
-.world-screen .topbar-options-module .l-quit-button
-{
-    top: 0.3rem;
-    right: 1.0rem;
-    bottom: 0;
 	width: 4.5rem;
 	height: 4.1rem;
-	position: absolute;
-    margin: auto 0;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 0.5rem;
+	margin-left: -0.3rem;
+	margin-right: -0.2rem;
+}
+
+.world-screen .topbar-options-module .is-brothers
+{
+	width: 9.8rem;
+	height: 4.3rem;
+	position: relative;
+	margin: auto 0;
+	margin-top: 0.4rem;
+	margin-left: 1.0rem;
+	margin-right: 0.5rem;
+}
+
+.world-screen .topbar-options-module .is-brothers .l-assets-container
+{
+	width: 100%;
+	height: 4.3rem;
+	margin: auto;
+	margin-left: 1.0rem;
+	margin-right: 1.0rem;
+	position: relative;
+	display: flex;
+}
+
+.world-screen .topbar-options-module  .is-brothers .l-assets-container img
+{
+	width: 2.8rem;
+	height: 2.8rem;
+	margin: auto;
+	position: relative;
+}
+
+.world-screen .topbar-options-module  .is-brothers .l-assets-container .label
+{
+	width: 6.0rem;
+	margin: auto;
+	position: relative;
 }

@@ -89,20 +89,45 @@
 
 .main-menu-screen .motd-container
 {
-	bottom: 6.0rem;
-    right: 1.0rem;
+	bottom: 8.2rem;
+    left: 1.0rem;
     position: absolute;
     z-index: 2;
 
     background: rgba(0, 0, 0, 0.4);
 
-    width   : 38.0rem;
-	height  : 12.4rem;
+    width   : 36.0rem;
+	height  : 14.4rem;
 }
 
 .main-menu-screen .motd
 {
 	margin: 1.0rem;
+}
+
+.main-menu-screen .marketing-container
+{
+    bottom: 8.2rem;
+    right: 1.0rem;
+    position: absolute;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.4);
+    width: 26.0rem;
+    height: 33.8rem;
+}
+
+.main-menu-screen .marketing
+{
+    margin: 1.0rem;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.main-menu-screen .marketing > .marketing-image
+{
+    margin-top: 1.0rem;
+    width: 24.0rem;
+    height: 28.7rem;
 }
 
 .main-menu-screen .menu-dialog-container

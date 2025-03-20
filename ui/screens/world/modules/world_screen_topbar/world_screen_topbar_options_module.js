@@ -68,75 +68,60 @@ WorldScreenTopbarOptionsModule.prototype.onDisconnection = function ()
 
 WorldScreenTopbarOptionsModule.prototype.createDIV = function (_parentDiv)
 {
-    var self = this;
+	var self = this;
 
 	// create: container
 	this.mContainer = $('<div class="topbar-options-module"></div>');
-    _parentDiv.append(this.mContainer);
+	_parentDiv.append(this.mContainer);
 
-    // create: assets
-    var assetContainer = $('<div class="asset-container is-brothers"></div>');
-    this.mContainer.append(assetContainer);
-    this.mBrothersButton = this.createImageButton(assetContainer, Path.GFX + Asset.ICON_ASSET_BROTHERS, function()
+	// create: assets
+	this.mBrothersButton = this.createImageButton(this.mContainer, Path.GFX + Asset.ICON_ASSET_BROTHERS, function()
 	{
-        self.notifyBackendBrothersButtonPressed();
-    });
+		self.notifyBackendBrothersButtonPressed();
+	}, 'is-brothers');
 
-	var layout = $('<div class="l-relations-button"/>');
-    this.mContainer.append(layout);
-    this.mRelationsButton = layout.createImageButton(Path.GFX + Asset.ICON_RELATIONS, function()
+	var buttonContainer = $('<div class="l-button-container"/>');
+	this.mContainer.append(buttonContainer);
+
+	this.mCenterButton = buttonContainer.createImageButton(Path.GFX + Asset.ICON_CENTER, function()
 	{
-        self.notifyBackendRelationsButtonPressed();
-    }, '', 6);
+		self.notifyBackendCenterButtonPressed();
+	}, 'l-center-button l-image-button', 6);
 
-	var layout = $('<div class="l-camp-button"/>');
-    this.mContainer.append(layout);
-    this.mCampButton = layout.createImageButton(Path.GFX + Asset.ICON_CAMP, function()
+	this.mCameraLockButton = buttonContainer.createImageButton(Path.GFX + Asset.ICON_CAMERALOCK_DISABLED, function ()
 	{
-        self.notifyBackendCampButtonPressed();
-    }, '', 6);
+		self.notifyBackendCameraLockButtonPressed();
+	}, 'l-cameralock-button l-image-button', 6);
 
-	var layout = $('<div class="l-center-button"/>');
-    this.mContainer.append(layout);
-    this.mCenterButton = layout.createImageButton(Path.GFX + Asset.ICON_CENTER, function()
+	this.mTrackingButton = buttonContainer.createImageButton(Path.GFX + Asset.ICON_TRACKING, function()
 	{
-        self.notifyBackendCenterButtonPressed();
-    }, '', 6);
+		self.notifyBackendTrackingButtonPressed();
+	}, 'l-tracking-button l-image-button', 6);
 
-    var layout = $('<div class="l-cameralock-button"/>');
-    this.mContainer.append(layout);
-    this.mCameraLockButton = layout.createImageButton(Path.GFX + Asset.ICON_CAMERALOCK_DISABLED, function ()
-    {
-    	self.notifyBackendCameraLockButtonPressed();
-    }, '', 6);
-
-	var layout = $('<div class="l-tracking-button"/>');
-    this.mContainer.append(layout);
-    this.mTrackingButton = layout.createImageButton(Path.GFX + Asset.ICON_TRACKING, function()
+	this.mCampButton = buttonContainer.createImageButton(Path.GFX + Asset.ICON_CAMP, function()
 	{
-        self.notifyBackendTrackingButtonPressed();
-    }, '', 6);
+		self.notifyBackendCampButtonPressed();
+	}, 'l-camp-button l-image-button', 6);
 
-    layout = $('<div class="l-perks-button"/>');
-    this.mContainer.append(layout);
-    this.mPerksButton = layout.createImageButton(Path.GFX + Asset.ICON_PERKS, function ()
-    {
-        self.notifyBackendPerksButtonPressed();
-    }, '', 6);
-
-    layout = $('<div class="l-obituary-button"/>');
-    this.mContainer.append(layout);
-    this.mObituaryButton = layout.createImageButton(Path.GFX + Asset.ICON_OBITUARY, function ()
-    {
-    	self.notifyBackendObituaryButtonPressed();
-    }, '', 6);
-
-    layout = $('<div class="l-quit-button"/>');
-    this.mContainer.append(layout);
-    this.mQuitButton = layout.createImageButton(Path.GFX + Asset.BUTTON_QUIT, function()
+	this.mPerksButton = buttonContainer.createImageButton(Path.GFX + Asset.ICON_PERKS, function ()
 	{
-        self.notifyBackendQuitButtonPressed();
-    }, '', 6);
+		self.notifyBackendPerksButtonPressed();
+	}, 'l-perks-button l-image-button', 6);
+
+	this.mObituaryButton = buttonContainer.createImageButton(Path.GFX + Asset.ICON_OBITUARY, function ()
+	{
+		self.notifyBackendObituaryButtonPressed();
+	}, 'l-obituary-button l-image-button', 6);
+
+	this.mRelationsButton = buttonContainer.createImageButton(Path.GFX + Asset.ICON_RELATIONS, function()
+	{
+		self.notifyBackendRelationsButtonPressed();
+	}, 'l-relations-button l-image-button', 6);
+
+	this.mQuitButton = buttonContainer.createImageButton(Path.GFX + Asset.BUTTON_QUIT, function()
+	{
+		self.notifyBackendQuitButtonPressed();
+	}, 'l-quit-button l-image-button', 6);
 };
 
 WorldScreenTopbarOptionsModule.prototype.destroyDIV = function ()
@@ -155,24 +140,24 @@ WorldScreenTopbarOptionsModule.prototype.destroyDIV = function ()
     this.mContainer = null;
 };
 
-WorldScreenTopbarOptionsModule.prototype.createImageButton = function (_parentDiv, _imagePath, _callback)
+WorldScreenTopbarOptionsModule.prototype.createImageButton = function (_parentDiv, _imagePath, _callback, _classes)
 {
-    var layout = $('<div class="l-assets-container"/>');
-    var image = $('<img/>');
-    image.attr('src', _imagePath);
-    layout.append(image);
-    var text = $('<div class="label text-font-small font-bold font-bottom-shadow font-color-assets-positive-value"/>');
-    layout.append(text);
+	var layout = $('<div class="l-assets-container"/>');
+	var image = $('<img/>');
+	image.attr('src', _imagePath);
+	layout.append(image);
+	var text = $('<div class="label text-font-small font-bold font-bottom-shadow font-color-assets-positive-value"/>');
+	layout.append(text);
 
-    if (_callback === undefined)
-    {
-        _parentDiv.append(layout);
-        return layout;
-    }
-    else
-    {
-        return _parentDiv.createCustomButton(layout, _callback, '', 2);
-    }
+	if (_callback === undefined)
+	{
+		_parentDiv.append(layout);
+		return layout;
+	}
+	else
+	{
+		return _parentDiv.createCustomButton(layout, _callback, _classes ? _classes : '', 2);
+	}
 };
 
 WorldScreenTopbarOptionsModule.prototype.bindTooltips = function ()
