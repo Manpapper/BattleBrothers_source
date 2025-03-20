@@ -277,8 +277,6 @@ this.tactical_camera_director <- {
 		local event = {
 			Type = this.Const.Tactical.CameraEventType.MoveTo,
 			State = this.Const.Tactical.CameraEventState.Queued,
-			TargetTile = this._targetTile,
-			TargetLevel = this._targetLevel,
 			Time = this.Time.getVirtualTime() + _delay,
 			Callback = _callback,
 			Tag = _tag,
