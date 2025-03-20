@@ -61,5 +61,10 @@ this.nachzehrer_potion_effect <- this.inherit("scripts/skills/skill", {
 		this.World.Statistics.getFlags().set("isNachzehrerPotionAcquired", false);
 	}
 
+	function onUpdate( _properties )
+	{
+		_properties.AdditionalHealingDays -= 1;
+	}
+
 });
 

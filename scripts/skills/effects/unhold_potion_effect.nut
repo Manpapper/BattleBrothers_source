@@ -36,7 +36,7 @@ this.unhold_potion_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "Heals [color=" + this.Const.UI.Color.PositiveValue + "]10[/color] hitpoints each turn"
+				text = "Heals [color=" + this.Const.UI.Color.PositiveValue + "]10[/color] Hitpoints each turn"
 			},
 			{
 				id = 12,

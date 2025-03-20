@@ -13,5 +13,10 @@ this.perk_steel_brow <- this.inherit("scripts/skills/skill", {
 		this.m.IsHidden = false;
 	}
 
+	function onUpdate( _properties )
+	{
+		_properties.IsImmuneToCriticals = true;
+	}
+
 });
 

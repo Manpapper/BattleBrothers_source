@@ -32,8 +32,6 @@ this.golem_racial <- this.inherit("scripts/skills/skill", {
 			_properties.MeleeDefense += 5;
 			_properties.RangedDefense -= 5;
 			_properties.Initiative -= 10;
-			_properties.ArmorMult[0] *= 2.0;
-			_properties.ArmorMult[1] *= 2.0;
 		}
 		else if (size == 3)
 		{
@@ -43,8 +41,6 @@ this.golem_racial <- this.inherit("scripts/skills/skill", {
 			_properties.MeleeDefense += 10;
 			_properties.RangedDefense -= 10;
 			_properties.Initiative -= 20;
-			_properties.ArmorMult[0] *= 4.0;
-			_properties.ArmorMult[1] *= 4.0;
 		}
 
 		_properties.DamageRegularMin += 35 * size;

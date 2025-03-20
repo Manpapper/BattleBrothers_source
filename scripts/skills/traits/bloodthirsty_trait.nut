@@ -44,7 +44,7 @@ this.bloodthirsty_trait <- this.inherit("scripts/skills/traits/character_trait",
 				id = 10,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "All kills are fatalities (if the weapon allows)."
+				text = "All kills are fatalities (if the weapon allows)"
 			}
 		];
 	}

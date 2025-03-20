@@ -56,7 +56,7 @@ this.perk_fearsome <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		_properties.ThreatOnHit += this.Math.min(20, this.Math.max(0, (_properties.getBravery() - 10) * 0.2));
+		_properties.ThreatOnHit += this.Math.min(20, this.Math.max(0, _properties.getBravery() * 0.15));
 	}
 
 	function onCombatStarted()
