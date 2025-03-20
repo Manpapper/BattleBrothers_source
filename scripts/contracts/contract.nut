@@ -443,6 +443,11 @@ this.contract <- {
 
 		if (this.m.ActiveState != null && "end" in this.m.ActiveState)
 		{
+			if (this.m.ActiveState == this.m.States[0])
+			{
+				this.World.State.getPlayer().updateStrength();
+			}
+
 			this.m.ActiveState.end();
 		}
 
@@ -1209,24 +1214,9 @@ this.contract <- {
 
 		foreach( t in p.Troops )
 		{
-			local mb;
-
-			if (this.getDifficultyMult() >= 1.15)
-			{
-				mb = 5;
-			}
-			else if (this.getDifficultyMult() >= 0.85)
-			{
-				mb = 0;
-			}
-			else
-			{
-				mb = -99;
-			}
-
 			for( local i = 0; i != t.Num; i = ++i )
 			{
-				this.Const.World.Common.addTroop(_entity, t, false, mb);
+				this.Const.World.Common.addTroop(_entity, t, false, this.getMinibossModifier());
 			}
 		}
 
@@ -1420,7 +1410,7 @@ this.contract <- {
 
 		if (_factionType == this.Const.FactionType.Bandits)
 		{
-			party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(enemyBase.getTile(), "Brigands", false, this.Const.World.Spawn.BanditRaiders, _resources);
+			party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Bandits).spawnEntity(enemyBase.getTile(), "Brigands", false, this.Const.World.Spawn.BanditRaiders, _resources, this.getMinibossModifier());
 			party.setDescription("A rough and tough band of brigands out to hunt for food.");
 			party.setFootprintType(this.Const.World.FootprintsType.Brigands);
 			party.getLoot().Money = this.Math.rand(50, 100);
@@ -1452,7 +1442,7 @@ this.contract <- {
 		}
 		else if (_factionType == this.Const.FactionType.Goblins)
 		{
-			party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).spawnEntity(enemyBase.getTile(), "Goblin Raiders", false, this.Const.World.Spawn.GoblinRaiders, _resources);
+			party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Goblins).spawnEntity(enemyBase.getTile(), "Goblin Raiders", false, this.Const.World.Spawn.GoblinRaiders, _resources, this.getMinibossModifier());
 			party.setDescription("A band of mischievous goblins, small but cunning and not to be underestimated.");
 			party.setFootprintType(this.Const.World.FootprintsType.Goblins);
 			party.getLoot().ArmorParts = this.Math.rand(0, 10);
@@ -1481,7 +1471,7 @@ this.contract <- {
 		}
 		else if (_factionType == this.Const.FactionType.Orcs)
 		{
-			party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).spawnEntity(enemyBase.getTile(), "Orc Marauders", false, this.Const.World.Spawn.OrcRaiders, _resources);
+			party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Orcs).spawnEntity(enemyBase.getTile(), "Orc Marauders", false, this.Const.World.Spawn.OrcRaiders, _resources, this.getMinibossModifier());
 			party.setDescription("A band of menacing orcs, greenskinned and towering any man.");
 			party.setFootprintType(this.Const.World.FootprintsType.Orcs);
 			party.getLoot().ArmorParts = this.Math.rand(0, 25);
@@ -1490,7 +1480,7 @@ this.contract <- {
 		}
 		else if (_factionType == this.Const.FactionType.Undead)
 		{
-			party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).spawnEntity(enemyBase.getTile(), "Undead", false, this.Const.World.Spawn.UndeadArmy, _resources);
+			party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).spawnEntity(enemyBase.getTile(), "Undead", false, this.Const.World.Spawn.UndeadArmy, _resources, this.getMinibossModifier());
 			party.setDescription("A legion of walking dead, back to claim from the living what was once theirs.");
 			party.setFootprintType(this.Const.World.FootprintsType.Undead);
 			party.getLoot().ArmorParts = this.Math.rand(0, 10);
@@ -1498,7 +1488,7 @@ this.contract <- {
 		}
 		else if (_factionType == this.Const.FactionType.Zombies)
 		{
-			party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).spawnEntity(enemyBase.getTile(), "Undead", false, this.Const.World.Spawn.Necromancer, _resources);
+			party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Zombies).spawnEntity(enemyBase.getTile(), "Undead", false, this.Const.World.Spawn.Necromancer, _resources, this.getMinibossModifier());
 			party.setDescription("Something seems wrong.");
 			party.setFootprintType(this.Const.World.FootprintsType.Undead);
 			party.getLoot().ArmorParts = this.Math.rand(0, 10);
@@ -1616,6 +1606,22 @@ this.contract <- {
 		}
 
 		return ret;
+	}
+
+	function getMinibossModifier()
+	{
+		if (this.getDifficultyMult() >= 1.15)
+		{
+			return 5;
+		}
+		else if (this.getDifficultyMult() >= 0.85)
+		{
+			return 0;
+		}
+		else
+		{
+			return -99;
+		}
 	}
 
 	function onSerialize( _out )

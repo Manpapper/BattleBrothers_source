@@ -74,7 +74,7 @@ this.hunting_sand_golems_contract <- this.inherit("scripts/contracts/contract", 
 				local mapSize = this.World.getMapSize();
 				local tile = this.Contract.getTileToSpawnLocation(playerTile, 8, 12, disallowedTerrain);
 				local party;
-				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Ifrits", false, this.Const.World.Spawn.SandGolems, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult());
+				party = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Beasts).spawnEntity(tile, "Ifrits", false, this.Const.World.Spawn.SandGolems, 110 * this.Contract.getDifficultyMult() * this.Contract.getScaledDifficultyMult(), this.Contract.getMinibossModifier());
 				party.setDescription("Creatures of living stone shaped by the blistering heat and fire of the burning sun of the south.");
 				party.setFootprintType(this.Const.World.FootprintsType.SandGolems);
 				party.setAttackableByAI(false);
