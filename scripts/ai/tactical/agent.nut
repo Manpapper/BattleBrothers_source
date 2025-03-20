@@ -20,7 +20,8 @@ this.agent <- {
 		IsEvaluating = true,
 		IsTurnStarted = false,
 		IsCameraReady = true,
-		IsUsingHeat = false
+		IsUsingHeat = false,
+		IsUpdatingAlliesBeforeEvaluation = false
 	},
 	function setActor( _a )
 	{
@@ -236,6 +237,11 @@ this.agent <- {
 
 			if (this.m.NextEvaluationTime <= this.Time.getVirtualTime())
 			{
+				if (this.m.IsUpdatingAlliesBeforeEvaluation)
+				{
+					this.compileKnownAllies();
+				}
+
 				this.evaluate(this.m.Actor);
 			}
 		}
@@ -570,7 +576,7 @@ this.agent <- {
 
 	function pickBehavior()
 	{
-		if (this.m.SortedBehaviors[0].len() == 0)
+		if (this.m.SortedBehaviors.len() == 0)
 		{
 			return null;
 		}

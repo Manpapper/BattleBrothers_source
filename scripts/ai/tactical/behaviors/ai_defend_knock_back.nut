@@ -6,9 +6,11 @@ this.ai_defend_knock_back <- this.inherit("scripts/ai/tactical/behavior", {
 			"actives.knock_back",
 			"actives.repel",
 			"actives.hook",
-			"actives.serpent_hook"
+			"actives.serpent_hook",
+			"actives.flesh_pull"
 		],
-		Skill = null
+		Skill = null,
+		IsVisionRequired = true
 	},
 	function create()
 	{
@@ -37,7 +39,7 @@ this.ai_defend_knock_back <- this.inherit("scripts/ai/tactical/behavior", {
 			return this.Const.AI.Behavior.Score.Zero;
 		}
 
-		if (!this.getAgent().hasVisibleOpponent())
+		if (this.m.IsVisionRequired && !this.getAgent().hasVisibleOpponent())
 		{
 			return this.Const.AI.Behavior.Score.Zero;
 		}
@@ -56,7 +58,32 @@ this.ai_defend_knock_back <- this.inherit("scripts/ai/tactical/behavior", {
 			scoreMult = scoreMult * this.Const.AI.Behavior.KnockBackAsOpenerMult;
 		}
 
-		local targets = this.queryTargetsInMeleeRange(this.m.Skill.getMinRange(), this.m.Skill.getMaxRange());
+		local targets = [];
+
+		if (this.m.Skill.getID() == "actives.flesh_pull")
+		{
+			local actors = this.Tactical.Entities.getAllInstances();
+
+			foreach( instance in actors )
+			{
+				foreach( actor in instance )
+				{
+					if (!actor.isAlive() || actor.getID() == _entity.getID())
+					{
+						continue;
+					}
+
+					if (!actor.isAlliedWith(_entity))
+					{
+						targets.push(actor);
+					}
+				}
+			}
+		}
+		else
+		{
+			targets = this.queryTargetsInMeleeRange(this.m.Skill.getMinRange(), this.m.Skill.getMaxRange(), this.m.Skill.getMaxLevelDifference());
+		}
 
 		if (targets.len() == 0)
 		{
@@ -116,7 +143,7 @@ this.ai_defend_knock_back <- this.inherit("scripts/ai/tactical/behavior", {
 
 			local tiles = [];
 
-			if (this.m.Skill.getID() == "actives.serpent_hook")
+			if (this.m.Skill.getID() == "actives.serpent_hook" || this.m.Skill.getID() == "actives.flesh_pull")
 			{
 				tiles = this.m.Skill.getPulledToTiles(myTile, targetTile);
 			}
@@ -558,11 +585,110 @@ this.ai_defend_knock_back <- this.inherit("scripts/ai/tactical/behavior", {
 						score = score * this.Const.AI.Behavior.KnockBackKnockDownCliffMult;
 						isGoodReason = true;
 					}
+
+					if (this.m.Skill.m.IsTargetingCorpses)
+					{
+						if (targetTile.IsCorpseSpawned)
+						{
+							score = score * this.Const.AI.Behavior.KnockBackAlreadyOnCorpseMult;
+
+							if (!targetTile.Properties.get("Corpse").IsConsumable)
+							{
+								score = score * this.Const.AI.Behavior.KnockBackCorpseNotConsumableMult;
+							}
+						}
+						else if (tile.IsCorpseSpawned)
+						{
+							score = score * this.Const.AI.Behavior.KnockBackCorpseDirectMult;
+
+							if (!tile.Properties.get("Corpse").IsConsumable)
+							{
+								score = score * this.Const.AI.Behavior.KnockBackCorpseNotConsumableMult;
+							}
+
+							isGoodReason = true;
+						}
+						else
+						{
+							local alreadyNextToCorpse = false;
+
+							for( local i = 0; i != 6; i = ++i )
+							{
+								if (!targetTile.hasNextTile(i))
+								{
+								}
+								else
+								{
+									local nextTile = targetTile.getNextTile(i);
+
+									if (nextTile.IsCorpseSpawned)
+									{
+										alreadyNextToCorpse = true;
+									}
+								}
+							}
+
+							if (!alreadyNextToCorpse)
+							{
+								for( local i = 0; i != 6; i = ++i )
+								{
+									if (!tile.hasNextTile(i))
+									{
+									}
+									else
+									{
+										local nextTile = tile.getNextTile(i);
+
+										if (nextTile.IsCorpseSpawned)
+										{
+											score = score * this.Const.AI.Behavior.KnockBackCorpseIndirectMult;
+										}
+									}
+								}
+
+								isGoodReason = true;
+							}
+						}
+					}
+
+					if (this.m.Skill.m.IsTargetingDangerTiles)
+					{
+						local dangerTiles = this.Tactical.Entities.getImpactTiles();
+						local tileIsDangerTile = false;
+						local alreadyOnDangerTile = false;
+
+						foreach( dangerTile in dangerTiles )
+						{
+							if (targetTile.ID == dangerTile.ID)
+							{
+								alreadyOnDangerTile = true;
+							}
+							else if (tile.ID == dangerTile.ID)
+							{
+								tileIsDangerTile = true;
+							}
+						}
+
+						if (alreadyOnDangerTile)
+						{
+							score = score * this.Const.AI.Behavior.KnockBackAlreadyOnDangerTileMult;
+						}
+						else if (tileIsDangerTile && !alreadyOnDangerTile)
+						{
+							score = score * this.Const.AI.Behavior.KnockBackDangerTileMult;
+							isGoodReason = true;
+						}
+					}
 				}
 
 				if (!isGoodReason)
 				{
 					continue;
+				}
+
+				if (t.getSkills().hasSkill("effects.staggered"))
+				{
+					score = score * this.getProperties().TargetPriorityStaggeredMult;
 				}
 
 				if (score > bestScore)
@@ -586,6 +712,12 @@ this.ai_defend_knock_back <- this.inherit("scripts/ai/tactical/behavior", {
 
 	function onExecute( _entity )
 	{
+		if (this.m.Skill.getID() == "actives.flesh_pull" && this.m.TargetTile.IsVisibleForPlayer && _entity.isHiddenToPlayer())
+		{
+			_entity.setDiscovered(true);
+			_entity.getTile().addVisibilityForFaction(this.Const.Faction.Player);
+		}
+
 		if (this.m.IsFirstExecuted)
 		{
 			this.getAgent().adjustCameraToTarget(this.m.TargetTile);
@@ -598,7 +730,7 @@ this.ai_defend_knock_back <- this.inherit("scripts/ai/tactical/behavior", {
 			this.logInfo("* " + _entity.getName() + ": Using Knock Back!");
 		}
 
-		if (this.m.Skill.getID() == "actives.serpent_hook")
+		if (this.m.Skill.getID() == "actives.serpent_hook" || this.m.Skill.getID() == "actives.flesh_pull")
 		{
 			this.m.Skill.setDestinationTile(this.m.DestinationTile);
 		}

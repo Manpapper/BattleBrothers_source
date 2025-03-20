@@ -63,7 +63,7 @@ this.mercenary_order <- this.inherit("scripts/ai/world/world_behavior", {
 		_entity.clearTroops();
 		local r = this.Math.min(350, 150 + this.World.getTime().Days);
 		local brush = _entity.getSprite("body").getBrush().Name;
-		this.Const.World.Common.assignTroops(_entity, this.Const.World.Spawn.Mercenaries, this.Math.rand(r * 0.8, r));
+		this.Const.World.Common.assignTroops(_entity, this.Const.World.Spawn.Mercenaries, 0, this.Math.rand(r * 0.8, r));
 		_entity.getSprite("body").setBrush(brush);
 
 		if (this.m.TargetSettlement.getFactions().len() == 1)

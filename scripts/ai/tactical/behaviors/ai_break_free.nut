@@ -46,7 +46,7 @@ this.ai_break_free <- this.inherit("scripts/ai/tactical/behavior", {
 			return this.Const.AI.Behavior.Score.Zero;
 		}
 
-		return this.Const.AI.Behavior.Score.BreakFree;
+		return this.Const.AI.Behavior.Score.BreakFree * score;
 	}
 
 	function onExecute( _entity )

@@ -92,6 +92,13 @@ this.ai_attack_terror <- this.inherit("scripts/ai/tactical/behavior", {
 		{
 			this.getAgent().adjustCameraToTarget(this.m.TargetTile);
 			this.m.IsFirstExecuted = false;
+
+			if (this.m.TargetTile.IsVisibleForPlayer && _entity.isHiddenToPlayer())
+			{
+				_entity.setDiscovered(true);
+				_entity.getTile().addVisibilityForFaction(this.Const.Faction.Player);
+			}
+
 			return false;
 		}
 

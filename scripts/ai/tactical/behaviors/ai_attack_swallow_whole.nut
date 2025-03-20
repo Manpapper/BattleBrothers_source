@@ -39,6 +39,32 @@ this.ai_attack_swallow_whole <- this.inherit("scripts/ai/tactical/behavior", {
 			return this.Const.AI.Behavior.Score.Zero;
 		}
 
+		local opponents = this.getAgent().getKnownOpponents();
+		local playerControlledCharacters = 0;
+
+		foreach( o in opponents )
+		{
+			if (o.Actor.isNull())
+			{
+				continue;
+			}
+
+			if (o.Actor.getFaction() == this.Const.Faction.Player)
+			{
+				playerControlledCharacters = ++playerControlledCharacters;
+
+				if (playerControlledCharacters > 1)
+				{
+					break;
+				}
+			}
+		}
+
+		if (playerControlledCharacters < 2)
+		{
+			return this.Const.AI.Behavior.Score.Zero;
+		}
+
 		if (_entity.getHitpointsPct() < 0.15 && _entity.getTile().getZoneOfControlCountOtherThan(_entity.getAlliedFactions()) > 1)
 		{
 			return this.Const.AI.Behavior.Score.Zero;

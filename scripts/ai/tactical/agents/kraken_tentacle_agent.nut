@@ -4,6 +4,7 @@ this.kraken_tentacle_agent <- this.inherit("scripts/ai/tactical/agent", {
 	{
 		this.agent.create();
 		this.m.ID = this.Const.AI.Agent.ID.KrakenTentacle;
+		this.m.IsUpdatingAlliesBeforeEvaluation = true;
 		this.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.EngageMelee] = 0.0;
 		this.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.AttackDefault] = 2.5;
 		this.m.Properties.BehaviorMult[this.Const.AI.Behavior.ID.MoveTentacle] = 0.75;

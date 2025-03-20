@@ -216,6 +216,7 @@ this.ai_protect <- this.inherit("scripts/ai/tactical/behavior", {
 		local myTile = _entity.getTile();
 		local allAllies = this.getAgent().getKnownAllies();
 		local allOpponents = this.getAgent().getKnownOpponents();
+		local adjacentAlly;
 		local potential_tiles = [];
 
 		foreach( a in allAllies )
@@ -226,6 +227,11 @@ this.ai_protect <- this.inherit("scripts/ai/tactical/behavior", {
 			}
 
 			if (a.getCurrentProperties().TargetAttractionMult <= 1.0 || a.getCurrentProperties().TargetAttractionMult <= _entity.getCurrentProperties().TargetAttractionMult)
+			{
+				continue;
+			}
+
+			if (myTile.getDistanceTo(a.getTile()) > 2 && !_entity.getAIAgent().getProperties().ProtectFarAway)
 			{
 				continue;
 			}
@@ -315,7 +321,6 @@ this.ai_protect <- this.inherit("scripts/ai/tactical/behavior", {
 						local immediateBonus = 0;
 						score = score + dirs[i] / this.Math.max(1, allOpponents.len()) * this.Const.AI.Behavior.ProtectAllyDirectionMult;
 						score = score - myTile.getDistanceTo(tile);
-						local importantAlliesAtTile = 0;
 
 						for( local j = 0; j != 6; j = ++j )
 						{
@@ -451,6 +456,11 @@ this.ai_protect <- this.inherit("scripts/ai/tactical/behavior", {
 				{
 					continue;
 				}
+			}
+
+			if (t.Score <= 0)
+			{
+				continue;
 			}
 
 			local allyDefendBonus = t.AllyDefendBonus;

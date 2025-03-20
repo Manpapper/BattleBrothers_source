@@ -3,7 +3,8 @@ this.ai_attack_lash <- this.inherit("scripts/ai/tactical/behavior", {
 		TargetTile = null,
 		PossibleSkills = [
 			"actives.lash",
-			"actives.hail"
+			"actives.hail",
+			"actives.golem_lash"
 		],
 		Skill = null
 	},

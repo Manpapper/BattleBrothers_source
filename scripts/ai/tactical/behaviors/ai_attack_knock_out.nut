@@ -6,7 +6,9 @@ this.ai_attack_knock_out <- this.inherit("scripts/ai/tactical/behavior", {
 			"actives.knock_out",
 			"actives.strike_down",
 			"actives.disarm",
-			"actives.serpent_disarm"
+			"actives.serpent_disarm",
+			"actives.golem_knock_out",
+			"actives.golem_grapple"
 		],
 		Skill = null
 	},
@@ -118,7 +120,7 @@ this.ai_attack_knock_out <- this.inherit("scripts/ai/tactical/behavior", {
 		local canAttackNext = this.m.Skill.getActionPointCost() + apRequiredForAttack <= _entity.getActionPointsMax();
 		local bestTarget;
 		local bestScore = 0.0;
-		local isDisarm = _skill.getID() == "actives.disarm" || _skill.getID() == "actives.serpent_disarm";
+		local isDisarm = _skill.getID() == "actives.disarm" || _skill.getID() == "actives.serpent_disarm" || _skill.getID() == "actives.golem_grapple";
 		local zoc = myTile.getZoneOfControlCountOtherThan(_entity.getAlliedFactions());
 		local isEntityRangedUnit = this.isRangedUnit(_entity);
 		local bestTargetValue = 0.0;
@@ -203,6 +205,11 @@ this.ai_attack_knock_out <- this.inherit("scripts/ai/tactical/behavior", {
 				if (target.getSkills().hasSkill("effects.distracted"))
 				{
 					score = score * this.Const.AI.Behavior.KnockoutDistractedMult;
+				}
+
+				if (target.getSkills().hasSkill("effects.dazed"))
+				{
+					score = score * this.Const.AI.Behavior.KnockoutDazedMult;
 				}
 
 				if (target.isTurnDone() && target.getSkills().hasSkill("effects.adrenaline"))

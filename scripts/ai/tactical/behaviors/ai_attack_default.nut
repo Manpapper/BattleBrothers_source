@@ -45,7 +45,15 @@ this.ai_attack_default <- this.inherit("scripts/ai/tactical/behavior", {
 			"actives.kraken_devour",
 			"actives.ghost_overhead_strike",
 			"actives.headbutt",
-			"actives.serpent_bite"
+			"actives.serpent_bite",
+			"actives.censer_strike",
+			"actives.golem_bash",
+			"actives.golem_batter",
+			"actives.golem_cleave",
+			"actives.golem_slash",
+			"actives.golem_thrust",
+			"actives.lesser_flesh_golem_attack",
+			"actives.greater_flesh_golem_attack"
 		],
 		Skill = null
 	},

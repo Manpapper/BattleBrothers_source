@@ -2,7 +2,8 @@ this.ai_attack_reap <- this.inherit("scripts/ai/tactical/behavior", {
 	m = {
 		TargetTile = null,
 		PossibleSkills = [
-			"actives.reap"
+			"actives.reap",
+			"actives.censer_castigate"
 		],
 		Skill = null,
 		MinTargets = 2
