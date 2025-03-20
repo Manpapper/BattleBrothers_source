@@ -1438,7 +1438,7 @@ this.tooltip_events <- {
 				{
 					id = 2,
 					type = "description",
-					text = "Shows the current and maximium number of men placed in formation to fight in the next battle.\n\nDrag and drop your men to where you want them to be; the top row is the front facing the enemy, the second row is your back row, and the bottom row is your reserves of characters not taking part in battle."
+					text = "Shows the current and maximum number of men placed in formation to fight in the next battle.\n\nDrag and drop your men to where you want them to be; the top row is the front facing the enemy, the second row is your back row, and the bottom row is your reserves of characters not taking part in battle."
 				}
 			];
 

@@ -139,6 +139,11 @@ this.main_menu_screen <- {
 
 		this.m.JSHandle.asyncCall("setDLC", dlc);
 		this.m.JSHandle.asyncCall("setMOTD", "Battle Brothers is a challenging game. Losses and comebacks are part of the gameplay.\n\nIt\'s recommended that you start with \'Beginner\' difficulty and the tutorial origin!");
+
+		if (this.isSteamBuild())
+		{
+			this.m.JSHandle.asyncCall("addCrossMarketing", null);
+		}
 	}
 
 	function destroy()

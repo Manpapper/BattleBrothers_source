@@ -5,6 +5,7 @@ this.world_event_screen <- {
 		Animating = null,
 		OnConnectedListener = null,
 		OnDisconnectedListener = null,
+		JustShown = false,
 		IsContract = false
 	},
 	function setIsContract( _c )
@@ -27,6 +28,11 @@ this.world_event_screen <- {
 		{
 			return false;
 		}
+	}
+
+	function isJustShown()
+	{
+		return this.m.JustShown;
 	}
 
 	function setOnConnectedListener( _listener )
@@ -113,6 +119,13 @@ this.world_event_screen <- {
 		this.Tooltip.hide();
 		this.m.Visible = true;
 		this.m.Animating = false;
+		this.m.JustShown = true;
+		this.Time.scheduleEvent(this.TimeUnit.Real, 1000, function ( _tag )
+		{
+			_tag.EventScreen.m.JustShown = false;
+		}, {
+			EventScreen = this
+		});
 	}
 
 	function onScreenHidden()
