@@ -96,7 +96,7 @@ this.ambition_manager <- {
 
 		foreach( scriptFile in scriptFiles )
 		{
-			if (scriptFile != "oath_ambition")
+			if (scriptFile != "scripts/ambitions/oaths/oath_ambition")
 			{
 				this.m.OathAmbitions.push(this.new(scriptFile));
 			}
