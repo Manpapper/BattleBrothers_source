@@ -10,7 +10,7 @@ this.cook_follower <- this.inherit("scripts/retinue/follower", {
 		this.m.Cost = 2000;
 		this.m.Effects = [
 			"Makes all provisions last 3 extra days",
-			"Increases hitpoint healing rate by 33%"
+			"Increases hitpoint recovery by 1 per hour"
 		];
 		this.m.Requirements = [
 			{
@@ -23,7 +23,7 @@ this.cook_follower <- this.inherit("scripts/retinue/follower", {
 	function onUpdate()
 	{
 		this.World.Assets.m.FoodAdditionalDays = 3;
-		this.World.Assets.m.HitpointsPerHourMult = 1.33;
+		this.World.Assets.m.AdditionalHitpointsPerHour += 1;
 	}
 
 	function onEvaluate()
