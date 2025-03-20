@@ -247,25 +247,51 @@ this.orc_berserker <- this.inherit("scripts/entity/tactical/actor", {
 			}
 
 			this.spawnTerrainDropdownEffect(_tile);
-			local corpse = clone this.Const.Corpse;
-			corpse.CorpseName = "An Orc Berserker";
-			corpse.Tile = _tile;
-			corpse.IsResurrectable = false;
-			corpse.IsConsumable = true;
-			corpse.Items = this.getItems();
-			corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
+		}
+
+		local deathLoot = this.getItems().getDroppableLoot(_killer);
+		local tileLoot = this.getLootForTile(_killer, deathLoot);
+		local corpse = this.generateCorpse(_tile, _fatalityType);
+		this.dropLoot(_tile, tileLoot, !flip);
+
+		if (_tile == null)
+		{
+			this.Tactical.Entities.addUnplacedCorpse(corpse);
+		}
+		else
+		{
 			_tile.Properties.set("Corpse", corpse);
 			this.Tactical.Entities.addCorpse(_tile);
 		}
 
-		if (_tile != null && this.Math.rand(1, 100) <= 10)
+		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
+	}
+
+	function getLootForTile( _killer, _loot )
+	{
+		if (this.Math.rand(1, 100) <= 10)
 		{
-			local loot = this.new("scripts/items/accessory/berserker_mushrooms_item");
-			loot.drop(_tile);
+			_loot.push(this.new("scripts/items/accessory/berserker_mushrooms_item"));
 		}
 
-		this.getItems().dropAll(_tile, _killer, flip);
-		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
+		return _loot;
+	}
+
+	function generateCorpse( _tile, _fatalityType )
+	{
+		local corpse = clone this.Const.Corpse;
+		corpse.CorpseName = "An Orc Berserker";
+		corpse.IsResurrectable = false;
+		corpse.IsConsumable = true;
+		corpse.Items = this.getItems();
+		corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
+
+		if (_tile != null)
+		{
+			corpse.Tile = _tile;
+		}
+
+		return corpse;
 	}
 
 	function onInit()

@@ -128,7 +128,9 @@ this.ghost_knight <- this.inherit("scripts/entity/tactical/actor", {
 			this.Tactical.spawnParticleEffect(false, effect.Brushes, _tile, effect.Delay, effect.Quantity, effect.LifeTimeQuantity, effect.SpawnRate, effect.Stages, this.createVec(0, 40));
 		}
 
-		this.getItems().dropAll(_tile, _killer, false);
+		local deathLoot = this.getItems().getDroppableLoot(_killer);
+		local tileLoot = this.getLootForTile(_killer, deathLoot);
+		this.dropLoot(_tile, tileLoot, false);
 		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
 

@@ -64,7 +64,6 @@ this.skeleton <- this.inherit("scripts/entity/tactical/actor", {
 	{
 		local flip = this.Math.rand(0, 100) < 50;
 		this.m.IsCorpseFlipped = flip;
-		local isResurrectable = _fatalityType != this.Const.FatalityType.Decapitated && this.m.IsResurrectable;
 		local appearance = this.getItems().getAppearance();
 		local sprite_body = this.getSprite("body");
 		local sprite_head = this.getSprite("head");
@@ -280,41 +279,63 @@ this.skeleton <- this.inherit("scripts/entity/tactical/actor", {
 			}
 
 			this.spawnTerrainDropdownEffect(_tile);
-			local custom = {
-				Face = sprite_face.getBrush().Name,
-				Body = sprite_body.getBrush().Name,
-				Hair = sprite_hair.HasBrush ? sprite_hair.getBrush().Name : null,
-				HairColor = sprite_hair.Color,
-				HairSaturation = sprite_hair.Saturation,
-				Beard = sprite_beard.HasBrush ? sprite_beard.getBrush().Name : null,
-				BodyColor = sprite_body.Color,
-				BodySaturation = sprite_body.Saturation
-			};
-			local corpse = clone this.Const.Corpse;
-			corpse.Type = this.m.ResurrectWithScript;
-			corpse.Faction = this.getFaction();
-			corpse.CorpseName = (this.m.IsGeneratingKillName ? this.Const.Strings.getArticleCapitalized(this.getName()) : "") + this.getName();
-			corpse.Tile = _tile;
-			corpse.Value = this.m.ResurrectionValue;
-			corpse.Armor = this.m.BaseProperties.Armor;
-			corpse.Items = this.getItems();
-			corpse.Color = sprite_body.Color;
-			corpse.Saturation = sprite_body.Saturation;
-			corpse.Custom = custom;
-			corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
-			corpse.IsConsumable = false;
+		}
 
-			if (isResurrectable)
-			{
-				corpse.IsResurrectable = true;
-			}
+		local deathLoot = this.getItems().getDroppableLoot(_killer);
+		local tileLoot = this.getLootForTile(_killer, deathLoot);
+		local corpse = this.generateCorpse(_tile, _fatalityType);
+		this.dropLoot(_tile, tileLoot, !flip);
 
+		if (_tile == null)
+		{
+			this.Tactical.Entities.addUnplacedCorpse(corpse);
+		}
+		else
+		{
 			_tile.Properties.set("Corpse", corpse);
 			this.Tactical.Entities.addCorpse(_tile);
 		}
 
-		this.getItems().dropAll(_tile, _killer, !flip);
 		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
+	}
+
+	function generateCorpse( _tile, _fatalityType )
+	{
+		local isResurrectable = _fatalityType != this.Const.FatalityType.Decapitated && this.m.IsResurrectable;
+		local sprite_body = this.getSprite("body");
+		local sprite_face = this.getSprite("face");
+		local sprite_hair = this.getSprite("hair");
+		local sprite_beard = this.getSprite("beard");
+		local custom = {
+			Face = sprite_face.getBrush().Name,
+			Body = sprite_body.getBrush().Name,
+			Hair = sprite_hair.HasBrush ? sprite_hair.getBrush().Name : null,
+			HairColor = sprite_hair.Color,
+			HairSaturation = sprite_hair.Saturation,
+			Beard = sprite_beard.HasBrush ? sprite_beard.getBrush().Name : null,
+			BodyColor = sprite_body.Color,
+			BodySaturation = sprite_body.Saturation
+		};
+		local corpse = clone this.Const.Corpse;
+		corpse.Type = this.m.ResurrectWithScript;
+		corpse.Faction = this.getFaction();
+		corpse.CorpseName = (this.m.IsGeneratingKillName ? this.Const.Strings.getArticleCapitalized(this.getName()) : "") + this.getName();
+		corpse.Tile = _tile;
+		corpse.Value = this.m.ResurrectionValue;
+		corpse.Armor = this.m.BaseProperties.Armor;
+		corpse.Items = this.getItems();
+		corpse.Color = sprite_body.Color;
+		corpse.Saturation = sprite_body.Saturation;
+		corpse.Custom = custom;
+		corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
+		corpse.IsConsumable = false;
+
+		if (_tile != null)
+		{
+			corpse.Tile = _tile;
+		}
+
+		return corpse;
 	}
 
 	function onResurrected( _info )

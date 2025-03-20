@@ -32,7 +32,7 @@ this.barbarian_drummer <- this.inherit("scripts/entity/tactical/human", {
 		tattoo_head.setBrush("tattoo_0" + tattoos[this.Math.rand(0, tattoos.len() - 1)] + "_head");
 		tattoo_head.Visible = true;
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.BarbarianMarauder);
+		b.setValues(this.Const.Tactical.Actor.BarbarianDrummer);
 		b.TargetAttractionMult = 1.1;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;

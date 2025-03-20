@@ -284,44 +284,52 @@ this.flying_skull <- this.inherit("scripts/entity/tactical/actor", {
 				]
 			};
 			this.Tactical.spawnParticleEffect(false, effect.Brushes, myTile, effect.Delay, effect.Quantity, effect.LifeTimeQuantity, effect.SpawnRate, effect.Stages, this.createVec(0, 50));
-
-			for( local i = 0; i < 6; i = ++i )
-			{
-				if (!myTile.hasNextTile(i))
-				{
-				}
-				else
-				{
-					local nextTile = myTile.getNextTile(i);
-
-					if (this.Math.abs(myTile.Level - nextTile.Level) <= 1 && nextTile.IsOccupiedByActor)
-					{
-						local target = nextTile.getEntity();
-
-						if (!target.isAlive() || target.isDying())
-						{
-						}
-						else
-						{
-							local f = this.isAlliedWith(target) ? 0.5 : 1.0;
-							local hitInfo = clone this.Const.Tactical.HitInfo;
-							hitInfo.DamageRegular = this.Math.rand(20, 40) * f;
-							hitInfo.DamageArmor = hitInfo.DamageRegular * 0.75;
-							hitInfo.DamageDirect = 0.3;
-							hitInfo.BodyPart = 0;
-							hitInfo.FatalityChanceMult = 0.0;
-							hitInfo.Injuries = this.Const.Injury.PiercingBody;
-							target.onDamageReceived(this, null, hitInfo);
-						}
-					}
-				}
-			}
-
+			this.Time.scheduleEvent(this.TimeUnit.Virtual, 50, this.onTriggerExplosionDamage.bindenv(this), {
+				Tile = myTile,
+				User = this
+			});
 			this.Sound.play(this.m.Sound[this.Const.Sound.ActorEvent.Other1][this.Math.rand(0, this.m.Sound[this.Const.Sound.ActorEvent.Other1].len() - 1)], this.Const.Sound.Volume.Actor, this.getPos());
 			this.Sound.play(this.m.Sound[this.Const.Sound.ActorEvent.Other2][this.Math.rand(0, this.m.Sound[this.Const.Sound.ActorEvent.Other2].len() - 1)], this.Const.Sound.Volume.Actor, this.getPos());
 		}
 
 		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
+	}
+
+	function onTriggerExplosionDamage( _data )
+	{
+		local tile = _data.Tile;
+
+		for( local i = 0; i < 6; i = ++i )
+		{
+			if (!tile.hasNextTile(i))
+			{
+			}
+			else
+			{
+				local nextTile = tile.getNextTile(i);
+
+				if (this.Math.abs(tile.Level - nextTile.Level) <= 1 && nextTile.IsOccupiedByActor)
+				{
+					local target = nextTile.getEntity();
+
+					if (!target.isAlive() || target.isDying())
+					{
+					}
+					else
+					{
+						local f = _data.User.isAlliedWith(target) ? 0.5 : 1.0;
+						local hitInfo = clone this.Const.Tactical.HitInfo;
+						hitInfo.DamageRegular = this.Math.rand(20, 40) * f;
+						hitInfo.DamageArmor = hitInfo.DamageRegular * 0.75;
+						hitInfo.DamageDirect = 0.3;
+						hitInfo.BodyPart = 0;
+						hitInfo.FatalityChanceMult = 0.0;
+						hitInfo.Injuries = this.Const.Injury.PiercingBody;
+						target.onDamageReceived(_data.User, null, hitInfo);
+					}
+				}
+			}
+		}
 	}
 
 	function onFactionChanged()

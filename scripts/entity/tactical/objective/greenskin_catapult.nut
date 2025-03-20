@@ -57,6 +57,7 @@ this.greenskin_catapult <- this.inherit("scripts/entity/tactical/actor", {
 		b.IsImmuneToBleeding = true;
 		b.IsImmuneToPoison = true;
 		b.IsImmuneToDisarm = true;
+		b.IsImmuneToHeadshots = true;
 		b.IsAffectedByNight = false;
 		b.IsMovable = false;
 		b.TargetAttractionMult = 1.5;

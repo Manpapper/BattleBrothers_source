@@ -3,7 +3,7 @@ this.ceremonial_season_situation <- this.inherit("scripts/entity/world/settlemen
 	function create()
 	{
 		this.situation.create();
-		this.m.ID = "situation.ceremonial_seasonn";
+		this.m.ID = "situation.ceremonial_season";
 		this.m.Name = "Ceremonial Season";
 		this.m.Description = "During the ceremonial season, large amounts of incense are used by temples. The demand and prices for incense are at an all-time high.";
 		this.m.Icon = "ui/settlement_status/settlement_effect_44.png";

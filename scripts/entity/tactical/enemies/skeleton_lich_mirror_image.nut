@@ -177,6 +177,8 @@ this.skeleton_lich_mirror_image <- this.inherit("scripts/entity/tactical/actor",
 			this.Tactical.spawnParticleEffect(false, effect.Brushes, _tile, effect.Delay, effect.Quantity, effect.LifeTimeQuantity, effect.SpawnRate, effect.Stages, this.createVec(0, 40));
 		}
 
+		local tileLoot = this.getLootForTile(_killer, []);
+		this.dropLoot(_tile, tileLoot, false);
 		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
 

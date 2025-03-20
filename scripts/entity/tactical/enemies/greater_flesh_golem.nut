@@ -1,53 +1,57 @@
-this.unhold <- this.inherit("scripts/entity/tactical/actor", {
+this.greater_flesh_golem <- this.inherit("scripts/entity/tactical/actor", {
 	m = {},
 	function create()
 	{
-		this.m.Type = this.Const.EntityType.Unhold;
+		this.m.Type = this.Const.EntityType.GreaterFleshGolem;
 		this.m.BloodType = this.Const.BloodType.Red;
-		this.m.XP = this.Const.Tactical.Actor.Unhold.XP;
+		this.m.MoraleState = this.Const.MoraleState.Ignore;
+		this.m.XP = this.Const.Tactical.Actor.GreaterFleshGolem.XP;
 		this.m.BloodSplatterOffset = this.createVec(0, 0);
 		this.m.DecapitateSplatterOffset = this.createVec(40, -20);
 		this.m.DecapitateBloodAmount = 3.0;
-		this.m.ConfidentMoraleBrush = "icon_confident_orcs";
+		this.m.ExcludedInjuries = [
+			"injury.sprained_ankle",
+			"injury.injured_knee_cap",
+			"injury.inhaled_flames",
+			"injury.dislocated_shoulder",
+			"injury.cut_achilles_tendon",
+			"injury.burnt_legs",
+			"injury.bruised_leg",
+			"injury.broken_leg"
+		];
 		this.actor.create();
 		this.m.Sound[this.Const.Sound.ActorEvent.Death] = [
-			"sounds/enemies/unhold_death_01.wav",
-			"sounds/enemies/unhold_death_02.wav",
-			"sounds/enemies/unhold_death_03.wav",
-			"sounds/enemies/unhold_death_04.wav",
-			"sounds/enemies/unhold_death_05.wav",
-			"sounds/enemies/unhold_death_06.wav"
-		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Flee] = [
-			"sounds/enemies/unhold_flee_01.wav",
-			"sounds/enemies/unhold_flee_02.wav",
-			"sounds/enemies/unhold_flee_03.wav",
-			"sounds/enemies/unhold_flee_04.wav"
+			"sounds/enemies/big_golem_death_01.wav",
+			"sounds/enemies/big_golem_death_02.wav",
+			"sounds/enemies/big_golem_death_03.wav",
+			"sounds/enemies/big_golem_death_04.wav",
+			"sounds/enemies/big_golem_death_05.wav"
 		];
 		this.m.Sound[this.Const.Sound.ActorEvent.DamageReceived] = [
-			"sounds/enemies/unhold_hurt_01.wav",
-			"sounds/enemies/unhold_hurt_02.wav",
-			"sounds/enemies/unhold_hurt_03.wav",
-			"sounds/enemies/unhold_hurt_04.wav"
+			"sounds/enemies/big_golem_hurt_01.wav",
+			"sounds/enemies/big_golem_hurt_02.wav",
+			"sounds/enemies/big_golem_hurt_03.wav",
+			"sounds/enemies/big_golem_hurt_04.wav",
+			"sounds/enemies/big_golem_hurt_05.wav",
+			"sounds/enemies/big_golem_hurt_06.wav",
+			"sounds/enemies/big_golem_hurt_07.wav",
+			"sounds/enemies/big_golem_hurt_08.wav",
+			"sounds/enemies/big_golem_hurt_09.wav",
+			"sounds/enemies/big_golem_hurt_10.wav"
 		];
 		this.m.Sound[this.Const.Sound.ActorEvent.Idle] = [
-			"sounds/enemies/unhold_idle_01.wav",
-			"sounds/enemies/unhold_idle_02.wav",
-			"sounds/enemies/unhold_idle_03.wav",
-			"sounds/enemies/unhold_idle_04.wav",
-			"sounds/enemies/unhold_idle_05.wav",
-			"sounds/enemies/unhold_idle_06.wav",
-			"sounds/enemies/unhold_idle_07.wav"
+			"sounds/enemies/big_golem_idle_01.wav",
+			"sounds/enemies/big_golem_idle_02.wav",
+			"sounds/enemies/big_golem_idle_03.wav",
+			"sounds/enemies/big_golem_idle_04.wav",
+			"sounds/enemies/big_golem_idle_05.wav",
+			"sounds/enemies/big_golem_idle_06.wav"
 		];
-		this.m.Sound[this.Const.Sound.ActorEvent.Other1] = [
-			"sounds/enemies/unhold_confused_01.wav",
-			"sounds/enemies/unhold_confused_02.wav",
-			"sounds/enemies/unhold_confused_03.wav",
-			"sounds/enemies/unhold_confused_04.wav"
-		];
-		this.m.SoundPitch = this.Math.rand(9, 11) * 0.1;
+		this.m.SoundPitch = this.Math.rand(0.9, 1.1);
 		this.m.SoundVolumeOverall = 1.25;
-		this.m.AIAgent = this.new("scripts/ai/tactical/agents/unhold_agent");
+		this.getFlags().add("undead");
+		this.getFlags().add("flesh_golem");
+		this.m.AIAgent = this.new("scripts/ai/tactical/agents/greater_flesh_golem_agent");
 		this.m.AIAgent.setActor(this);
 	}
 
@@ -63,6 +67,20 @@ this.unhold <- this.inherit("scripts/entity/tactical/actor", {
 
 	function onDeath( _killer, _skill, _tile, _fatalityType )
 	{
+		local skillsToClear = [
+			"actives.flurry_skill",
+			"actives.spike_skill",
+			"actives.corpse_hurl_skill"
+		];
+
+		foreach( skillID in skillsToClear )
+		{
+			if (this.getSkills().hasSkill(skillID) && "clearAffectedTiles" in this.getSkills().getSkillByID(skillID))
+			{
+				this.getSkills().getSkillByID(skillID).clearAffectedTiles();
+			}
+		}
+
 		local flip = this.Math.rand(1, 100) < 50;
 
 		if (_tile != null)
@@ -73,7 +91,7 @@ this.unhold <- this.inherit("scripts/entity/tactical/actor", {
 			local appearance = this.getItems().getAppearance();
 			local sprite_body = this.getSprite("body");
 			local sprite_head = this.getSprite("head");
-			decal = _tile.spawnDetail(sprite_body.getBrush().Name + "_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
+			decal = _tile.spawnDetail("bust_greater_flesh_golem_body_01_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
 			decal.Color = sprite_body.Color;
 			decal.Saturation = sprite_body.Saturation;
 			decal.Scale = 0.9;
@@ -140,7 +158,7 @@ this.unhold <- this.inherit("scripts/entity/tactical/actor", {
 
 			if (_fatalityType == this.Const.FatalityType.Disemboweled)
 			{
-				decal = _tile.spawnDetail("bust_unhold_guts", this.Const.Tactical.DetailFlag.Corpse, flip);
+				decal = _tile.spawnDetail("guts_flesh_golem_body_02_dead", this.Const.Tactical.DetailFlag.Corpse, flip);
 				decal.Scale = 0.9;
 			}
 			else if (_skill && _skill.getProjectileType() == this.Const.ProjectileType.Arrow)
@@ -175,60 +193,11 @@ this.unhold <- this.inherit("scripts/entity/tactical/actor", {
 		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
 
-	function getLootForTile( _killer, _loot )
-	{
-		if (_killer == null || _killer.getFaction() == this.Const.Faction.Player || _killer.getFaction() == this.Const.Faction.PlayerAnimals)
-		{
-			local n = 1 + (!this.Tactical.State.isScenarioMode() && this.Math.rand(1, 100) <= this.World.Assets.getExtraLootChance() ? 1 : 0);
-
-			for( local i = 0; i < n; i = ++i )
-			{
-				local r = this.Math.rand(1, 100);
-				local loot;
-
-				if (r <= 40)
-				{
-					loot = this.new("scripts/items/misc/unhold_bones_item");
-				}
-				else if (r <= 80)
-				{
-					if (this.isKindOf(this, "unhold_frost"))
-					{
-						loot = this.new("scripts/items/misc/frost_unhold_fur_item");
-					}
-					else
-					{
-						loot = this.new("scripts/items/misc/unhold_hide_item");
-					}
-				}
-				else
-				{
-					loot = this.new("scripts/items/misc/unhold_heart_item");
-				}
-
-				_loot.push(loot);
-			}
-
-			if (this.Math.rand(1, 100) <= 33)
-			{
-				local loot = this.new("scripts/items/supplies/strange_meat_item");
-				_loot.push(loot);
-			}
-
-			if (this.Math.rand(1, 100) <= 20)
-			{
-				local loot = this.new("scripts/items/loot/deformed_valuables_item");
-				_loot.push(loot);
-			}
-		}
-
-		return _loot;
-	}
-
 	function generateCorpse( _tile, _fatalityType )
 	{
 		local corpse = clone this.Const.Corpse;
-		corpse.CorpseName = "An Unhold";
+		corpse.CorpseName = "A Greater Flesh Golem";
+		corpse.Tile = _tile;
 		corpse.IsResurrectable = false;
 		corpse.IsConsumable = true;
 		corpse.Items = this.getItems();
@@ -246,66 +215,67 @@ this.unhold <- this.inherit("scripts/entity/tactical/actor", {
 	{
 		this.actor.onInit();
 		local b = this.m.BaseProperties;
-		b.setValues(this.Const.Tactical.Actor.Unhold);
+		b.setValues(this.Const.Tactical.Actor.GreaterFleshGolem);
 		b.IsImmuneToDisarm = true;
 		b.IsImmuneToRotation = true;
-
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 90)
-		{
-			b.DamageTotalMult += 0.1;
-		}
-
+		b.IsImmuneToStun = true;
+		b.IsImmuneToKnockBackAndGrab = true;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
 		this.m.ActionPointCosts = this.Const.DefaultMovementAPCost;
 		this.m.FatigueCosts = this.Const.DefaultMovementFatigueCost;
-		this.m.Items.getAppearance().Body = "bust_unhold_body_02";
-		this.addSprite("socket").setBrush("bust_base_beasts");
-		local body = this.addSprite("body");
-		body.setBrush("bust_unhold_body_02");
-		body.varySaturation(0.1);
-		body.varyColor(0.09, 0.09, 0.09);
-		local injury_body = this.addSprite("injury");
-		injury_body.Visible = false;
-		injury_body.setBrush("bust_unhold_02_injured");
+		this.addSprite("socket").setBrush("bust_base_undead");
+		this.addSprite("body");
+		this.addSprite("injury");
 		this.addSprite("armor");
-		local head = this.addSprite("head");
-		head.setBrush("bust_unhold_head_02");
-		head.Saturation = body.Saturation;
-		head.Color = body.Color;
+		this.addSprite("head");
 		this.addSprite("helmet");
+		local variant = this.Math.rand(1, 3);
+		this.setVariant(variant);
 		this.addDefaultStatusSprites();
 		this.getSprite("status_rooted").Scale = 0.65;
 		this.setSpriteOffset("status_rooted", this.createVec(-10, 16));
 		this.setSpriteOffset("status_stunned", this.createVec(0, 10));
 		this.setSpriteOffset("arrow", this.createVec(0, 10));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_crippling_strikes"));
+		this.m.Skills.add(this.new("scripts/skills/racial/flesh_golem_racial"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_steel_brow"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_battering_ram"));
-		this.m.Skills.add(this.new("scripts/skills/perks/perk_stalwart"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_underdog"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_hold_out"));
-		this.m.Skills.add(this.new("scripts/skills/racial/unhold_racial"));
-		this.m.Skills.add(this.new("scripts/skills/actives/sweep_skill"));
-		this.m.Skills.add(this.new("scripts/skills/actives/sweep_zoc_skill"));
-		this.m.Skills.add(this.new("scripts/skills/actives/fling_back_skill"));
-		this.m.Skills.add(this.new("scripts/skills/actives/unstoppable_charge_skill"));
+		this.m.Skills.add(this.new("scripts/skills/perks/perk_fearsome"));
+		this.m.Skills.add(this.new("scripts/skills/actives/greater_flesh_golem_attack_skill"));
+		this.m.Skills.add(this.new("scripts/skills/actives/flurry_skill"));
+		this.m.Skills.add(this.new("scripts/skills/actives/spike_skill"));
+		this.m.Skills.add(this.new("scripts/skills/actives/corpse_hurl_skill"));
 	}
 
-	function onFactionChanged()
+	function setVariant( variant )
 	{
-		this.actor.onFactionChanged();
-		local flip = this.isAlliedWithPlayer();
-		this.getSprite("body").setHorizontalFlipping(flip);
-		this.getSprite("injury").setHorizontalFlipping(flip);
-		this.getSprite("armor").setHorizontalFlipping(flip);
-		this.getSprite("head").setHorizontalFlipping(flip);
-		this.getSprite("helmet").setHorizontalFlipping(flip);
+		local body_brush_name = "bust_greater_flesh_golem_body_0" + variant;
+		local head_brush_name = "bust_greater_flesh_golem_head_0" + variant;
+		this.assignEquipment(variant);
+		this.m.Items.getAppearance().Body = body_brush_name;
+		local body = this.getSprite("body");
+		body.setBrush(body_brush_name);
+		body.varySaturation(0.1);
+		body.varyColor(0.09, 0.09, 0.09);
+		local injury_body = this.getSprite("injury");
+		injury_body.Visible = false;
+		injury_body.setBrush(body_brush_name + "_injured");
+		local head = this.getSprite("head");
+		head.setBrush(head_brush_name);
+		head.Saturation = body.Saturation;
+		head.Color = body.Color;
+		this.setDirty(true);
 	}
 
-	function assignRandomEquipment()
+	function assignEquipment( variant )
 	{
+		this.m.Items.unequip(this.m.Items.getItemAtSlot(this.Const.ItemSlot.Head));
+		this.m.Items.unequip(this.m.Items.getItemAtSlot(this.Const.ItemSlot.Body));
+		this.m.Items.equip(this.new("scripts/items/helmets/golems/greater_flesh_golem_helmet_0" + variant));
+		this.m.Items.equip(this.new("scripts/items/armor/golems/greater_flesh_golem_armor_0" + variant));
 	}
 
 });

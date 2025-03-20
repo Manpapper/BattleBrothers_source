@@ -38,6 +38,8 @@ this.spider_eggs <- this.inherit("scripts/entity/tactical/actor", {
 			this.spawnTerrainDropdownEffect(_tile);
 		}
 
+		local tileLoot = this.getLootForTile(_killer, []);
+		this.dropLoot(_tile, tileLoot, !flip);
 		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
 
@@ -57,6 +59,7 @@ this.spider_eggs <- this.inherit("scripts/entity/tactical/actor", {
 		b.IsImmuneToRoot = true;
 		b.IsImmuneToBleeding = true;
 		b.IsImmuneToPoison = true;
+		b.IsImmuneToHeadshots = true;
 		b.IsAffectedByNight = false;
 		b.IsMovable = false;
 		b.IsAffectedByInjuries = false;

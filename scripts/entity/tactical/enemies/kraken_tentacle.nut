@@ -93,6 +93,7 @@ this.kraken_tentacle <- this.inherit("scripts/entity/tactical/actor", {
 		b.IsAffectedByNight = false;
 		b.IsImmuneToKnockBackAndGrab = true;
 		b.IsImmuneToPoison = true;
+		b.IsImmuneToHeadshots = true;
 		b.IsMovable = false;
 		b.IsAffectedByInjuries = false;
 		b.IsImmuneToDisarm = true;
