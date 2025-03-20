@@ -12,7 +12,7 @@ this.graverobber_finds_item_event <- this.inherit("scripts/events/event", {
 		this.m.Cooldown = 9999.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/event_33.png[/img]The weather is nice. A fine evening, if any, for the moon to be where it is: an orange rind of it slipping in and out of the clouds - clouds that pass by on the seemingly innocuous gesture that a light breeze can have. So bright is this rim of a moon you wonder if any flowers might bloom, mistaking the evening light for its brighter cousin. You wonder if the millmoths and flies and armor-backed beetles see the moon and dance toward it as they would any candle or torch. Do they have that quiet desperation? That inescapable cruelty of realizing that, when your stock is placed against the greater whole, you have and are nothing... and the hatred that realization can bring, and the jealousy...\n\n Suddenly, %graverobber% the graverobber appears by your side, his smell skewering your thoughts with miasmic proficiency. He\'s hardly a man at all, but a golem, mudslaked and grass-peppered with two white eyes peering out. Sighing, you ask what he wants. He thumbs over one shoulder, the other occupied by a shovel.%SPEECH_ON%Went digging through a grave or three. Found somethin\' and I don\'t mean just what them graves are for. Wanna come take a look?%SPEECH_OFF%Of course you do...",
+			Text = "[img]gfx/ui/events/event_33.png[/img]The weather is nice. A fine evening, if any, for the moon to be where it is: an orange rind of it slipping in and out of the clouds - clouds that pass by on the seemingly innocuous gesture that a light breeze can have. So bright is this rim of a moon you wonder if any flowers might bloom, mistaking the evening light for its brighter cousin. You wonder if the millmoths and flies and armor-backed beetles see the moon and dance toward it as they would any candle or torch. Do they have that quiet desperation? That inescapable cruelty of realizing that, when your stock is placed against the greater whole, you have and are nothing... and the hatred that realization can bring, and the jealousy...\n\nSuddenly, %graverobber% the graverobber appears by your side, his smell skewering your thoughts with miasmic proficiency. He\'s hardly a man at all, but a golem, mudslaked and grass-peppered with two white eyes peering out. Sighing, you ask what he wants. He thumbs over one shoulder, the other occupied by a shovel.%SPEECH_ON%Went digging through a grave or three. Found somethin\' and I don\'t mean just what them graves are for. Wanna come take a look?%SPEECH_OFF%Of course you do...",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -224,7 +224,7 @@ this.graverobber_finds_item_event <- this.inherit("scripts/events/event", {
 	{
 		_vars.push([
 			"graverobber",
-			this.m.Graverobber.getName()
+			this.m.Graverobber.getNameOnly()
 		]);
 		_vars.push([
 			"historian",
