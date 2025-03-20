@@ -77,7 +77,7 @@ gt.Const.World.Common <- {
 		_party.fadeOutAndDie();
 	}
 
-	function assignTroops( _party, _partyList, _resources, _weightMode = 1 )
+	function assignTroops( _party, _partyList, _resources, _minibossify = 0, _weightMode = 1 )
 	{
 		if (_partyList[_partyList.len() - 1].Cost < _resources * 0.7)
 		{
@@ -174,7 +174,7 @@ gt.Const.World.Common <- {
 		{
 			for( local i = 0; i != t.Num; i = ++i )
 			{
-				this.addTroop(_party, t, false);
+				this.addTroop(_party, t, false, _minibossify);
 			}
 		}
 
@@ -247,6 +247,8 @@ gt.Const.World.Common <- {
 
 				if (unit.Variant > 0)
 				{
+					_minibossify = _minibossify + this.World.Assets.m.ChampionChanceAdditional;
+
 					if (!this.Const.DLC.Wildmen || this.Math.rand(1, 100) > unit.Variant + _minibossify + (this.World.getTime().Days > 90 ? 0 : -1))
 					{
 						unit.Variant = 0;

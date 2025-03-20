@@ -354,7 +354,7 @@ gt.Const.Strings.FlailNames <- [
 	"Spanker",
 	"Trouncer",
 	"Reaper",
-	"Castigater",
+	"Castigator",
 	"Punisher",
 	"Flying Star",
 	"Assaulter",

@@ -695,7 +695,6 @@ gt.Const.Strings.OathbringerNames <- [
 	"Anselm\'s Hammer",
 	"Anselm\'s Shield",
 	"Anselm\'s Sword",
-	"Anselm\'s Stolen Valor",
 	"%randomname% the Oathsworn",
 	"%randomname% the Crusader",
 	"%randomname% the Zealot",

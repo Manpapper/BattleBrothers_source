@@ -93,6 +93,12 @@ gt.Const.UI <- {
 		NotEnoughStashSpace = 12,
 		FoundLootListIsEmpty = 13
 	},
+	Swap = {
+		CanSwap = 0,
+		ConfirmReplaceSwap = 1,
+		ConfirmNoReplaceSwap = 2,
+		DoNotSwap = 3
+	},
 	ItemOwner = {
 		Stash = 0,
 		Shop = 1,

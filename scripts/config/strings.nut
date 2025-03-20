@@ -238,7 +238,12 @@ gt.Const.Strings.EntityName <- [
 	"Phylactery",
 	"Lost Treasure Hunter",
 	"Screaming Skull",
-	"Oathbringer"
+	"Oathbringer",
+	"Flesh Golem",
+	"Greater Flesh Golem",
+	"Fault Finder",
+	"The Grand Diviner",
+	"Flesh Cradle"
 ];
 gt.Const.Strings.EntityNamePlural <- [
 	"Necromancers",
@@ -347,7 +352,11 @@ gt.Const.Strings.EntityNamePlural <- [
 	"Phylacteries",
 	"Lost Treasure Hunters",
 	"Screaming Skulls",
-	"Oathbringers"
+	"Oathbringers",
+	"Flesh Golems",
+	"Greater Flesh Golems",
+	"Fault Finders",
+	"The Grand Diviner"
 ];
 gt.Const.Strings.Tactical.EntityName <- {
 	Boulder = "Boulder",
@@ -1206,7 +1215,7 @@ gt.Const.Strings.TerrainRegionNames <- [
 	[
 		"The Lost Oasis",
 		"Green Shallows",
-		"Emerald Bassin",
+		"Emerald Basin",
 		"Pearl of the South",
 		"Fruitful Shallows",
 		"Springs of Life",
@@ -1333,7 +1342,7 @@ gt.Const.Strings.PerkDescription <- {
 	Indomitable = "Unlocks the \'Indomitable\' skill which grants a [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color] damage reduction and immunity to being stunned, knocked back or grabbed for one turn.",
 	RallyTheTroops = "Unlocks the \'Rally\' skill which can rally fleeing allies, and raise morale of all nearby allies to a steady level. The higher the Resolve of the character using the skill, the higher the chance to succeed.",
 	Adrenaline = "Unlocks the \'Adrenaline\' skill which puts you first in the turn order for the next round, to have another turn before your enemies do. Feel the adrenaline rushing through your veins!",
-	Fearsome = "Make them scatter and flee! Any attack that inflicts at least 1 point of damage to hitpoints triggers a morale check for the opponent with a penalty equal to [color=" + this.Const.UI.Color.NegativeValue + "]20%[/color] of your Resolve - 10, as opposed to with no penalty and only if at or above 15 points of damage.",
+	Fearsome = "Make them scatter and flee! Any attack that inflicts at least 1 point of damage to hitpoints triggers a morale check for the opponent with a penalty equal to [color=" + this.Const.UI.Color.NegativeValue + "]15%[/color] of your Resolve, as opposed to with no penalty and only if at or above 15 points of damage.",
 	HeadHunter = "Go for the head! Hitting the head of a target will give you a guaranteed hit to the head also with your next attack. Connecting with your hit will reset the effect.",
 	SunderingStrikes = "Effectiveness vs. Armor is increased by [color=" + this.Const.UI.Color.PositiveValue + "]+20%[/color] for any weapon used.",
 	FastAdaption = "Adapt to your opponent\'s moves! Gain an additional stacking [color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] chance to hit with each attack that misses an opponent. Bonus is reset upon landing a hit.",

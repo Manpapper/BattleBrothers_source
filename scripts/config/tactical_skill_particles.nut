@@ -2630,4 +2630,519 @@ gt.Const.Tactical.MortarImpactParticles <- [
 		]
 	}
 ];
+gt.Const.Tactical.CorpseExplosionParticles <- [
+	{
+		Delay = 0,
+		Quantity = 60,
+		LifeTimeQuantity = 60,
+		SpawnRate = 50,
+		Brushes = [
+			"blood_red_01",
+			"blood_red_02",
+			"blood_red_03",
+			"blood_red_04",
+			"blood_red_05",
+			"blood_red_06",
+			"blood_red_07"
+		],
+		Stages = [
+			{
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 0.1,
+				ColorMin = this.createColor("ffffff00"),
+				ColorMax = this.createColor("ffffff00"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.5,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 110,
+				VelocityMax = 220,
+				DirectionMin = this.createVec(-0.5, 0.6),
+				DirectionMax = this.createVec(0.5, 1.2),
+				SpawnOffsetMin = this.createVec(-30, 5),
+				SpawnOffsetMax = this.createVec(-20, 10)
+			},
+			{
+				LifeTimeMin = 1.4,
+				LifeTimeMax = 1.4,
+				ColorMin = this.createColor("ffffffff"),
+				ColorMax = this.createColor("ffffffff"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.5,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 70,
+				VelocityMax = 140,
+				ForceMin = this.createVec(0, -100),
+				ForceMax = this.createVec(0, -100)
+			},
+			{
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 0.1,
+				ColorMin = this.createColor("ffffff00"),
+				ColorMax = this.createColor("ffffff00"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.5,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 70,
+				VelocityMax = 100,
+				ForceMin = this.createVec(0, -160),
+				ForceMax = this.createVec(0, -160)
+			}
+		]
+	},
+	{
+		Delay = 0,
+		Quantity = 80,
+		LifeTimeQuantity = 80,
+		SpawnRate = 40,
+		Brushes = [
+			"blood_splatter_red_01",
+			"blood_splatter_red_02",
+			"blood_splatter_red_03",
+			"blood_splatter_red_04",
+			"blood_splatter_red_05",
+			"blood_splatter_red_06",
+			"blood_splatter_red_07",
+			"blood_splatter_red_08",
+			"blood_splatter_red_09"
+		],
+		Stages = [
+			{
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 0.1,
+				ColorMin = this.createColor("ffffff00"),
+				ColorMax = this.createColor("ffffff00"),
+				ScaleMin = 1.0,
+				ScaleMax = 1.0,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 150,
+				VelocityMax = 300,
+				DirectionMin = this.createVec(-0.2, 0.3),
+				DirectionMax = this.createVec(0.0, 0.7),
+				SpawnOffsetMin = this.createVec(-50, 15),
+				SpawnOffsetMax = this.createVec(-20, 30)
+			},
+			{
+				LifeTimeMin = 1.5,
+				LifeTimeMax = 1.5,
+				ColorMin = this.createColor("ffffffff"),
+				ColorMax = this.createColor("ffffffff"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 100,
+				VelocityMax = 200,
+				ForceMin = this.createVec(0, -80),
+				ForceMax = this.createVec(0, -80)
+			},
+			{
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 0.2,
+				ColorMin = this.createColor("ffffff00"),
+				ColorMax = this.createColor("ffffff00"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 100,
+				VelocityMax = 200,
+				ForceMin = this.createVec(0, -160),
+				ForceMax = this.createVec(0, -160)
+			}
+		]
+	},
+	{
+		Delay = 0,
+		Quantity = 250,
+		LifeTimeQuantity = 250,
+		SpawnRate = 512,
+		Brushes = [
+			"effect_fire_01",
+			"effect_fire_02",
+			"effect_fire_03"
+		],
+		Stages = [
+			{
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 0.2,
+				ColorMin = this.createColor("ff6a6c00"),
+				ColorMax = this.createColor("ffeacf00"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 500,
+				VelocityMax = 600,
+				DirectionMin = this.createVec(-1.0, 0.25),
+				DirectionMax = this.createVec(1.0, 1.0),
+				SpawnOffsetMin = this.createVec(-20, -60),
+				SpawnOffsetMax = this.createVec(20, -20),
+				ForceMin = this.createVec(0, 90),
+				ForceMax = this.createVec(0, 90)
+			},
+			{
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 0.2,
+				ColorMin = this.createColor("ff813dff"),
+				ColorMax = this.createColor("fec19fff"),
+				ScaleMin = 0.75,
+				ScaleMax = 1.0,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 500,
+				VelocityMax = 600,
+				DirectionMin = this.createVec(-1.0, 0.25),
+				DirectionMax = this.createVec(1.0, 1.0),
+				ForceMin = this.createVec(0, 90),
+				ForceMax = this.createVec(0, 90)
+			},
+			{
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 0.2,
+				ColorMin = this.createColor("fc6a52f0"),
+				ColorMax = this.createColor("fcaa52f0"),
+				ScaleMin = 1.0,
+				ScaleMax = 1.25,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 500,
+				VelocityMax = 600,
+				ForceMin = this.createVec(0, 90),
+				ForceMax = this.createVec(0, 90)
+			},
+			{
+				LifeTimeMin = 0.2,
+				LifeTimeMax = 0.3,
+				ColorMin = this.createColor("d8380000"),
+				ColorMax = this.createColor("d8380000"),
+				ScaleMin = 1.25,
+				ScaleMax = 1.5,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 500,
+				VelocityMax = 600,
+				ForceMin = this.createVec(0, 90),
+				ForceMax = this.createVec(0, 90)
+			}
+		]
+	},
+	{
+		Delay = 0,
+		Quantity = 75,
+		LifeTimeQuantity = 75,
+		SpawnRate = 512,
+		Brushes = [
+			"blood_splatter_bones_01",
+			"blood_splatter_bones_01",
+			"blood_splatter_red_08",
+			"blood_splatter_red_09"
+		],
+		Stages = [
+			{
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 0.2,
+				ColorMin = this.createColor("fffffff00"),
+				ColorMax = this.createColor("fffffff00"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 500,
+				VelocityMax = 600,
+				DirectionMin = this.createVec(-1.0, 0.25),
+				DirectionMax = this.createVec(1.0, 1.0),
+				SpawnOffsetMin = this.createVec(-20, -60),
+				SpawnOffsetMax = this.createVec(20, -20),
+				ForceMin = this.createVec(0, 90),
+				ForceMax = this.createVec(0, 90)
+			},
+			{
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 0.2,
+				ColorMin = this.createColor("ffffffdd"),
+				ColorMax = this.createColor("ffffffdd"),
+				ScaleMin = 0.75,
+				ScaleMax = 1.0,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 500,
+				VelocityMax = 600,
+				DirectionMin = this.createVec(-1.0, 0.25),
+				DirectionMax = this.createVec(1.0, 1.0),
+				ForceMin = this.createVec(0, 90),
+				ForceMax = this.createVec(0, 90)
+			},
+			{
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 0.2,
+				ColorMin = this.createColor("ffffffaa"),
+				ColorMax = this.createColor("ffffffaa"),
+				ScaleMin = 1.0,
+				ScaleMax = 1.0,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 500,
+				VelocityMax = 600,
+				ForceMin = this.createVec(0, -90),
+				ForceMax = this.createVec(0, -90)
+			},
+			{
+				LifeTimeMin = 0.2,
+				LifeTimeMax = 0.3,
+				ColorMin = this.createColor("ffffff00"),
+				ColorMax = this.createColor("ffffff00"),
+				ScaleMin = 1.0,
+				ScaleMax = 1.0,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 500,
+				VelocityMax = 600,
+				ForceMin = this.createVec(0, -90),
+				ForceMax = this.createVec(0, -90)
+			}
+		]
+	},
+	{
+		Delay = 125,
+		Quantity = 100,
+		LifeTimeQuantity = 100,
+		SpawnRate = 512,
+		Brushes = [
+			"ash_01",
+			"ash_02",
+			"ash_light_01",
+			"ash_light_02"
+		],
+		Stages = [
+			{
+				LifeTimeMin = 0.25,
+				LifeTimeMax = 0.5,
+				ColorMin = this.createColor("9d821700"),
+				ColorMax = this.createColor("f5e6aa00"),
+				ScaleMin = 0.5,
+				ScaleMax = 1.0,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 200,
+				VelocityMax = 300,
+				DirectionMin = this.createVec(-1.0, -0.25),
+				DirectionMax = this.createVec(1.0, 0.25),
+				SpawnOffsetMin = this.createVec(-50, -60),
+				SpawnOffsetMax = this.createVec(50, 30),
+				ForceMin = this.createVec(0, 45),
+				ForceMax = this.createVec(0, 45)
+			},
+			{
+				LifeTimeMin = 0.25,
+				LifeTimeMax = 0.5,
+				ColorMin = this.createColor("9d82172d"),
+				ColorMax = this.createColor("f5e6aa2d"),
+				ScaleMin = 1.0,
+				ScaleMax = 1.25,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 75,
+				VelocityMax = 150,
+				DirectionMin = this.createVec(-0.5, -0.25),
+				DirectionMax = this.createVec(0.5, 0.25),
+				ForceMin = this.createVec(0, 45),
+				ForceMax = this.createVec(0, 45)
+			},
+			{
+				LifeTimeMin = 0.5,
+				LifeTimeMax = 1.0,
+				ColorMin = this.createColor("9d82172d"),
+				ColorMax = this.createColor("f5e6aa2d"),
+				ScaleMin = 1.25,
+				ScaleMax = 1.5,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				DirectionMin = this.createVec(0.0, 0.0),
+				DirectionMax = this.createVec(0.0, 0.0),
+				ForceMin = this.createVec(0, 45),
+				ForceMax = this.createVec(0, 45)
+			},
+			{
+				LifeTimeMin = 1.0,
+				LifeTimeMax = 2.0,
+				ColorMin = this.createColor("9d821700"),
+				ColorMax = this.createColor("f5e6aa00"),
+				ScaleMin = 1.5,
+				ScaleMax = 1.75,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				DirectionMin = this.createVec(0.0, 0.0),
+				DirectionMax = this.createVec(0.0, 0.0),
+				ForceMin = this.createVec(0, 45),
+				ForceMax = this.createVec(0, 45)
+			}
+		]
+	}
+];
+gt.Const.Tactical.CorpseExplosionOuterParticles <- [
+	{
+		Delay = 0,
+		Quantity = 75,
+		LifeTimeQuantity = 75,
+		SpawnRate = 512,
+		Brushes = [
+			"blood_splatter_bones_01",
+			"blood_splatter_bones_01",
+			"blood_splatter_red_08",
+			"blood_splatter_red_09"
+		],
+		Stages = [
+			{
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 0.2,
+				ColorMin = this.createColor("fffffff00"),
+				ColorMax = this.createColor("fffffff00"),
+				ScaleMin = 0.5,
+				ScaleMax = 0.75,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 500,
+				VelocityMax = 600,
+				DirectionMin = this.createVec(-1.0, 0.25),
+				DirectionMax = this.createVec(1.0, 1.0),
+				SpawnOffsetMin = this.createVec(-20, -60),
+				SpawnOffsetMax = this.createVec(20, -20),
+				ForceMin = this.createVec(0, 90),
+				ForceMax = this.createVec(0, 90)
+			},
+			{
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 0.2,
+				ColorMin = this.createColor("ffffffff"),
+				ColorMax = this.createColor("ffffffff"),
+				ScaleMin = 0.75,
+				ScaleMax = 1.0,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 500,
+				VelocityMax = 600,
+				DirectionMin = this.createVec(-1.0, 0.25),
+				DirectionMax = this.createVec(1.0, 1.0),
+				ForceMin = this.createVec(0, 90),
+				ForceMax = this.createVec(0, 90)
+			},
+			{
+				LifeTimeMin = 0.1,
+				LifeTimeMax = 0.2,
+				ColorMin = this.createColor("fffffff0"),
+				ColorMax = this.createColor("fffffff0"),
+				ScaleMin = 1.0,
+				ScaleMax = 1.0,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 500,
+				VelocityMax = 600,
+				ForceMin = this.createVec(0, -90),
+				ForceMax = this.createVec(0, -90)
+			},
+			{
+				LifeTimeMin = 0.2,
+				LifeTimeMax = 0.3,
+				ColorMin = this.createColor("ffffff00"),
+				ColorMax = this.createColor("ffffff00"),
+				ScaleMin = 1.0,
+				ScaleMax = 1.0,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 500,
+				VelocityMax = 600,
+				ForceMin = this.createVec(0, -90),
+				ForceMax = this.createVec(0, -90)
+			}
+		]
+	},
+	{
+		Delay = 125,
+		Quantity = 100,
+		LifeTimeQuantity = 100,
+		SpawnRate = 512,
+		Brushes = [
+			"ash_01",
+			"ash_02",
+			"ash_light_01",
+			"ash_light_02"
+		],
+		Stages = [
+			{
+				LifeTimeMin = 0.25,
+				LifeTimeMax = 0.5,
+				ColorMin = this.createColor("9d821700"),
+				ColorMax = this.createColor("f5e6aa00"),
+				ScaleMin = 0.5,
+				ScaleMax = 1.0,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 200,
+				VelocityMax = 300,
+				DirectionMin = this.createVec(-1.0, -0.25),
+				DirectionMax = this.createVec(1.0, 0.25),
+				SpawnOffsetMin = this.createVec(-50, -60),
+				SpawnOffsetMax = this.createVec(50, 30),
+				ForceMin = this.createVec(0, 45),
+				ForceMax = this.createVec(0, 45)
+			},
+			{
+				LifeTimeMin = 0.25,
+				LifeTimeMax = 0.5,
+				ColorMin = this.createColor("9d82172d"),
+				ColorMax = this.createColor("f5e6aa2d"),
+				ScaleMin = 1.0,
+				ScaleMax = 1.25,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 75,
+				VelocityMax = 150,
+				DirectionMin = this.createVec(-0.5, -0.25),
+				DirectionMax = this.createVec(0.5, 0.25),
+				ForceMin = this.createVec(0, 45),
+				ForceMax = this.createVec(0, 45)
+			},
+			{
+				LifeTimeMin = 0.5,
+				LifeTimeMax = 1.0,
+				ColorMin = this.createColor("9d82172d"),
+				ColorMax = this.createColor("f5e6aa2d"),
+				ScaleMin = 1.25,
+				ScaleMax = 1.5,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				DirectionMin = this.createVec(0.0, 0.0),
+				DirectionMax = this.createVec(0.0, 0.0),
+				ForceMin = this.createVec(0, 45),
+				ForceMax = this.createVec(0, 45)
+			},
+			{
+				LifeTimeMin = 1.0,
+				LifeTimeMax = 2.0,
+				ColorMin = this.createColor("9d821700"),
+				ColorMax = this.createColor("f5e6aa00"),
+				ScaleMin = 1.5,
+				ScaleMax = 1.75,
+				RotationMin = 0,
+				RotationMax = 359,
+				VelocityMin = 50,
+				VelocityMax = 100,
+				DirectionMin = this.createVec(0.0, 0.0),
+				DirectionMax = this.createVec(0.0, 0.0),
+				ForceMin = this.createVec(0, 45),
+				ForceMax = this.createVec(0, 45)
+			}
+		]
+	}
+];
 

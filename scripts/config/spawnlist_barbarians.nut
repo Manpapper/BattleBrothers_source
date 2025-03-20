@@ -2968,7 +2968,7 @@ gt.Const.World.Spawn.BarbarianHunters <- [
 ];
 gt.Const.World.Spawn.BarbarianKing <- [
 	{
-		Body = "figure_wildman_06",
+		Body = "figure_wildman_04",
 		Troops = [
 			{
 				Type = this.Const.World.Spawn.Troops.BarbarianChosen,

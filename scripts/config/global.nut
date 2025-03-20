@@ -1,6 +1,6 @@
 local gt = this.getroottable();
 gt.Const.Serialization <- {
-	Version = 64
+	Version = 65
 };
 gt.Const.DLC <- {
 	Mask = 0,
@@ -35,31 +35,31 @@ this.Const.DLC.Info[1] = {
 	Announce = true,
 	Icon = "ui/images/dlc_1.png",
 	IconDisabled = "ui/images/dlc_1_sw.png",
-	URL = this.isSteamBuild() ? "https://store.steampowered.com/app/732460/Battle_Brothers__Lindwurm/" : "https://www.gog.com/game/battle_brothers"
+	URL = this.isSteamBuild() ? "steam://advertise/732460" : "https://www.gog.com/game/battle_brothers"
 };
 this.Const.DLC.Info[2] = {
 	Announce = true,
 	Icon = "ui/images/dlc_2.png",
 	IconDisabled = "ui/images/dlc_2_sw.png",
-	URL = this.isSteamBuild() ? "https://store.steampowered.com/app/961930/Battle_Brothers__Beasts__Exploration/" : "https://www.gog.com/game/battle_brothers_beasts_exploration"
+	URL = this.isSteamBuild() ? "steam://advertise/961930" : "https://www.gog.com/game/battle_brothers_beasts_exploration"
 };
 this.Const.DLC.Info[4] = {
 	Announce = true,
 	Icon = "ui/images/dlc_4.png",
 	IconDisabled = "ui/images/dlc_4_sw.png",
-	URL = this.isSteamBuild() ? "https://store.steampowered.com/app/1067690/Battle_Brothers__Warriors_of_the_North" : "https://www.gog.com/game/battle_brothers_warriors_of_the_north"
+	URL = this.isSteamBuild() ? "steam://advertise/1067690" : "https://www.gog.com/game/battle_brothers_warriors_of_the_north"
 };
 this.Const.DLC.Info[6] = {
 	Announce = true,
 	Icon = "ui/images/dlc_6.png",
 	IconDisabled = "ui/images/dlc_6_sw.png",
-	URL = this.isSteamBuild() ? "https://store.steampowered.com/app/1361280/Battle_Brothers__Blazing_Deserts" : "https://www.gog.com/game/battle_brothers_blazing_deserts"
+	URL = this.isSteamBuild() ? "steam://advertise/1361280" : "https://www.gog.com/game/battle_brothers_blazing_deserts"
 };
 this.Const.DLC.Info[8] = {
 	Announce = true,
 	Icon = "ui/images/dlc_8.png",
 	IconDisabled = "ui/images/dlc_8_sw.png",
-	URL = this.isSteamBuild() ? "https://store.steampowered.com/app/1910050/Battle_Brothers__Of_Flesh_and_Faith" : "https://www.gog.com/game/battle_brothers_of_flesh_and_faith"
+	URL = this.isSteamBuild() ? "steam://advertise/1910050" : "https://www.gog.com/game/battle_brothers_of_flesh_and_faith"
 };
 gt.Const.Direction <- {
 	N = 0,
@@ -334,6 +334,11 @@ gt.Const.EntityType <- {
 	ZombieTreasureHunter = 104,
 	FlyingSkull = 105,
 	Oathbringer = 106,
+	LesserFleshGolem = 107,
+	GreaterFleshGolem = 108,
+	FaultFinder = 109,
+	GrandDiviner = 110,
+	FleshCradle = 111,
 	function convertOldToNew( _id )
 	{
 		switch(_id)
@@ -506,6 +511,11 @@ gt.Const.EntityType <- {
 		case this.Const.EntityType.ZombieBetrayer:
 		case this.Const.EntityType.ZombieBoss:
 		case this.Const.EntityType.ZombieTreasureHunter:
+		case this.Const.EntityType.Ghost:
+		case this.Const.EntityType.LesserFleshGolem:
+		case this.Const.EntityType.GreaterFleshGolem:
+		case this.Const.EntityType.FaultFinder:
+		case this.Const.EntityType.GrandDiviner:
 			return this.Const.FactionType.Zombies;
 
 		case this.Const.EntityType.SkeletonLight:
@@ -514,7 +524,6 @@ gt.Const.EntityType <- {
 		case this.Const.EntityType.SkeletonPriest:
 		case this.Const.EntityType.SkeletonBoss:
 		case this.Const.EntityType.Vampire:
-		case this.Const.EntityType.Ghost:
 		case this.Const.EntityType.SkeletonLich:
 		case this.Const.EntityType.SkeletonLichMirrorImage:
 		case this.Const.EntityType.FlyingSkull:
@@ -558,6 +567,7 @@ gt.Const.EntityType <- {
 		case this.Const.EntityType.Cultist:
 		case this.Const.EntityType.Warhound:
 		case this.Const.EntityType.SkeletonPhylactery:
+		case this.Const.EntityType.FleshCradle:
 		case this.Const.EntityType.Oathbringer:
 			return this.Const.FactionType.Generic;
 
@@ -742,6 +752,11 @@ gt.Const.EntityIcon <- [
 	"phylactery_orientation",
 	"zombie_04_orientation",
 	"skeleton_08_orientation",
-	"oathbringer_orientation"
+	"oathbringer_orientation",
+	"flesh_golem_orientation",
+	"greater_flesh_golem_orientation",
+	"fault_finder_orientation",
+	"grand_diviner_orientation",
+	"flesh_cradle_orientation"
 ];
 

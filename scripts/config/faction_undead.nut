@@ -14,7 +14,7 @@ gt.Const.Tactical.Actor.SkeletonLight <- {
 	XP = 150,
 	ActionPoints = 9,
 	Hitpoints = 45,
-	Bravery = 70,
+	Bravery = 80,
 	Stamina = 100,
 	MeleeSkill = 55,
 	RangedSkill = 0,
@@ -32,7 +32,7 @@ gt.Const.Tactical.Actor.SkeletonMedium <- {
 	XP = 250,
 	ActionPoints = 9,
 	Hitpoints = 55,
-	Bravery = 90,
+	Bravery = 100,
 	Stamina = 100,
 	MeleeSkill = 65,
 	RangedSkill = 0,
@@ -50,7 +50,7 @@ gt.Const.Tactical.Actor.SkeletonHeavy <- {
 	XP = 350,
 	ActionPoints = 9,
 	Hitpoints = 65,
-	Bravery = 110,
+	Bravery = 130,
 	Stamina = 100,
 	MeleeSkill = 75,
 	RangedSkill = 0,
@@ -68,7 +68,7 @@ gt.Const.Tactical.Actor.SkeletonPriest <- {
 	XP = 450,
 	ActionPoints = 9,
 	Hitpoints = 65,
-	Bravery = 110,
+	Bravery = 130,
 	Stamina = 100,
 	MeleeSkill = 40,
 	RangedSkill = 0,
@@ -86,7 +86,7 @@ gt.Const.Tactical.Actor.SkeletonLich <- {
 	XP = 750,
 	ActionPoints = 12,
 	Hitpoints = 240,
-	Bravery = 110,
+	Bravery = 130,
 	Stamina = 100,
 	MeleeSkill = 0,
 	RangedSkill = 0,
@@ -159,7 +159,7 @@ gt.Const.Tactical.Actor.SkeletonBoss <- {
 	XP = 600,
 	ActionPoints = 9,
 	Hitpoints = 350,
-	Bravery = 120,
+	Bravery = 140,
 	Stamina = 100,
 	MeleeSkill = 90,
 	RangedSkill = 0,
@@ -214,7 +214,7 @@ gt.Const.Tactical.Actor.ZombieKnight <- {
 	XP = 250,
 	ActionPoints = 7,
 	Hitpoints = 180,
-	Bravery = 110,
+	Bravery = 130,
 	Stamina = 100,
 	MeleeSkill = 60,
 	RangedSkill = 0,
@@ -304,7 +304,7 @@ gt.Const.Tactical.Actor.Ghost <- {
 	XP = 225,
 	ActionPoints = 9,
 	Hitpoints = 1,
-	Bravery = 110,
+	Bravery = 130,
 	Stamina = 100,
 	MeleeSkill = 65,
 	RangedSkill = 0,
@@ -371,5 +371,96 @@ gt.Const.Tactical.Actor.Necromancer <- {
 		20,
 		0
 	]
+};
+gt.Const.Tactical.Actor.LesserFleshGolem <- {
+	XP = 150,
+	ActionPoints = 12,
+	Hitpoints = 200,
+	Bravery = 100,
+	Stamina = 100,
+	MeleeSkill = 55,
+	RangedSkill = 0,
+	MeleeDefense = 0,
+	RangedDefense = 0,
+	Initiative = 50,
+	FatigueEffectMult = 0.0,
+	MoraleEffectMult = 0.0,
+	Armor = [
+		0,
+		0
+	]
+};
+gt.Const.Tactical.Actor.GreaterFleshGolem <- {
+	XP = 400,
+	ActionPoints = 12,
+	Hitpoints = 700,
+	Bravery = 100,
+	Stamina = 100,
+	MeleeSkill = 70,
+	RangedSkill = 70,
+	MeleeDefense = 10,
+	RangedDefense = 10,
+	Initiative = 35,
+	FatigueEffectMult = 0.0,
+	MoraleEffectMult = 0.0,
+	Armor = [
+		0,
+		0
+	]
+};
+gt.Const.Tactical.Actor.FaultFinder <- {
+	XP = 250,
+	ActionPoints = 9,
+	Hitpoints = 65,
+	Bravery = 75,
+	Stamina = 100,
+	MeleeSkill = 65,
+	RangedSkill = 65,
+	MeleeDefense = 0,
+	RangedDefense = 15,
+	Initiative = 115,
+	FatigueEffectMult = 1.0,
+	MoraleEffectMult = 1.0,
+	Armor = [
+		0,
+		0
+	]
+};
+gt.Const.Tactical.Actor.GrandDiviner <- {
+	XP = 500,
+	ActionPoints = 9,
+	Hitpoints = 115,
+	Bravery = 130,
+	Stamina = 110,
+	MeleeSkill = 80,
+	RangedSkill = 0,
+	MeleeDefense = 15,
+	RangedDefense = 20,
+	Initiative = 105,
+	FatigueEffectMult = 1.0,
+	MoraleEffectMult = 1.0,
+	Armor = [
+		0,
+		0
+	]
+};
+gt.Const.Tactical.Actor.FleshCradle <- {
+	XP = 0,
+	ActionPoints = 0,
+	Hitpoints = 9999,
+	Bravery = 999,
+	Stamina = 999,
+	MeleeSkill = 1,
+	RangedSkill = 1,
+	MeleeDefense = -50,
+	RangedDefense = -50,
+	Initiative = 50,
+	FatigueEffectMult = 1.0,
+	MoraleEffectMult = 1.0,
+	Armor = [
+		9999,
+		9999
+	],
+	FatigueRecoveryRate = 0
 };
 
