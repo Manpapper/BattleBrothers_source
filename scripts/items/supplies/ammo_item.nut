@@ -24,6 +24,7 @@ this.ammo_item <- this.inherit("scripts/items/item", {
 
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "supplies.ammo";
 		this.m.Name = "Ammunition";
 		this.m.Icon = "supplies/ammo.png";

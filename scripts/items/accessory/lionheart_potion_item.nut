@@ -2,6 +2,7 @@ this.lionheart_potion_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "accessory.lionheart_potion";
 		this.m.Name = "Lionheart Potion";
 		this.m.Description = "Be brave as a lion! This potion inhibits fear and promotes courage, up to and including the gross overestimation of one\'s own abilities. Drink responsibly. Lasts for the next battle.";

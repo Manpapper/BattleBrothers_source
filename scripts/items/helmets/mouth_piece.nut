@@ -3,7 +3,7 @@ this.mouth_piece <- this.inherit("scripts/items/helmets/helmet", {
 	function create()
 	{
 		this.helmet.create();
-		this.m.ID = "armor.head.witchhunter_hat";
+		this.m.ID = "armor.head.mouth_piece";
 		this.m.Name = "Mouth Piece";
 		this.m.Description = "A piece of cloth covering the lower face to protect from breathing in dust or prevent identification.";
 		this.m.ShowOnCharacter = true;

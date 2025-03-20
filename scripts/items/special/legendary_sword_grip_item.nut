@@ -8,7 +8,7 @@ this.legendary_sword_grip_item <- this.inherit("scripts/items/item", {
 		this.m.Description = "A masterfully crafted sword grip covered in mysterious blue stones. The stones seem to have a glimmering light emerging from deep within. Perhaps the sword could be reforged if you had both parts.";
 		this.m.Icon = "misc/inventory_sword_hilt_01.png";
 		this.m.SlotType = this.Const.ItemSlot.None;
-		this.m.ItemType = this.Const.Items.ItemType.Misc;
+		this.m.ItemType = this.Const.Items.ItemType.Misc | this.Const.Items.ItemType.Quest;
 		this.m.IsDroppedAsLoot = true;
 		this.m.Value = 2500;
 	}

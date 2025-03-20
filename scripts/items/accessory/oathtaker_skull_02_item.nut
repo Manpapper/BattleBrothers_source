@@ -7,6 +7,7 @@ this.oathtaker_skull_02_item <- this.inherit("scripts/items/accessory/accessory"
 		this.m.Name = "Young Anselm\'s Skull and Jawbone";
 		this.m.Description = "The skull of Young Anselm, the first Oathtaker, worn alongside a reliquary containing his fractured jawbone. To enter battle adorned with such a powerful relic is to have complete assurance in victory, for who could be defeated with Young Anselm at their side?";
 		this.m.SlotType = this.Const.ItemSlot.Accessory;
+		this.m.ItemType = this.Const.Items.ItemType.Accessory | this.Const.Items.ItemType.Quest;
 		this.m.IsDroppedAsLoot = true;
 		this.m.ShowOnCharacter = true;
 		this.m.IconLarge = "";

@@ -8,7 +8,7 @@ this.research_notes_beasts_item <- this.inherit("scripts/items/item", {
 		this.m.Description = "A treatise on the beasts of the world. Coded notes fill the margins in sections on the most interesting - and real - creatures.";
 		this.m.Icon = "misc/inventory_anatomists_book_03.png";
 		this.m.SlotType = this.Const.ItemSlot.None;
-		this.m.ItemType = this.Const.Items.ItemType.Misc;
+		this.m.ItemType = this.Const.Items.ItemType.Misc | this.Const.Items.ItemType.Quest;
 		this.m.Value = 0;
 	}
 

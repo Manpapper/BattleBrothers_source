@@ -2,6 +2,7 @@ this.night_vision_elixir_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "accessory.night_vision_elixir";
 		this.m.Name = "Night Owl Elixir";
 		this.m.Description = "This elixir, when consumed, brightens up the night as if it were the mid of day. Drink responsibly. Lasts for the next battle.";

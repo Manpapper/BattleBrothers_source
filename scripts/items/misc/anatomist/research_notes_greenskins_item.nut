@@ -8,7 +8,7 @@ this.research_notes_greenskins_item <- this.inherit("scripts/items/item", {
 		this.m.Description = "A tidy collection of eyewitness reports, experiment logs, and research diaries detailing the anatomy of various greenskin specimens.";
 		this.m.Icon = "misc/inventory_anatomists_book_01.png";
 		this.m.SlotType = this.Const.ItemSlot.None;
-		this.m.ItemType = this.Const.Items.ItemType.Misc;
+		this.m.ItemType = this.Const.Items.ItemType.Misc | this.Const.Items.ItemType.Quest;
 		this.m.Value = 0;
 	}
 

@@ -2,6 +2,7 @@ this.large_powder_bag <- this.inherit("scripts/items/ammo/ammo", {
 	m = {},
 	function create()
 	{
+		this.ammo.create();
 		this.m.ID = "ammo.powder";
 		this.m.Name = "Large Powder Bag";
 		this.m.Description = "A large bag of black powder, used for arming exotic firearms. Is automatically refilled after each battle if you have enough ammunition.";

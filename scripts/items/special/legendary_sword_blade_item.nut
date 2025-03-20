@@ -8,7 +8,7 @@ this.legendary_sword_blade_item <- this.inherit("scripts/items/item", {
 		this.m.Description = "The glimmering blade of a broken sword you retrieved from the Kraken. In all your years of fighting you never encountered such a masterfully crafted blade. Perhaps the sword could be reforged if you had both parts.";
 		this.m.Icon = "misc/inventory_sword_blade_01.png";
 		this.m.SlotType = this.Const.ItemSlot.None;
-		this.m.ItemType = this.Const.Items.ItemType.Misc;
+		this.m.ItemType = this.Const.Items.ItemType.Misc | this.Const.Items.ItemType.Quest;
 		this.m.IsDroppedAsLoot = true;
 		this.m.Value = 2500;
 	}

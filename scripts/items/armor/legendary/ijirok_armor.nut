@@ -28,7 +28,7 @@ this.ijirok_armor <- this.inherit("scripts/items/armor/armor", {
 			id = 6,
 			type = "text",
 			icon = "ui/icons/health.png",
-			text = "Heals [color=" + this.Const.UI.Color.PositiveValue + "]10[/color] hitpoints of the wearer each turn"
+			text = "Heals [color=" + this.Const.UI.Color.PositiveValue + "]10[/color] Hitpoints of the wearer each turn"
 		});
 		return result;
 	}

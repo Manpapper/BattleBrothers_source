@@ -2,6 +2,7 @@ this.recovery_potion_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "accessory.recovery_potion";
 		this.m.Name = "Second Wind Potion";
 		this.m.Description = "A fatigued fighter is a dead fighter. This concoction of adrenaline and plant-based stimulants can be used to go the extra mile. Lasts for the next battle.";

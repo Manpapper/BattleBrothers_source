@@ -15,7 +15,7 @@ this.orc_javelin <- this.inherit("scripts/items/weapons/weapon", {
 		this.weapon.create();
 		this.m.ID = "weapon.orc_javelin";
 		this.m.Name = "Bundle of Crude Javelins";
-		this.m.Description = "A bunch of crudely made javelins intended for throwing at targets. Have limited range and are exhausting to throw, but may inflict devastating injuries. Can also inflict minor damage to shields if those are hit instead.";
+		this.m.Description = "A bunch of crudely made javelins intended for throwing at targets. Have limited range and are exhausting to throw, but may inflict devastating injuries.";
 		this.m.Categories = "Throwing Weapon, One-Handed";
 		this.m.IconLarge = "weapons/ranged/orc_javelins.png";
 		this.m.Icon = "weapons/ranged/orc_javelins_70x70.png";

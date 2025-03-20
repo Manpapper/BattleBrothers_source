@@ -2,6 +2,7 @@ this.berserker_mushrooms_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "accessory.berserker_mushrooms";
 		this.m.Name = "Strange Mushrooms";
 		this.m.Description = "Strange mushrooms that have anyone chewing them enter a trance-like state of rage where they don\'t feel any pain and exhibit significantly increased aggression. Eat responsibly. Lasts for the next battle.";

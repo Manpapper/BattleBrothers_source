@@ -2,6 +2,7 @@ this.iron_will_potion_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "accessory.iron_will_potion";
 		this.m.Name = "Iron Will Potion";
 		this.m.Description = "A drink to numb the pain and get the juices flowing. Expect a major burning sensation in your throat. Drink responsibly. Lasts for the next battle.";

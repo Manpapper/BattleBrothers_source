@@ -8,7 +8,7 @@ this.manhunters_ledger_item <- this.inherit("scripts/items/item", {
 		this.m.Description = "A ledger detailing the members and contract terms of the company.";
 		this.m.Icon = "misc/inventory_ledger_item.png";
 		this.m.SlotType = this.Const.ItemSlot.None;
-		this.m.ItemType = this.Const.Items.ItemType.Misc;
+		this.m.ItemType = this.Const.Items.ItemType.Misc | this.Const.Items.ItemType.Quest;
 		this.m.Value = 0;
 	}
 

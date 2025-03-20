@@ -2,6 +2,7 @@ this.large_quiver_of_arrows <- this.inherit("scripts/items/ammo/ammo", {
 	m = {},
 	function create()
 	{
+		this.ammo.create();
 		this.m.ID = "ammo.arrows";
 		this.m.Name = "Large Quiver of Arrows";
 		this.m.Description = "A large quiver of arrows, required to use bows of all kinds. Is automatically refilled after each battle if you have enough ammunition.";

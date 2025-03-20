@@ -8,7 +8,7 @@ this.broken_ritual_armor_item <- this.inherit("scripts/items/item", {
 		this.m.Description = "The broken remains of a heavy barbarian armor, covered in ritual runes. It\'s unusable like this, and yet you feel that there\'s something special about it. Perhaps there is some way to mend it?";
 		this.m.Icon = "misc/inventory_champion_armor_quest.png";
 		this.m.SlotType = this.Const.ItemSlot.None;
-		this.m.ItemType = this.Const.Items.ItemType.Misc;
+		this.m.ItemType = this.Const.Items.ItemType.Misc | this.Const.Items.ItemType.Quest;
 		this.m.IsDroppedAsLoot = true;
 		this.m.Value = 1000;
 	}

@@ -53,7 +53,7 @@ this.unhold_potion_item <- this.inherit("scripts/items/misc/anatomist/anatomist_
 			id = 11,
 			type = "text",
 			icon = "ui/icons/health.png",
-			text = "Regenerate [color=" + this.Const.UI.Color.PositiveValue + "]10[/color] hitpoints each turn"
+			text = "Regenerate [color=" + this.Const.UI.Color.PositiveValue + "]10[/color] Hitpoints each turn"
 		});
 		result.push({
 			id = 65,

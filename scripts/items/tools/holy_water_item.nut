@@ -3,7 +3,7 @@ this.holy_water_item <- this.inherit("scripts/items/weapons/weapon", {
 	function create()
 	{
 		this.weapon.create();
-		this.m.ID = "weapon.holy Water";
+		this.m.ID = "weapon.holy_water";
 		this.m.Name = "Flask of Blessed Water";
 		this.m.Description = "A flask filled with water blessed by a man of the gods. Can be thrown at short ranges.";
 		this.m.IconLarge = "tools/holy_water_01.png";

@@ -2,6 +2,7 @@ this.cat_potion_item <- this.inherit("scripts/items/item", {
 	m = {},
 	function create()
 	{
+		this.item.create();
 		this.m.ID = "accessory.cat_potion";
 		this.m.Name = "Cat Potion";
 		this.m.Description = "Be quick as a cat! This potion promises to heighten your senses and sharpen your reflexes. Drink responsibly. Lasts for the next battle.";

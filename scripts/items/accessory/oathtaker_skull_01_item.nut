@@ -7,6 +7,7 @@ this.oathtaker_skull_01_item <- this.inherit("scripts/items/accessory/accessory"
 		this.m.Name = "Young Anselm\'s Skull";
 		this.m.Description = "The skull of Young Anselm, the first Oathtaker. Adorning oneself with such a priceless artifact would surely fill any man to the brim with honor and courage.";
 		this.m.SlotType = this.Const.ItemSlot.Accessory;
+		this.m.ItemType = this.Const.Items.ItemType.Accessory | this.Const.Items.ItemType.Quest;
 		this.m.IsDroppedAsLoot = true;
 		this.m.ShowOnCharacter = true;
 		this.m.IconLarge = "";
