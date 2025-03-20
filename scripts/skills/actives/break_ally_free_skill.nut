@@ -27,7 +27,6 @@ this.break_ally_free_skill <- this.inherit("scripts/skills/skill", {
 
 	function getTooltip()
 	{
-		local chance = this.Math.min(100, this.getContainer().getActor().getCurrentProperties().getMeleeSkill() - 10);
 		return [
 			{
 				id = 1,
@@ -48,7 +47,7 @@ this.break_ally_free_skill <- this.inherit("scripts/skills/skill", {
 				id = 4,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "Has a [color=" + this.Const.UI.Color.PositiveValue + "]" + chance + "%[/color] chance to succeed, based on Melee Skill, or higher if there\'s been attempts to free the ally before."
+				text = "Has a [color=" + this.Const.UI.Color.PositiveValue + "]" + this.getChance() + "%[/color] chance to succeed, based on Melee Skill, or higher if there\'s been attempts to free the ally before."
 			}
 		];
 	}

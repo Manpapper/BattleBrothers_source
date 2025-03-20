@@ -1,18 +1,18 @@
-this.serpent_hook_skill <- this.inherit("scripts/skills/skill", {
+this.flesh_pull_skill <- this.inherit("scripts/skills/skill", {
 	m = {
-		DestinationTile = null
+		DestinationTile = null,
+		PullRange = 2
 	},
 	function create()
 	{
-		this.m.ID = "actives.serpent_hook";
-		this.m.Name = "Drag";
+		this.m.ID = "actives.flesh_pull";
+		this.m.Name = "Flesh Pull";
 		this.m.Description = "";
-		this.m.Icon = "skills/active_192.png";
-		this.m.Overlay = "active_192";
+		this.m.Icon = "skills/active_235.png";
+		this.m.Overlay = "active_235";
 		this.m.SoundOnUse = [
-			"sounds/enemies/dlc6/snake_snare_01.wav",
-			"sounds/enemies/dlc6/snake_snare_02.wav",
-			"sounds/enemies/dlc6/snake_snare_03.wav"
+			"sounds/enemies/faultfinder_pull_01.wav",
+			"sounds/enemies/faultfinder_pull_02.wav"
 		];
 		this.m.Delay = 1000;
 		this.m.Type = this.Const.SkillType.Active;
@@ -24,11 +24,15 @@ this.serpent_hook_skill <- this.inherit("scripts/skills/skill", {
 		this.m.IsAttack = true;
 		this.m.IsIgnoredAsAOO = true;
 		this.m.IsWeaponSkill = true;
+		this.m.IsVisibleTileNeeded = false;
 		this.m.IsUsingHitchance = false;
+		this.m.IsTargetingCorpses = true;
+		this.m.IsTargetingDangerTiles = true;
 		this.m.ActionPointCost = 6;
 		this.m.FatigueCost = 20;
 		this.m.MinRange = 1;
-		this.m.MaxRange = 3;
+		this.m.MaxRange = 99;
+		this.m.MaxLevelDifference = 4;
 	}
 
 	function setDestinationTile( _t )
@@ -38,44 +42,70 @@ this.serpent_hook_skill <- this.inherit("scripts/skills/skill", {
 
 	function isUsable()
 	{
-		return this.skill.isUsable() && !this.getContainer().getActor().getCurrentProperties().IsRooted;
-	}
-
-	function findTileToKnockBackTo( _userTile, _targetTile )
-	{
-		return this.getPulledToTile(_userTile, _targetTile);
-	}
-
-	function getPulledToTile( _userTile, _targetTile )
-	{
-		local tiles = this.getPulledToTiles(_userTile, _targetTile);
-
-		if (tiles.len() != 0)
-		{
-			return tiles[0];
-		}
-		else
-		{
-			return null;
-		}
+		return this.skill.isUsable() && !this.getContainer().getActor().getTile().hasZoneOfControlOtherThan(this.getContainer().getActor().getAlliedFactions());
 	}
 
 	function getPulledToTiles( _userTile, _targetTile )
 	{
 		local tiles = [];
+		local corpses = this.Tactical.Entities.getCorpses();
+		local golems = [];
 
-		for( local i = 0; i < 6; i = ++i )
+		foreach( corpse in corpses )
 		{
-			if (!_userTile.hasNextTile(i))
+			if (corpse.IsCorpseSpawned)
 			{
-			}
-			else
-			{
-				local tile = _userTile.getNextTile(i);
-
-				if (tile.Level <= _userTile.Level && tile.IsEmpty && tile.getDistanceTo(_targetTile) <= 2)
+				if (corpse.IsEmpty && corpse.getDistanceTo(_targetTile) <= this.m.PullRange)
 				{
-					tiles.push(tile);
+					tiles.push(corpse);
+				}
+
+				for( local i = 0; i != 6; i = ++i )
+				{
+					if (!corpse.hasNextTile(i))
+					{
+					}
+					else
+					{
+						local tile = corpse.getNextTile(i);
+
+						if (tile.IsEmpty && tile.getDistanceTo(_targetTile) <= this.m.PullRange)
+						{
+							tiles.push(tile);
+						}
+					}
+				}
+			}
+		}
+
+		foreach( entity in this.Tactical.Entities.getAllInstancesAsArray() )
+		{
+			if (this.isKindOf(entity, "lesser_flesh_golem") || this.isKindOf(entity, "greater_flesh_golem"))
+			{
+				golems.push(entity);
+			}
+		}
+
+		foreach( golem in golems )
+		{
+			local golemTile = golem.getTile();
+
+			if (golemTile.getDistanceTo(_targetTile) <= this.m.PullRange + 1)
+			{
+				for( local i = 0; i != 6; i = ++i )
+				{
+					if (!golemTile.hasNextTile(i))
+					{
+					}
+					else
+					{
+						local tile = golemTile.getNextTile(i);
+
+						if (tile.IsEmpty && tile.getDistanceTo(_targetTile) <= this.m.PullRange)
+						{
+							tiles.push(tile);
+						}
+					}
 				}
 			}
 		}
@@ -95,65 +125,44 @@ this.serpent_hook_skill <- this.inherit("scripts/skills/skill", {
 			return false;
 		}
 
-		local pulledTo = this.getPulledToTile(_originTile, _targetTile);
-
-		if (pulledTo == null)
-		{
-			return false;
-		}
-
 		return true;
 	}
 
 	function onUse( _user, _targetTile )
 	{
 		local target = _targetTile.getEntity();
-		local pullToTile;
 
-		if (this.m.DestinationTile != null)
-		{
-			pullToTile = this.m.DestinationTile;
-			this.m.DestinationTile = null;
-		}
-		else
-		{
-			pullToTile = this.getPulledToTile(_user.getTile(), _targetTile);
-		}
-
-		if (pullToTile == null)
+		if (this.m.DestinationTile == null)
 		{
 			return false;
 		}
 
-		if (target.getCurrentProperties().IsImmuneToKnockBackAndGrab)
+		if (target.getCurrentProperties().IsRooted || target.getCurrentProperties().IsImmuneToKnockBackAndGrab)
 		{
 			return false;
 		}
 
-		if (!_user.isHiddenToPlayer() && pullToTile.IsVisibleForPlayer)
+		if (!_user.isHiddenToPlayer() && this.m.DestinationTile.IsVisibleForPlayer)
 		{
-			this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " drags in " + this.Const.UI.getColorizedEntityName(_targetTile.getEntity()));
+			this.Tactical.EventLog.log("Fleshy tentacles appear and drag in " + this.Const.UI.getColorizedEntityName(_targetTile.getEntity()) + "!");
 		}
 
 		if (!_user.isHiddenToPlayer() || !target.isHiddenToPlayer())
 		{
-			local variant = _user.m.Variant;
 			local scaleBackup = target.getSprite("status_rooted").Scale;
-			_user.fadeOut(50);
 			local rooted_front = target.getSprite("status_rooted");
 			rooted_front.Scale = 1.0;
-			rooted_front.setBrush("snake_ensnare_front_0" + variant);
+			rooted_front.setBrush("golem_ensnare_front");
 			rooted_front.Visible = true;
 			rooted_front.Alpha = 0;
 			rooted_front.fadeIn(50);
 			local rooted_back = target.getSprite("status_rooted_back");
 			rooted_back.Scale = 1.0;
-			rooted_back.setBrush("snake_ensnare_back_0" + variant);
+			rooted_back.setBrush("golem_ensnare_back");
 			rooted_back.Visible = true;
 			rooted_back.Alpha = 0;
 			rooted_back.fadeIn(50);
 			this.Time.scheduleEvent(this.TimeUnit.Virtual, 900, this.onDone, {
-				User = _user,
 				Target = target,
 				ScaleBackup = scaleBackup,
 				Skill = this
@@ -165,11 +174,11 @@ this.serpent_hook_skill <- this.inherit("scripts/skills/skill", {
 		skills.removeByID("effects.spearwall");
 		skills.removeByID("effects.riposte");
 		target.setCurrentMovementType(this.Const.Tactical.MovementType.Involuntary);
-		local damage = this.Math.max(0, this.Math.abs(pullToTile.Level - _targetTile.Level) - 1) * this.Const.Combat.FallingDamage;
+		local damage = this.Math.max(0, this.Math.abs(this.m.DestinationTile.Level - _targetTile.Level) - 1) * this.Const.Combat.FallingDamage;
 
 		if (damage == 0)
 		{
-			this.Tactical.getNavigator().teleport(_targetTile.getEntity(), pullToTile, null, null, true);
+			this.Tactical.getNavigator().teleport(_targetTile.getEntity(), this.m.DestinationTile, null, null, true);
 		}
 		else
 		{
@@ -182,7 +191,7 @@ this.serpent_hook_skill <- this.inherit("scripts/skills/skill", {
 			tag.HitInfo.DamageFatigue = this.Const.Combat.FatigueReceivedPerHit;
 			tag.HitInfo.DamageDirect = 1.0;
 			tag.HitInfo.BodyPart = this.Const.BodyPart.Body;
-			this.Tactical.getNavigator().teleport(_targetTile.getEntity(), pullToTile, this.onPulledDown, tag, true);
+			this.Tactical.getNavigator().teleport(_targetTile.getEntity(), this.m.DestinationTile, this.onPulledDown, tag, true);
 		}
 
 		local stagger = this.new("scripts/skills/effects/staggered_effect");
@@ -203,7 +212,6 @@ this.serpent_hook_skill <- this.inherit("scripts/skills/skill", {
 
 	function onDone( _data )
 	{
-		_data.User.fadeIn(50);
 		local rooted_front = _data.Target.getSprite("status_rooted");
 		rooted_front.fadeOutAndHide(50);
 		rooted_front.Scale = _data.ScaleBackup;

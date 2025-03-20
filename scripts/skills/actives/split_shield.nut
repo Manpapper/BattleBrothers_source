@@ -84,16 +84,6 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 			});
 		}
 
-		if (this.m.MaxRange > 1 && !this.getContainer().getActor().getCurrentProperties().IsSpecializedInAxes)
-		{
-			ret.push({
-				id = 6,
-				type = "text",
-				icon = "ui/icons/hitchance.png",
-				text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] chance to hit targets directly adjacent because the weapon is too unwieldy"
-			});
-		}
-
 		return ret;
 	}
 
@@ -123,7 +113,8 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 
 	function onUse( _user, _targetTile )
 	{
-		local shield = _targetTile.getEntity().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		local target = _targetTile.getEntity();
+		local shield = target.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
 
 		if (shield != null)
 		{
@@ -142,35 +133,30 @@ this.split_shield <- this.inherit("scripts/skills/skill", {
 			{
 				if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
 				{
-					this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " uses Split Shield and destroys " + this.Const.UI.getColorizedEntityName(_targetTile.getEntity()) + "\'s shield");
+					this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " uses Split Shield and destroys " + this.Const.UI.getColorizedEntityName(target) + "\'s shield");
 				}
 			}
 			else
 			{
 				if (this.m.SoundOnHit.len() != 0)
 				{
-					this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill, _targetTile.getEntity().getPos());
+					this.Sound.play(this.m.SoundOnHit[this.Math.rand(0, this.m.SoundOnHit.len() - 1)], this.Const.Sound.Volume.Skill, target.getPos());
 				}
 
 				if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
 				{
-					this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " uses Split Shield and hits " + this.Const.UI.getColorizedEntityName(_targetTile.getEntity()) + "\'s shield for [b]" + (conditionBefore - shield.getCondition()) + "[/b] damage");
+					this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_user) + " uses Split Shield and hits " + this.Const.UI.getColorizedEntityName(target) + "\'s shield for [b]" + (conditionBefore - shield.getCondition()) + "[/b] damage");
 				}
 			}
 
-			if (!this.Tactical.getNavigator().isTravelling(_targetTile.getEntity()))
+			if (!this.Tactical.getNavigator().isTravelling(target))
 			{
-				this.Tactical.getShaker().shake(_targetTile.getEntity(), _user.getTile(), 2, this.Const.Combat.ShakeEffectSplitShieldColor, this.Const.Combat.ShakeEffectSplitShieldHighlight, this.Const.Combat.ShakeEffectSplitShieldFactor, 1.0, [
+				this.Tactical.getShaker().shake(target, _user.getTile(), 2, this.Const.Combat.ShakeEffectSplitShieldColor, this.Const.Combat.ShakeEffectSplitShieldHighlight, this.Const.Combat.ShakeEffectSplitShieldFactor, 1.0, [
 					"shield_icon"
 				], 1.0);
 			}
 
-			local overwhelm = this.getContainer().getSkillByID("perk.overwhelm");
-
-			if (overwhelm != null)
-			{
-				overwhelm.onTargetHit(this, _targetTile.getEntity(), this.Const.BodyPart.Body, 0, 0);
-			}
+			_user.getSkills().onTargetHit(this, target, this.Const.BodyPart.Body, 0, 0);
 		}
 
 		return true;
