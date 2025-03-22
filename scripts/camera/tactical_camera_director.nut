@@ -98,7 +98,7 @@ this.tactical_camera_director <- {
 			break;
 
 		case this.Const.Tactical.CameraEventState.Focus:
-			if (!camera.isCenteredOnTile(this.m.Events[0].TargetTile) && !camera.isMovingToTile(this.m.Events[0].TargetTile))
+			if (("TargetTile" in this.m.Events[0]) && !camera.isCenteredOnTile(this.m.Events[0].TargetTile) && !camera.isMovingToTile(this.m.Events[0].TargetTile))
 			{
 				if (this.m.Events[0].Type == this.Const.Tactical.CameraEventType.MoveToSlowly)
 				{
