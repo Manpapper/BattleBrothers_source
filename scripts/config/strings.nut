@@ -356,7 +356,8 @@ gt.Const.Strings.EntityNamePlural <- [
 	"Flesh Golems",
 	"Greater Flesh Golems",
 	"Fault Finders",
-	"The Grand Diviner"
+	"The Grand Diviner",
+	"Flesh Cradles"
 ];
 gt.Const.Strings.Tactical.EntityName <- {
 	Boulder = "Boulder",
