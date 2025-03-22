@@ -4,7 +4,7 @@ this.greater_flesh_golem_armor_02 <- this.inherit("scripts/items/armor/armor", {
 	{
 		this.armor.create();
 		this.m.ID = "armor.body.greater_flesh_golem_armor_02";
-		this.m.Name = "Gilded Toga";
+		this.m.Name = "Gilded Toga and Plate";
 		this.m.Description = "";
 		this.m.IsDroppedAsLoot = false;
 		this.m.ShowOnCharacter = true;
