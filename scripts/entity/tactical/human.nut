@@ -361,12 +361,13 @@ this.human <- this.inherit("scripts/entity/tactical/actor", {
 
 		local deathLoot = this.getItems().getDroppableLoot(_killer);
 		local tileLoot = this.getLootForTile(_killer, deathLoot);
-		local corpse = this.generateCorpse(_tile, _fatalityType);
 
 		if (_fatalityType != this.Const.FatalityType.Unconscious)
 		{
 			this.dropLoot(_tile, tileLoot, !flip);
 		}
+
+		local corpse = this.generateCorpse(_tile, _fatalityType, _killer);
 
 		if (_tile == null)
 		{
@@ -381,7 +382,7 @@ this.human <- this.inherit("scripts/entity/tactical/actor", {
 		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
 
-	function generateCorpse( _tile, _fatalityType )
+	function generateCorpse( _tile, _fatalityType, _killer )
 	{
 		local isResurrectable = _fatalityType == this.Const.FatalityType.None || _fatalityType == this.Const.FatalityType.Disemboweled;
 		local sprite_body = this.getSprite("body");
@@ -412,7 +413,7 @@ this.human <- this.inherit("scripts/entity/tactical/actor", {
 		corpse.IsConsumable = _fatalityType != this.Const.FatalityType.Unconscious;
 		corpse.Armor = this.m.BaseProperties.Armor;
 		corpse.Name = "Wiederganger " + this.getName();
-		corpse.Items = _fatalityType != this.Const.FatalityType.Unconscious ? this.getItems() : null;
+		corpse.Items = _fatalityType != this.Const.FatalityType.Unconscious ? this.getItems().prepareItemsForCorpse(_killer) : null;
 		corpse.Color = sprite_head.Color;
 		corpse.Saturation = sprite_head.Saturation;
 		corpse.Custom = custom;

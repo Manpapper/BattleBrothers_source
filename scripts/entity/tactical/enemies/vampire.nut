@@ -51,8 +51,8 @@ this.vampire <- this.inherit("scripts/entity/tactical/actor", {
 
 		local deathLoot = this.getItems().getDroppableLoot(_killer);
 		local tileLoot = this.getLootForTile(_killer, deathLoot);
-		local corpse = this.generateCorpse(_tile, _fatalityType);
 		this.dropLoot(_tile, tileLoot, !flip);
+		local corpse = this.generateCorpse(_tile, _fatalityType, _killer);
 
 		if (_tile == null)
 		{
@@ -77,13 +77,13 @@ this.vampire <- this.inherit("scripts/entity/tactical/actor", {
 		return _loot;
 	}
 
-	function generateCorpse( _tile, _fatalityType )
+	function generateCorpse( _tile, _fatalityType, _killer )
 	{
 		local corpse = clone this.Const.Corpse;
 		corpse.Faction = this.getFaction();
 		corpse.CorpseName = "A " + this.getName();
 		corpse.Armor = this.m.BaseProperties.Armor;
-		corpse.Items = this.getItems();
+		corpse.Items = this.getItems().prepareItemsForCorpse(_killer);
 		corpse.IsHeadAttached = true;
 		corpse.IsConsumable = false;
 		corpse.IsResurrectable = false;

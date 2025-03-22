@@ -61,7 +61,7 @@ this.donkey <- this.inherit("scripts/entity/tactical/actor", {
 		}
 
 		local tileLoot = this.getLootForTile(_killer, []);
-		local corpse = this.generateCorpse(_tile, _fatalityType);
+		local corpse = this.generateCorpse(_tile, _fatalityType, _killer);
 		this.dropLoot(_tile, tileLoot, !flip);
 
 		if (_tile == null)
@@ -87,7 +87,7 @@ this.donkey <- this.inherit("scripts/entity/tactical/actor", {
 		return _loot;
 	}
 
-	function generateCorpse( _tile, _fatalityType )
+	function generateCorpse( _tile, _fatalityType, _killer )
 	{
 		local corpse = clone this.Const.Corpse;
 		corpse.CorpseName = "A Donkey";

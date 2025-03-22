@@ -436,8 +436,8 @@ this.lindwurm_tail <- this.inherit("scripts/entity/tactical/actor", {
 		}
 
 		local tileLoot = this.getLootForTile(_killer, []);
-		local corpse = this.generateCorpse(_tile, _fatalityType);
 		this.dropLoot(_tile, tileLoot, !flip);
+		local corpse = this.generateCorpse(_tile, _fatalityType, _killer);
 
 		if (_tile == null)
 		{
@@ -452,7 +452,7 @@ this.lindwurm_tail <- this.inherit("scripts/entity/tactical/actor", {
 		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
 
-	function generateCorpse( _tile, _fatalityType )
+	function generateCorpse( _tile, _fatalityType, _killer )
 	{
 		local corpse = clone this.Const.Corpse;
 		corpse.CorpseName = "A Lindwurm";

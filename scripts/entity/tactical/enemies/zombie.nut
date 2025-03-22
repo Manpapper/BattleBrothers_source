@@ -340,8 +340,8 @@ this.zombie <- this.inherit("scripts/entity/tactical/actor", {
 
 		local deathLoot = this.getItems().getDroppableLoot(_killer);
 		local tileLoot = this.getLootForTile(_killer, deathLoot);
-		local corpse = this.generateCorpse(_tile, _fatalityType);
 		this.dropLoot(_tile, tileLoot, !flip);
+		local corpse = this.generateCorpse(_tile, _fatalityType, _killer);
 
 		if (_tile == null)
 		{
@@ -356,7 +356,7 @@ this.zombie <- this.inherit("scripts/entity/tactical/actor", {
 		this.actor.onDeath(_killer, _skill, _tile, _fatalityType);
 	}
 
-	function generateCorpse( _tile, _fatalityType )
+	function generateCorpse( _tile, _fatalityType, _killer )
 	{
 		local isResurrectable = this.m.IsResurrectingOnFatality || _fatalityType != this.Const.FatalityType.Decapitated && _fatalityType != this.Const.FatalityType.Smashed;
 		local sprite_body = this.getSprite("body");
@@ -385,7 +385,7 @@ this.zombie <- this.inherit("scripts/entity/tactical/actor", {
 		corpse.CorpseName = "A " + this.getName();
 		corpse.Value = this.m.ResurrectionValue;
 		corpse.Armor = this.m.BaseProperties.Armor;
-		corpse.Items = this.getItems();
+		corpse.Items = this.getItems().prepareItemsForCorpse(_killer);
 		corpse.Color = sprite_body.Color;
 		corpse.Saturation = sprite_body.Saturation;
 		corpse.Custom = custom;

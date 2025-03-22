@@ -126,8 +126,8 @@ this.serpent <- this.inherit("scripts/entity/tactical/actor", {
 		this.Tactical.getTemporaryRoster().remove(this);
 		local deathLoot = this.getItems().getDroppableLoot(_killer);
 		local tileLoot = this.getLootForTile(_killer, deathLoot);
-		local corpse = this.generateCorpse(_tile, _fatalityType);
 		this.dropLoot(_tile, tileLoot, !flip);
+		local corpse = this.generateCorpse(_tile, _fatalityType, _killer);
 
 		if (_tile == null)
 		{
@@ -174,11 +174,11 @@ this.serpent <- this.inherit("scripts/entity/tactical/actor", {
 		return _loot;
 	}
 
-	function generateCorpse( _tile, _fatalityType )
+	function generateCorpse( _tile, _fatalityType, _killer )
 	{
 		local corpse = clone this.Const.Corpse;
 		corpse.CorpseName = "A Serpent";
-		corpse.Items = this.getItems();
+		corpse.Items = this.getItems().prepareItemsForCorpse(_killer);
 		corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
 		corpse.IsConsumable = false;
 

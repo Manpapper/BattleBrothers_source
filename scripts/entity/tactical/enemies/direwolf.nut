@@ -178,8 +178,8 @@ this.direwolf <- this.inherit("scripts/entity/tactical/actor", {
 
 		local deathLoot = this.getItems().getDroppableLoot(_killer);
 		local tileLoot = this.getLootForTile(_killer, deathLoot);
-		local corpse = this.generateCorpse(_tile, _fatalityType);
 		this.dropLoot(_tile, tileLoot, !flip);
+		local corpse = this.generateCorpse(_tile, _fatalityType, _killer);
 
 		if (_tile == null)
 		{
@@ -229,7 +229,7 @@ this.direwolf <- this.inherit("scripts/entity/tactical/actor", {
 
 				if (this.isKindOf(this, "direwolf_high") && this.Math.rand(1, 100) <= 20)
 				{
-					this.loot.drop(this.new("scripts/items/loot/sabertooth_item"));
+					this.loot.push(this.new("scripts/items/loot/sabertooth_item"));
 				}
 			}
 		}
@@ -237,11 +237,11 @@ this.direwolf <- this.inherit("scripts/entity/tactical/actor", {
 		return _loot;
 	}
 
-	function generateCorpse( _tile, _fatalityType )
+	function generateCorpse( _tile, _fatalityType, _killer )
 	{
 		local corpse = clone this.Const.Corpse;
 		corpse.CorpseName = "A Direwolf";
-		corpse.Items = this.getItems();
+		corpse.Items = this.getItems().prepareItemsForCorpse(_killer);
 		corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
 
 		if (_tile != null)
