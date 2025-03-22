@@ -216,7 +216,6 @@ this.ai_protect <- this.inherit("scripts/ai/tactical/behavior", {
 		local myTile = _entity.getTile();
 		local allAllies = this.getAgent().getKnownAllies();
 		local allOpponents = this.getAgent().getKnownOpponents();
-		local adjacentAlly;
 		local potential_tiles = [];
 
 		foreach( a in allAllies )
