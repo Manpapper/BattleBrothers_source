@@ -74,7 +74,7 @@ this.vampire <- this.inherit("scripts/entity/tactical/actor", {
 			_loot.push(this.new("scripts/items/misc/vampire_dust_item"));
 		}
 
-		return _loot;
+		return this.actor.getLootForTile(_killer, _loot);
 	}
 
 	function generateCorpse( _tile, _fatalityType, _killer )

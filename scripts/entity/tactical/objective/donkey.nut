@@ -84,7 +84,7 @@ this.donkey <- this.inherit("scripts/entity/tactical/actor", {
 			_loot.push(this.new("scripts/items/supplies/strange_meat_item"));
 		}
 
-		return _loot;
+		return this.actor.getLootForTile(_killer, _loot);
 	}
 
 	function generateCorpse( _tile, _fatalityType, _killer )

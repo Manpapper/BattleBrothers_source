@@ -129,7 +129,7 @@ this.kraken <- this.inherit("scripts/entity/tactical/actor", {
 			_loot.push(this.new("scripts/items/misc/kraken_horn_plate_item"));
 		}
 
-		return _loot;
+		return this.actor.getLootForTile(_killer, _loot);
 	}
 
 	function generateCorpse( _tile, _fatalityType, _killer )

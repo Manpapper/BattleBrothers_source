@@ -226,7 +226,7 @@ this.lesser_flesh_golem <- this.inherit("scripts/entity/tactical/actor", {
 			}
 		}
 
-		return _loot;
+		return this.actor.getLootForTile(_killer, _loot);
 	}
 
 	function generateCorpse( _tile, _fatalityType, _killer )

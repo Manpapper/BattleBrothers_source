@@ -229,12 +229,12 @@ this.direwolf <- this.inherit("scripts/entity/tactical/actor", {
 
 				if (this.isKindOf(this, "direwolf_high") && this.Math.rand(1, 100) <= 20)
 				{
-					this.loot.push(this.new("scripts/items/loot/sabertooth_item"));
+					_loot.push(this.new("scripts/items/loot/sabertooth_item"));
 				}
 			}
 		}
 
-		return _loot;
+		return this.actor.getLootForTile(_killer, _loot);
 	}
 
 	function generateCorpse( _tile, _fatalityType, _killer )
