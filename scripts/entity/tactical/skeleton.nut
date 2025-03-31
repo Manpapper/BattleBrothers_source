@@ -330,6 +330,11 @@ this.skeleton <- this.inherit("scripts/entity/tactical/actor", {
 		corpse.IsHeadAttached = _fatalityType != this.Const.FatalityType.Decapitated;
 		corpse.IsConsumable = false;
 
+		if (isResurrectable)
+		{
+			corpse.IsResurrectable = true;
+		}
+
 		if (_tile != null)
 		{
 			corpse.Tile = _tile;
