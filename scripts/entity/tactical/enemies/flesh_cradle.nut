@@ -5,7 +5,6 @@ this.flesh_cradle <- this.inherit("scripts/entity/tactical/actor", {
 	},
 	function create()
 	{
-		this.m.IsAttackable = false;
 		this.m.IsActingEachTurn = false;
 		this.m.IsNonCombatant = true;
 		this.m.IsShakingOnHit = false;
@@ -60,6 +59,7 @@ this.flesh_cradle <- this.inherit("scripts/entity/tactical/actor", {
 		b.IsAffectedByNight = false;
 		b.IsMovable = false;
 		b.TargetAttractionMult = 0.0;
+		this.m.IsAttackable = false;
 		this.m.ActionPoints = b.ActionPoints;
 		this.m.Hitpoints = b.Hitpoints;
 		this.m.CurrentProperties = clone b;
