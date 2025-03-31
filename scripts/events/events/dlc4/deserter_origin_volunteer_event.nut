@@ -43,7 +43,7 @@ this.deserter_origin_volunteer_event <- this.inherit("scripts/events/event", {
 				_event.m.Dude1.setStartValuesEx([
 					"deserter_background"
 				]);
-				_event.m.Dude1.getBackground().m.RawDescription = "Running from bounty hunters and executioners from some time, %name% bumped into your company on the road and promptly volunteered.";
+				_event.m.Dude1.getBackground().m.RawDescription = "Running from bounty hunters and executioners for some time, %name% bumped into your company on the road and promptly volunteered.";
 				_event.m.Dude1.getBackground().buildDescription(true);
 				_event.m.Dude2 = roster.create("scripts/entity/tactical/player");
 				_event.m.Dude2.setStartValuesEx([
