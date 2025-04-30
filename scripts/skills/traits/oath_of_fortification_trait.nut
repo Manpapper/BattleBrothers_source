@@ -34,7 +34,7 @@ this.oath_of_fortification_trait <- this.inherit("scripts/skills/traits/characte
 				id = 12,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "The \'Shield Wall\' shield skill has grants an additional [color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Melee Defense and [color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Ranged Defense."
+				text = "The \'Shield Wall\' shield skill grants an additional [color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Melee Defense and [color=" + this.Const.UI.Color.PositiveValue + "]+5[/color] Ranged Defense."
 			},
 			{
 				id = 13,

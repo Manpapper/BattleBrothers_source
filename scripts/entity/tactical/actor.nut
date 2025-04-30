@@ -1809,6 +1809,11 @@ this.actor <- this.inherit("scripts/entity/tactical/entity", {
 			_tile = this.getTile();
 		}
 
+		if (!this.isPlacedOnMap())
+		{
+			return;
+		}
+
 		foreach( item in _loot )
 		{
 			item.drop(_tile);
