@@ -57,7 +57,7 @@ this.paladins_scenario <- this.inherit("scripts/scenarios/world/starting_scenari
 		bros[1].setStartValuesEx([
 			"paladin_background"
 		]);
-		bros[1].getBackground().m.RawDescription = "{%name%, like many of the Oathtakers\' more spry members, strives to be like Young Anselm. A youthful, capable man who has yet to let the world\'s horrors and grind wear him down. In moments of honesty, he reminds you of yourself. In moments of reflection, you realize that he will likely one day resemble you as you are now. But until then, to the youth of the world, for the Oaths are certainly not wasted upon them! | When Anselm set out on his quest, it was %name% whom joined him first. Despite the Young Anselm\'s untimely death, %name% still sought to see the young man\'s vision through. He is an ardent believer in the Oaths and can be frequently found idolizing and commemorating Young Anselm\'s skull.}";
+		bros[1].getBackground().m.RawDescription = "{%name%, like many of the Oathtakers\' more spry members, strives to be like Young Anselm. A youthful, capable man who has yet to let the world\'s horrors and grind wear him down. In moments of honesty, he reminds you of yourself. In moments of reflection, you realize that he will likely one day resemble you as you are now. But until then, to the youth of the world, for the Oaths are certainly not wasted upon them! | When Anselm set out on his quest, it was %name% whom joined him first. Despite Young Anselm\'s untimely death, %name% still sought to see the young man\'s vision through. He is an ardent believer in the Oaths and can be frequently found idolizing and commemorating Young Anselm\'s skull.}";
 		bros[1].setPlaceInFormation(5);
 		bros[1].m.PerkPoints = 0;
 		bros[1].m.LevelUps = 0;

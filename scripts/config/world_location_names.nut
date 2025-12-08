@@ -322,7 +322,7 @@ gt.Const.World.LocationNames.MassGrave <- [
 	"Doomed Fields",
 	"Overturned Massgrave",
 	"Defiled Battlefield",
-	"Bone sprinkled Fields",
+	"Bone Sprinkled Fields",
 	"White Bones Menagerie",
 	"Cursed Grave Mounds",
 	"Vulture\'s Feast",

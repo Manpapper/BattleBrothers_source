@@ -461,6 +461,7 @@ this.skill_container <- {
 	{
 		local superCurrent = this.m.Actor.getCurrentProperties().getClone();
 		this.m.IsUpdating = true;
+		_caller.resetBeforeUse();
 
 		foreach( i, skill in this.m.Skills )
 		{

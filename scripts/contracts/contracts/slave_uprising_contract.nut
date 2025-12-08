@@ -600,7 +600,7 @@ this.slave_uprising_contract <- this.inherit("scripts/contracts/contract", {
 		this.m.Screens.push({
 			ID = "Fleeing2",
 			Title = "As you approach...",
-			Text = "[img]gfx/ui/events/event_59.png[/img]{You finally catch up to the indebted. They\'re rough roaders by now, the bleak terrain which they have crossed having left its own marks upon them as they have upon it. But they\'ve not come this far to just to give up: the whole lot arm themselves at the very sight of you and make their own approach. | The indebted are found in a desperate state, insofar as the journey has given them free breath, they\'ve paid for it with mind and body alike. The sunburned, beleaguered and ragged men approach with eyes both wide and weary. You know by the wild stares that they\'ve no quit left in them. They\'ll be fighting it out on way or another.}",
+			Text = "[img]gfx/ui/events/event_59.png[/img]{You finally catch up to the indebted. They\'re rough roaders by now, the bleak terrain which they have crossed having left its own marks upon them as they have upon it. But they\'ve not come this far to just to give up: the whole lot arm themselves at the very sight of you and make their own approach. | The indebted are found in a desperate state, insofar as the journey has given them free breath, they\'ve paid for it with mind and body alike. The sunburned, beleaguered and ragged men approach with eyes both wide and weary. You know by the wild stares that they\'ve no quit left in them. They\'ll be fighting it out one way or another.}",
 			Image = "",
 			List = [],
 			Options = [

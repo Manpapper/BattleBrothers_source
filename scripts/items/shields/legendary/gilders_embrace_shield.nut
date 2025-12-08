@@ -6,6 +6,7 @@ this.gilders_embrace_shield <- this.inherit("scripts/items/shields/shield", {
 		this.m.ID = "shield.gilders_embrace";
 		this.m.Name = "Gilder\'s Embrace";
 		this.m.Description = "An ornate metal shield with a bright gilded shine that reflects even the tiniest ray of light with the power of the sun itself.";
+		this.m.ItemType = this.Const.Items.ItemType.Shield | this.Const.Items.ItemType.Legendary;
 		this.m.AddGenericSkill = true;
 		this.m.ShowOnCharacter = true;
 		this.m.SoundOnHit = this.Const.Sound.ShieldHitMetal;

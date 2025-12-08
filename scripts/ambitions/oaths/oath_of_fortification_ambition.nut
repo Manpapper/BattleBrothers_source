@@ -22,7 +22,7 @@ this.oath_of_fortification_ambition <- this.inherit("scripts/ambitions/oaths/oat
 
 	function getRewardTooltip()
 	{
-		return "You gain extra Renown if none of your men die during the Oath (" + this.getBonusObjectiveProgress() + " dead so far).";
+		return "You gain extra Renown if none of your men fall in battle during the Oath (" + this.getBonusObjectiveProgress() + " fallen so far).";
 	}
 
 	function getBonusObjectiveProgress()

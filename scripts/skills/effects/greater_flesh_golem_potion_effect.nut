@@ -19,13 +19,12 @@ this.greater_flesh_golem_potion_effect <- this.inherit("scripts/skills/skill", {
 		return "This character\'s body has been irreversibly mutated, its chemical balance thrown into chaos by overproducing glands. By some miracle, it seems to have stabilized in a beneficial manner.";
 	}
 
-	function onUpdate( _properties )
+	function onDeath( _fatalityType )
 	{
-	}
-
-	function onDeath()
-	{
-		this.World.Statistics.getFlags().set("isGreaterFleshGolemPotionAcquired", false);
+		if (_fatalityType != this.Const.FatalityType.Unconscious)
+		{
+			this.World.Statistics.getFlags().set("isGreaterFleshGolemPotionAcquired", false);
+		}
 	}
 
 	function onDismiss()

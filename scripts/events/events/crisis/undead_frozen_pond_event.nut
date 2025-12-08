@@ -10,7 +10,7 @@ this.undead_frozen_pond_event <- this.inherit("scripts/events/event", {
 		this.m.Cooldown = 99999.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/event_143.png[/img]While traversing the cold wastes, you come to the lip of a frozen pond. %randombrother% spots something sticking out its middle. You see that it\'s a knight whose body has been frozen hip-deep, but the upper body is still moving around. The eyes glow red and its fingers, jet black from frost bite, still manage to clench and grip. Its jaw is held together by ice for muscles as though with decaying and translucent tendons.\n\n %randombrother% points to the giant wiederganger with the frozen visage.%SPEECH_ON%Hey, look! That farker\'s got a big ol\' sword on him. That might be worth trying to nab, no?%SPEECH_OFF%",
+			Text = "[img]gfx/ui/events/event_143.png[/img]While traversing the cold wastes, you come to the lip of a frozen pond. %randombrother% spots something sticking out its middle. You see that it\'s a knight whose body has been frozen hip-deep, but the upper body is still moving around. The eyes glow red and its fingers, jet black from frost bite, still manage to clench and grip. Its jaw is held together by ice for muscles as though with decaying and translucent tendons.\n\n%randombrother% points to the giant wiederganger with the frozen visage.%SPEECH_ON%Hey, look! That farker\'s got a big ol\' sword on him. That might be worth trying to nab, no?%SPEECH_OFF%",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -58,7 +58,7 @@ this.undead_frozen_pond_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "Good",
-			Text = "[img]gfx/ui/events/event_143.png[/img]%chosenbrother% elects to try and make a run on getting the dead knight\'s sword. His first step on the pond sends an icy warble clear across the underbelly of the frozen sheet. He tests his footing again. The ice shifts and chitters, but it does not crack. With every step, the sellsword measures his own weight and its likelihood to collapse the ice - all the meanwhile, making sure he doesn\'t step on one of the corpses littered about. \n\n He successfully gets to the undead knight. Icicles dangle off its sword, the blade itself encapsulated in a layer of ice. The sellsword grabs the blade and yanks. The undead knight\'s arm lurches forward and breaks off at the elbow, sending the sellsword arse-skating backward across the pond. He slides up against the edge where your men help him up. The sword will need to be heated to get the ice off, but the weapon is definitely usable.",
+			Text = "[img]gfx/ui/events/event_143.png[/img]%chosenbrother% elects to try and make a run on getting the dead knight\'s sword. His first step on the pond sends an icy warble clear across the underbelly of the frozen sheet. He tests his footing again. The ice shifts and chitters, but it does not crack. With every step, the sellsword measures his own weight and its likelihood to collapse the ice - all the meanwhile, making sure he doesn\'t step on one of the corpses littered about.\n\nHe successfully gets to the undead knight. Icicles dangle off its sword, the blade itself encapsulated in a layer of ice. The sellsword grabs the blade and yanks. The undead knight\'s arm lurches forward and breaks off at the elbow, sending the sellsword arse-skating backward across the pond. He slides up against the edge where your men help him up. The sword will need to be heated to get the ice off, but the weapon is definitely usable.",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -88,7 +88,7 @@ this.undead_frozen_pond_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "Bad",
-			Text = "[img]gfx/ui/events/event_143.png[/img]%chosenbrother% tries the ice, putting a foot right on the edge of the pond. A soft warble echoes across the pondwater\'s cold underbelly, as though someone had skipped a drumming rock across a barreled surface. He looks back at the party and shrugs.%SPEECH_ON%Seem\'s aight.%SPEECH_OFF%His next step sends him crashing through the ice. Shards break into a sort of chevron entrapment and when he reaches out to grab one it slices his hands. The men quickly throw him a rope and drag him out.\n\n Bloodied and shivering, %chosenbrother% shakes his head as he\'s wrapped in blankets.%SPEECH_ON%I-I-I-I believe that was aw-aw-aw-awful. Aw-aw-awful idea, sir.%SPEECH_OFF%",
+			Text = "[img]gfx/ui/events/event_143.png[/img]%chosenbrother% tries the ice, putting a foot right on the edge of the pond. A soft warble echoes across the pondwater\'s cold underbelly, as though someone had skipped a drumming rock across a barreled surface. He looks back at the party and shrugs.%SPEECH_ON%Seem\'s aight.%SPEECH_OFF%His next step sends him crashing through the ice. Shards break into a sort of chevron entrapment and when he reaches out to grab one it slices his hands. The men quickly throw him a rope and drag him out.\n\nBloodied and shivering, %chosenbrother% shakes his head as he\'s wrapped in blankets.%SPEECH_ON%I-I-I-I believe that was aw-aw-aw-awful. Aw-aw-awful idea, sir.%SPEECH_OFF%",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -230,7 +230,11 @@ this.undead_frozen_pond_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Lightweight = candidates_lightweight[this.Math.rand(0, candidates_lightweight.len() - 1)];
+		if (candidates_lightweight.len() != 0)
+		{
+			this.m.Lightweight = candidates_lightweight[this.Math.rand(0, candidates_lightweight.len() - 1)];
+		}
+
 		this.m.Other = candidates[this.Math.rand(0, candidates.len() - 1)];
 		this.m.Score = 20;
 	}

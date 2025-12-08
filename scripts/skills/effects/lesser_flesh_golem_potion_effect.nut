@@ -19,13 +19,12 @@ this.lesser_flesh_golem_potion_effect <- this.inherit("scripts/skills/skill", {
 		return "This character\'s body has changed, arguably for the better, due to the application of an unnatural steroid.";
 	}
 
-	function onUpdate( _properties )
+	function onDeath( _fatalityType )
 	{
-	}
-
-	function onDeath()
-	{
-		this.World.Statistics.getFlags().set("isLesserFleshGolemPotionAcquired", false);
+		if (_fatalityType != this.Const.FatalityType.Unconscious)
+		{
+			this.World.Statistics.getFlags().set("isLesserFleshGolemPotionAcquired", false);
+		}
 	}
 
 	function onDismiss()

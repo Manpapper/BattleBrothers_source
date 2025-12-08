@@ -614,7 +614,6 @@ this.build_unique_locations_action <- this.inherit("scripts/factions/faction_act
 			if (camp != null)
 			{
 				camp.onSpawned();
-				this.logInfo("Abandoned Village spawned");
 			}
 		}
 		else if (this.m.BuildGolemLocation2)
@@ -642,7 +641,6 @@ this.build_unique_locations_action <- this.inherit("scripts/factions/faction_act
 			if (camp != null)
 			{
 				camp.onSpawned();
-				this.logInfo("Artifact Reliquary spawned");
 			}
 		}
 		else

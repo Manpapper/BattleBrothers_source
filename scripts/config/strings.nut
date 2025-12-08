@@ -956,7 +956,7 @@ gt.Const.Strings.TerrainRegionNames <- [
 		"Mossy Pine Woods",
 		"Crows Nest",
 		"Black Forest",
-		"Prowlers Woods",
+		"Prowlers\' Woods",
 		"Gloomy Woods",
 		"Wolfwood",
 		"Black Woods",

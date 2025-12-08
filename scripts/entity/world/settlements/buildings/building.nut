@@ -98,7 +98,7 @@ this.building <- {
 		_stash.clear();
 		local rarityMult = this.getSettlement().getModifiers().RarityMult;
 		local foodRarityMult = this.getSettlement().getModifiers().FoodRarityMult;
-		local medicineRarityMult = this.getSettlement().getModifiers().MedicalPriceMult;
+		local medicineRarityMult = this.getSettlement().getModifiers().MedicalRarityMult;
 		local mineralRarityMult = this.getSettlement().getModifiers().MineralRarityMult;
 		local buildingRarityMult = this.getSettlement().getModifiers().BuildingRarityMult;
 		local isTrader = this.World.Retinue.hasFollower("follower.trader");
