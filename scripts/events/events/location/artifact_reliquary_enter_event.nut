@@ -95,7 +95,7 @@ this.artifact_reliquary_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "Victory",
-			Text = "[img]gfx/ui/events/event_182.png[/img]{The Diviner is found in the mire of his creatures, a wounded man strewn across the afterbirth of his own manifestations. His heavy helmet guards his neck, but you simply crouch down and lever the point of your sword under it, like lifting a bucket with a dagger. He coughs and says.%SPEECH_ON%You can\'t truly kill me no more than you can kill mother nature.%SPEECH_OFF%You nod and drive the steel through his chin until you hear its tip touch the top of his helm. Blood spews over the neckguard. Standing, you say,%SPEECH_ON%I am mother nature.%SPEECH_OFF%%randombrother% laughs.%SPEECH_ON%Nice line, captain. Sorta dumb if you think about it too much but-%SPEECH_OFF%You cut the sellsword off and tell him and the rest of the men to loot the place. Surely the gothic estate has some valuables that will have made this venture worthwhile. As for the Diviner\'s curious staff still yet swirling with a faint green glow, you have it taken to inventory. As you prepare to leave, a report comes in that a number of the \'flesh golems\' ran out of the gothic estate and fled into the wild. Their progenitor is dead, but it seems you may still yet continue to find his creations.}",
+			Text = "[img]gfx/ui/events/event_182.png[/img]{The Diviner is found in the mire of his creatures, a wounded man strewn across the afterbirth of his own manifestations. His heavy helmet guards his neck, but you simply crouch down and lever the point of your sword under it, like lifting a bucket with a dagger. He coughs and says.%SPEECH_ON%You can truly kill me no more than you can kill mother nature.%SPEECH_OFF%You nod and drive the steel through his chin until you hear its tip touch the top of his helm. Blood spews over the neckguard. Standing, you say,%SPEECH_ON%I am mother nature.%SPEECH_OFF%%randombrother% laughs.%SPEECH_ON%Nice line, captain. Sorta dumb if you think about it too much but-%SPEECH_OFF%You cut the sellsword off and tell him and the rest of the men to loot the place. Surely the gothic estate has some valuables that will have made this venture worthwhile. As for the Diviner\'s curious staff still yet swirling with a faint green glow, you have it taken to inventory. As you prepare to leave, a report comes in that a number of the \'flesh golems\' ran out of the gothic estate and fled into the wild. Their progenitor is dead, but it seems you may still yet continue to find his creations.}",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -189,21 +189,6 @@ this.artifact_reliquary_enter_event <- this.inherit("scripts/events/event", {
 		properties.IsWithoutAmbience = true;
 		properties.IsFogOfWarVisible = false;
 		properties.Parties.push(_location);
-		local weather = this.Tactical.getWeather();
-		local time = this.World.getTime().TimeOfDay;
-		weather.setAmbientLightingColor(this.createColor(this.Const.Tactical.AmbientLightingColor.Time[time]));
-		weather.setAmbientLightingSaturation(this.Const.Tactical.AmbientLightingSaturation.Time[time]);
-		local clouds = weather.createCloudSettings();
-		clouds.Type = this.getconsttable().CloudType.Fog;
-		clouds.MinClouds = 20;
-		clouds.MaxClouds = 20;
-		clouds.MinVelocity = 3.0;
-		clouds.MaxVelocity = 9.0;
-		clouds.MinAlpha = 0.15;
-		clouds.MaxAlpha = 0.25;
-		clouds.MinScale = 2.0;
-		clouds.MaxScale = 3.0;
-		weather.buildCloudCover(clouds);
 		properties.Entities = [];
 		local f = this.World.FactionManager.getFactionOfType(this.Const.FactionType.Undead).getID();
 		properties.BeforeDeploymentCallback = function ()
@@ -265,8 +250,21 @@ this.artifact_reliquary_enter_event <- this.inherit("scripts/events/event", {
 				}
 			}
 
-			this.Tactical.getWeather().setAmbientLightingPreset(5);
-			this.Tactical.getWeather().setAmbientLightingSaturation(0.9);
+			local weather = this.Tactical.getWeather();
+			local time = this.World.getTime().TimeOfDay;
+			weather.setAmbientLightingPreset(5);
+			weather.setAmbientLightingSaturation(0.9);
+			local clouds = weather.createCloudSettings();
+			clouds.Type = this.getconsttable().CloudType.Fog;
+			clouds.MinClouds = 20;
+			clouds.MaxClouds = 24;
+			clouds.MinVelocity = 3.0;
+			clouds.MaxVelocity = 16.0;
+			clouds.MinAlpha = 0.35;
+			clouds.MaxAlpha = 0.45;
+			clouds.MinScale = 2.0;
+			clouds.MaxScale = 3.0;
+			weather.buildCloudCover(clouds);
 		};
 		return properties;
 	}
