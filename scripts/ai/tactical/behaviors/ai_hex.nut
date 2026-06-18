@@ -137,7 +137,7 @@ this.ai_hex <- this.inherit("scripts/ai/tactical/behavior", {
 
 			local score = 10.0;
 
-			if (target.getSkills().hasSkill("effects.hex"))
+			if (target.getSkills().hasSkill("effects.hex_slave"))
 			{
 				continue;
 			}

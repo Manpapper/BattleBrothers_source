@@ -1,17 +1,17 @@
-this.ai_attack_decapitate <- this.inherit("scripts/ai/tactical/behavior", {
+this.ai_attack_special <- this.inherit("scripts/ai/tactical/behavior", {
 	m = {
 		TargetTile = null,
 		PossibleSkills = [
-			"actives.decapitate",
-			"actives.exesword_decapitate",
-			"actives.golem_decapitate"
+			"actives.lunge",
+			"actives.perforate",
+			"actives.skewer"
 		],
 		Skill = null
 	},
 	function create()
 	{
-		this.m.ID = this.Const.AI.Behavior.ID.Decapitate;
-		this.m.Order = this.Const.AI.Behavior.Order.Decapitate;
+		this.m.ID = this.Const.AI.Behavior.ID.AttackSpecial;
+		this.m.Order = this.Const.AI.Behavior.Order.AttackSpecial;
 		this.behavior.create();
 	}
 
@@ -44,23 +44,37 @@ this.ai_attack_decapitate <- this.inherit("scripts/ai/tactical/behavior", {
 		}
 
 		score = score * this.getFatigueScoreMult(this.m.Skill);
-		local targets = this.queryTargetsInMeleeRange();
+		local myTile = _entity.getTile();
+		local targets = this.queryTargetsInMeleeRange(this.m.Skill.getMinRange(), this.m.Skill.getMaxRange() + (this.m.Skill.isRanged() ? myTile.Level : 0), this.m.Skill.getMaxLevelDifference());
 
 		if (targets.len() == 0)
 		{
 			return this.Const.AI.Behavior.Score.Zero;
 		}
 
-		local bestTarget = this.getBestTarget(_entity, this.m.Skill, targets);
+		local bestTarget;
+
+		if (this.m.Skill.isRanged())
+		{
+			bestTarget = this.queryBestRangedTarget(_entity, this.m.Skill, targets);
+		}
+		else
+		{
+			bestTarget = this.queryBestMeleeTarget(_entity, this.m.Skill, targets);
+		}
 
 		if (bestTarget.Target == null)
 		{
 			return this.Const.AI.Behavior.Score.Zero;
 		}
 
+		if (this.getAgent().getIntentions().IsChangingWeapons)
+		{
+			score = score * this.Const.AI.Behavior.AttackAfterSwitchWeaponMult;
+		}
+
 		this.m.TargetTile = bestTarget.Target.getTile();
-		score = score * bestTarget.Score;
-		return this.Const.AI.Behavior.Score.Decapitate * score;
+		return this.Math.max(0, this.Const.AI.Behavior.Score.Attack * bestTarget.Score * score);
 	}
 
 	function onExecute( _entity )
@@ -76,62 +90,30 @@ this.ai_attack_decapitate <- this.inherit("scripts/ai/tactical/behavior", {
 		{
 			if (this.Const.AI.VerboseMode)
 			{
-				this.logInfo("* " + _entity.getName() + ": Using Decapitate against " + this.m.TargetTile.getEntity().getName() + "!");
+				this.logInfo("* " + _entity.getName() + ": Using " + this.m.Skill.getName() + " against " + this.m.TargetTile.getEntity().getName() + "!");
 			}
 
+			local dist = _entity.getTile().getDistanceTo(this.m.TargetTile);
 			this.m.Skill.use(this.m.TargetTile);
 
 			if (_entity.isAlive() && (!_entity.isHiddenToPlayer() || this.m.TargetTile.IsVisibleForPlayer))
 			{
 				this.getAgent().declareAction();
+
+				if (dist > 1 && this.m.Skill.isShowingProjectile())
+				{
+					this.getAgent().declareEvaluationDelay(750);
+				}
+				else if (this.m.Skill.getDelay() != 0)
+				{
+					this.getAgent().declareEvaluationDelay(this.m.Skill.getDelay());
+				}
 			}
 
 			this.m.TargetTile = null;
 		}
 
 		return true;
-	}
-
-	function getBestTarget( _entity, _skill, _targets )
-	{
-		local bestTarget;
-		local bestScore = 0.0;
-
-		foreach( target in _targets )
-		{
-			if (!_skill.isUsableOn(target.getTile()))
-			{
-				continue;
-			}
-
-			if (target.getHitpointsPct() > 0.8)
-			{
-				continue;
-			}
-
-			if (target.getHitpoints() <= _entity.getCurrentProperties().getRegularDamageAverage())
-			{
-				continue;
-			}
-
-			if (target.getArmor(this.Const.BodyPart.Body) >= 100 && target.getArmor(this.Const.BodyPart.Head) >= 100)
-			{
-				continue;
-			}
-
-			local score = this.queryTargetValue(_entity, target, _skill);
-
-			if (score > bestScore)
-			{
-				bestTarget = target;
-				bestScore = score;
-			}
-		}
-
-		return {
-			Target = bestTarget,
-			Score = bestScore
-		};
 	}
 
 });
