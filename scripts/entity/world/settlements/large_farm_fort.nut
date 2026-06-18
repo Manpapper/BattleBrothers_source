@@ -60,8 +60,14 @@ this.large_farm_fort <- this.inherit("scripts/entity/world/settlement", {
 			"squire_background",
 			"swordmaster_background",
 			"cripple_background",
-			"paladin_background"
+			"executioner_background"
 		];
+
+		if (this.Const.DLC.Paladins)
+		{
+			this.m.DraftList.push("paladin_background");
+		}
+
 		this.m.UIDescription = "A massive citadel towering over the open plains";
 		this.m.Description = "A massive citadel towering over the open plains surrounding it. A seat of power to nobles, and housing large armed forces for a firm grip on the region.";
 		this.m.UIBackgroundCenter = "ui/settlements/stronghold_03";

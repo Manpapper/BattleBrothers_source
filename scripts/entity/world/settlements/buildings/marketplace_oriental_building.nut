@@ -7,7 +7,7 @@ this.marketplace_oriental_building <- this.inherit("scripts/entity/world/settlem
 		this.m.UIImageNight = "ui/settlements/desert_building_06_night";
 	}
 
-	function onUpdateShopList()
+	function getDefaultShopList()
 	{
 		local list = [
 			{
@@ -232,54 +232,6 @@ this.marketplace_oriental_building <- this.inherit("scripts/entity/world/settlem
 			});
 		}
 
-		if (this.m.Settlement.getSize() >= 3 || this.m.Settlement.isMilitary())
-		{
-			list.push({
-				R = 90,
-				P = 1.0,
-				S = "accessory/falcon_item"
-			});
-		}
-
-		if (this.Const.DLC.Unhold && (this.m.Settlement.isMilitary() && this.m.Settlement.getSize() >= 3 || this.m.Settlement.getSize() >= 2))
-		{
-			list.push({
-				R = 65,
-				P = 1.0,
-				S = "misc/paint_set_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_remover_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_black_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_red_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_orange_red_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_white_blue_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_white_green_yellow_item"
-			});
-		}
-
 		if (this.Const.DLC.Unhold)
 		{
 			list.extend([
@@ -298,17 +250,14 @@ this.marketplace_oriental_building <- this.inherit("scripts/entity/world/settlem
 
 		if (this.Const.DLC.Wildmen)
 		{
-			list.extend([
-				{
-					R = 50,
-					P = 1.0,
-					S = "weapons/warfork"
-				}
-			]);
+			list.push({
+				R = 50,
+				P = 1.0,
+				S = "weapons/warfork"
+			});
 		}
 
-		this.m.Settlement.onUpdateShopList(this.m.ID, list);
-		this.fillStash(list, this.m.Stash, 1.0, true);
+		return list;
 	}
 
 });

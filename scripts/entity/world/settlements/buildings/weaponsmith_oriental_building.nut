@@ -8,7 +8,7 @@ this.weaponsmith_oriental_building <- this.inherit("scripts/entity/world/settlem
 		this.m.UIImageNight = "ui/settlements/desert_building_04_night";
 	}
 
-	function onUpdateShopList()
+	function getDefaultShopList()
 	{
 		local list = [
 			{
@@ -247,8 +247,7 @@ this.weaponsmith_oriental_building <- this.inherit("scripts/entity/world/settlem
 			}
 		}
 
-		this.m.Settlement.onUpdateShopList(this.m.ID, list);
-		this.fillStash(list, this.m.Stash, 1.25, false);
+		return list;
 	}
 
 });

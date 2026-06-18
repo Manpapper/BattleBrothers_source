@@ -69,8 +69,14 @@ this.large_fishing_village <- this.inherit("scripts/entity/world/settlement", {
 			"retired_soldier_background",
 			"sellsword_background",
 			"swordmaster_background",
-			"anatomist_background"
+			"executioner_background"
 		];
+
+		if (this.Const.DLC.Paladins)
+		{
+			this.m.DraftList.push("anatomist_background");
+		}
+
 		this.m.UIDescription = "A large coastal city and trading hub";
 		this.m.Description = "A big harbor city relying on trade and fishing, and an important hub for travellers arriving or leaving by ship.";
 		this.m.UIBackgroundCenter = "ui/settlements/townhall_03";

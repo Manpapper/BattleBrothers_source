@@ -15,7 +15,7 @@ this.armorsmith_oriental_building <- this.inherit("scripts/entity/world/settleme
 		this.m.UIImageNight = "ui/settlements/desert_building_01_night";
 	}
 
-	function onUpdateShopList()
+	function getDefaultShopList()
 	{
 		local list = [
 			{
@@ -135,6 +135,89 @@ this.armorsmith_oriental_building <- this.inherit("scripts/entity/world/settleme
 			}
 		];
 
+		if (this.Const.DLC.Unhold)
+		{
+			list.extend([
+				{
+					R = 60,
+					P = 1.0,
+					S = "misc/paint_set_item"
+				},
+				{
+					R = 75,
+					P = 1.0,
+					S = "misc/paint_remover_item"
+				},
+				{
+					R = 75,
+					P = 1.0,
+					S = "misc/paint_black_item"
+				},
+				{
+					R = 75,
+					P = 1.0,
+					S = "misc/paint_red_item"
+				},
+				{
+					R = 75,
+					P = 1.0,
+					S = "misc/paint_orange_red_item"
+				},
+				{
+					R = 75,
+					P = 1.0,
+					S = "misc/paint_white_blue_item"
+				},
+				{
+					R = 75,
+					P = 1.0,
+					S = "misc/paint_white_green_yellow_item"
+				}
+			]);
+			list.extend([
+				{
+					R = 85,
+					P = 1.25,
+					S = "armor_upgrades/metal_plating_upgrade"
+				},
+				{
+					R = 85,
+					P = 1.25,
+					S = "armor_upgrades/metal_pauldrons_upgrade"
+				},
+				{
+					R = 85,
+					P = 1.25,
+					S = "armor_upgrades/mail_patch_upgrade"
+				},
+				{
+					R = 85,
+					P = 1.25,
+					S = "armor_upgrades/leather_shoulderguards_upgrade"
+				},
+				{
+					R = 85,
+					P = 1.25,
+					S = "armor_upgrades/leather_neckguard_upgrade"
+				},
+				{
+					R = 85,
+					P = 1.25,
+					S = "armor_upgrades/joint_cover_upgrade"
+				},
+				{
+					R = 85,
+					P = 1.25,
+					S = "armor_upgrades/heraldic_plates_upgrade"
+				},
+				{
+					R = 85,
+					P = 1.25,
+					S = "armor_upgrades/double_mail_upgrade"
+				}
+			]);
+		}
+
 		foreach( i in this.Const.Items.NamedArmors )
 		{
 			if (this.Math.rand(1, 100) <= 33)
@@ -159,87 +242,7 @@ this.armorsmith_oriental_building <- this.inherit("scripts/entity/world/settleme
 			}
 		}
 
-		if (this.Const.DLC.Unhold)
-		{
-			list.push({
-				R = 60,
-				P = 1.0,
-				S = "misc/paint_set_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_remover_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_black_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_red_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_orange_red_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_white_blue_item"
-			});
-			list.push({
-				R = 75,
-				P = 1.0,
-				S = "misc/paint_white_green_yellow_item"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "armor_upgrades/metal_plating_upgrade"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "armor_upgrades/metal_pauldrons_upgrade"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "armor_upgrades/mail_patch_upgrade"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "armor_upgrades/leather_shoulderguards_upgrade"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "armor_upgrades/leather_neckguard_upgrade"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "armor_upgrades/joint_cover_upgrade"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "armor_upgrades/heraldic_plates_upgrade"
-			});
-			list.push({
-				R = 85,
-				P = 1.25,
-				S = "armor_upgrades/double_mail_upgrade"
-			});
-		}
-
-		this.m.Settlement.onUpdateShopList(this.m.ID, list);
-		this.fillStash(list, this.m.Stash, 1.25, false);
+		return list;
 	}
 
 });

@@ -48,6 +48,16 @@ this.building <- {
 		return this.World.getTime().IsDaytime ? this.m.Sounds : this.m.SoundsAtNight;
 	}
 
+	function getPriceMult()
+	{
+		return 1.0;
+	}
+
+	function getAllowDamaged()
+	{
+		return false;
+	}
+
 	function getStash()
 	{
 		return null;
@@ -164,6 +174,7 @@ this.building <- {
 		}
 
 		_stash.sort();
+		this.onAfterFillStash(_stash);
 	}
 
 	function onClicked()
@@ -174,8 +185,28 @@ this.building <- {
 	{
 	}
 
-	function onUpdateShopList()
+	function onAfterFillStash( _stash )
 	{
+		foreach( item in _stash.getItems() )
+		{
+			if (item.getID() == "armor.head.greatsword_faction_helm")
+			{
+				local banner = this.getSettlement().getOwner().getBanner();
+				item.setVariant(banner);
+			}
+		}
+	}
+
+	function getDefaultShopList()
+	{
+		return [];
+	}
+
+	function onUpdateShopList( _list = [] )
+	{
+		local shopList = clone _list;
+		shopList.extend(this.getDefaultShopList());
+		return shopList;
 	}
 
 	function onUpdateDraftList( _list )

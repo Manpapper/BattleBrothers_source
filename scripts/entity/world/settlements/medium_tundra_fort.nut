@@ -61,8 +61,14 @@ this.medium_tundra_fort <- this.inherit("scripts/entity/world/settlement", {
 			"retired_soldier_background",
 			"retired_soldier_background",
 			"sellsword_background",
-			"paladin_background"
+			"executioner_background"
 		];
+
+		if (this.Const.DLC.Paladins)
+		{
+			this.m.DraftList.push("paladin_background");
+		}
+
 		this.m.UIDescription = "A stone keep securing the surrounding tundra";
 		this.m.Description = "A stone keep that is the seat of power in the surrounding tundra. It acts as a base of operations for a decently sized garrison.";
 		this.m.UIBackgroundCenter = "ui/settlements/stronghold_02";

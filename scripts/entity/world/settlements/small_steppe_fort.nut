@@ -45,7 +45,8 @@ this.small_steppe_fort <- this.inherit("scripts/entity/world/settlement", {
 			"deserter_background",
 			"deserter_background",
 			"retired_soldier_background",
-			"retired_soldier_background"
+			"retired_soldier_background",
+			"executioner_background"
 		];
 		this.m.UIDescription = "A small wooden keep in the dry steppe";
 		this.m.Description = "This small wooden keep looks wide over the dry steppe and offers shade for weary soldiers.";

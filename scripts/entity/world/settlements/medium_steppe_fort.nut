@@ -55,7 +55,8 @@ this.medium_steppe_fort <- this.inherit("scripts/entity/world/settlement", {
 			"raider_background",
 			"retired_soldier_background",
 			"retired_soldier_background",
-			"sellsword_background"
+			"sellsword_background",
+			"executioner_background"
 		];
 		this.m.UIDescription = "A stone keep projecting power over the flat steppe";
 		this.m.Description = "This stone keep is a strongpoint in the area and grants a good view of the surrounding flat and dry lands.";

@@ -73,8 +73,14 @@ this.large_farming_village <- this.inherit("scripts/entity/world/settlement", {
 			"sellsword_background",
 			"squire_background",
 			"swordmaster_background",
-			"anatomist_background"
+			"executioner_background"
 		];
+
+		if (this.Const.DLC.Paladins)
+		{
+			this.m.DraftList.push("anatomist_background");
+		}
+
 		this.m.UIDescription = "A large city thriving on trade and agriculture";
 		this.m.Description = "A large city surrounded by lush green meadows, orchards and fields. Food stocks are usually filled to the brim.";
 		this.m.UIBackgroundCenter = "ui/settlements/townhall_03";

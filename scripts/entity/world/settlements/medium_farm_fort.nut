@@ -54,8 +54,14 @@ this.medium_farm_fort <- this.inherit("scripts/entity/world/settlement", {
 			"squire_background",
 			"squire_background",
 			"cripple_background",
-			"paladin_background"
+			"executioner_background"
 		];
+
+		if (this.Const.DLC.Paladins)
+		{
+			this.m.DraftList.push("paladin_background");
+		}
+
 		this.m.UIDescription = "A stone keep surrounded by fertile lands";
 		this.m.Description = "A stone keep surrounded by fertile lands and acting as a strongpoint and base of operations in the region.";
 		this.m.UIBackgroundCenter = "ui/settlements/stronghold_02";

@@ -74,8 +74,14 @@ this.large_mountains_fort <- this.inherit("scripts/entity/world/settlement", {
 			"cripple_background",
 			"hedge_knight_background",
 			"hedge_knight_background",
-			"paladin_background"
+			"executioner_background"
 		];
+
+		if (this.Const.DLC.Paladins)
+		{
+			this.m.DraftList.push("paladin_background");
+		}
+
 		this.m.UIDescription = "A massive stone citadel built into the steep mountains";
 		this.m.Description = "This massive stone citadel is built into the steep mountains. A large number of men are stationed here to hold a firm grip on the land.";
 		this.m.UIBackgroundCenter = "ui/settlements/stronghold_03";

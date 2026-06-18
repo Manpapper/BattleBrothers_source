@@ -57,8 +57,14 @@ this.medium_coast_fort <- this.inherit("scripts/entity/world/settlement", {
 			"retired_soldier_background",
 			"sellsword_background",
 			"swordmaster_background",
-			"paladin_background"
+			"executioner_background"
 		];
+
+		if (this.Const.DLC.Paladins)
+		{
+			this.m.DraftList.push("paladin_background");
+		}
+
 		this.m.UIDescription = "A stone keep that controls a strategically important port and protects nearby trading routes";
 		this.m.Description = "This stone keep controls a strategically important sea access and protects nearby trading routes.";
 		this.m.UIBackgroundCenter = "ui/settlements/stronghold_02";
