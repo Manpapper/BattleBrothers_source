@@ -131,7 +131,7 @@ this.ghost <- this.inherit("scripts/entity/tactical/actor", {
 		b.IsAffectedByNight = false;
 		b.IsAffectedByInjuries = false;
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 140)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Undead.GeistStatIncreaseDay)
 		{
 			b.MeleeDefense += 5;
 		}

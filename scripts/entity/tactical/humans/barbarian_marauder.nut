@@ -68,7 +68,7 @@ this.barbarian_marauder <- this.inherit("scripts/entity/tactical/human", {
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_quick_hands"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 60)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Barbarians.ReaverRelentlessDay)
 		{
 			this.m.Skills.add(this.new("scripts/skills/perks/perk_relentless"));
 		}

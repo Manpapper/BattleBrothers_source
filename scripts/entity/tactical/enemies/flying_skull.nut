@@ -350,11 +350,11 @@ this.flying_skull <- this.inherit("scripts/entity/tactical/actor", {
 		b.IsImmuneToFire = true;
 		b.IsImmuneToRoot = true;
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 25)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.AncientDead.SkullStatIncreaseDay)
 		{
 			b.DamageDirectAdd += 0.05;
 
-			if (this.World.getTime().Days >= 50)
+			if (this.World.getTime().Days >= this.Const.World.Scaling.AncientDead.SkullSecondStatIncreaseDay)
 			{
 				b.DamageDirectAdd += 0.05;
 			}
@@ -410,6 +410,14 @@ this.flying_skull <- this.inherit("scripts/entity/tactical/actor", {
 		}
 
 		return this.actor.onMovementStep(_tile, _levelDifference);
+	}
+
+	function onAfterDeath( _tile )
+	{
+		if (("State" in this.Tactical) && this.Tactical.State != null && this.Tactical.Entities.getAlliesNum() == 0 && this.Tactical.Entities.getHostilesNum() != 0)
+		{
+			this.Tactical.Entities.setLastCombatResult(this.Const.Tactical.CombatResult.PlayerDestroyed);
+		}
 	}
 
 });

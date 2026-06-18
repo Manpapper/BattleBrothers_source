@@ -47,7 +47,7 @@ this.nomad_slinger <- this.inherit("scripts/entity/tactical/human", {
 		this.m.Skills.add(this.new("scripts/skills/actives/recover_skill"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 30)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Nomads.SlingerHeadHunterDay)
 		{
 			this.m.Skills.add(this.new("scripts/skills/perks/perk_head_hunter"));
 		}

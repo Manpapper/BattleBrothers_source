@@ -132,7 +132,6 @@ this.executioner <- this.inherit("scripts/entity/tactical/human", {
 		}
 
 		local armor = this.Const.Items.NamedSouthernArmors;
-		local helmets = this.Const.Items.NamedSouthernHelmets;
 		local r = this.Math.rand(1, 2);
 
 		if (r == 1)

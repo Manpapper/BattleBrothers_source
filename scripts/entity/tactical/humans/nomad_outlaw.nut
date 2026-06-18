@@ -1,7 +1,5 @@
 this.nomad_outlaw <- this.inherit("scripts/entity/tactical/human", {
-	m = {
-		IsLow = false
-	},
+	m = {},
 	function create()
 	{
 		this.m.Type = this.Const.EntityType.NomadOutlaw;
@@ -47,23 +45,20 @@ this.nomad_outlaw <- this.inherit("scripts/entity/tactical/human", {
 			this.getSprite("eye_rings").Visible = true;
 		}
 
-		if (!this.m.IsLow)
-		{
-			b.IsSpecializedInSwords = true;
-			b.IsSpecializedInAxes = true;
-			b.IsSpecializedInMaces = true;
-			b.IsSpecializedInFlails = true;
-			b.IsSpecializedInPolearms = true;
-			b.IsSpecializedInThrowing = true;
-			b.IsSpecializedInHammers = true;
-			b.IsSpecializedInSpears = true;
-			b.IsSpecializedInCleavers = true;
+		b.IsSpecializedInSwords = true;
+		b.IsSpecializedInAxes = true;
+		b.IsSpecializedInMaces = true;
+		b.IsSpecializedInFlails = true;
+		b.IsSpecializedInPolearms = true;
+		b.IsSpecializedInThrowing = true;
+		b.IsSpecializedInHammers = true;
+		b.IsSpecializedInSpears = true;
+		b.IsSpecializedInCleavers = true;
 
-			if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 40)
-			{
-				b.MeleeSkill += 5;
-				b.RangedSkill += 5;
-			}
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Nomads.OutlawStatIncreaseDay)
+		{
+			b.MeleeSkill += 5;
+			b.RangedSkill += 5;
 		}
 
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_brawny"));
@@ -75,7 +70,7 @@ this.nomad_outlaw <- this.inherit("scripts/entity/tactical/human", {
 		this.m.Skills.add(this.new("scripts/skills/actives/recover_skill"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 40)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Nomads.OutlawDodgeDay)
 		{
 			this.m.Skills.add(this.new("scripts/skills/effects/dodge_effect"));
 		}
@@ -118,7 +113,7 @@ this.nomad_outlaw <- this.inherit("scripts/entity/tactical/human", {
 
 		if (this.Const.DLC.Unhold)
 		{
-			if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days > 10)
+			if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Nomads.OutlawThreeHeadedFlailDay)
 			{
 				weapons.push("weapons/three_headed_flail");
 			}

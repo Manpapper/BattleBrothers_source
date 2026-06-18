@@ -22,12 +22,12 @@ this.zombie_yeoman <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 		b.IsImmuneToBleeding = true;
 		b.IsImmuneToPoison = true;
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 20)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Undead.WiedergangerFatigueMultDay)
 		{
 			b.FatigueDealtPerHitMult = 2.0;
 		}
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 90)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Undead.WiedergangerDamageIncreaseDay)
 		{
 			b.DamageTotalMult += 0.1;
 		}

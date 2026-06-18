@@ -16,7 +16,7 @@ this.unhold_bog <- this.inherit("scripts/entity/tactical/enemies/unhold", {
 		b.IsImmuneToDisarm = true;
 		b.IsImmuneToRotation = true;
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 90)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Beasts.UnholdDamageIncreaseDay)
 		{
 			b.DamageTotalMult += 0.1;
 		}

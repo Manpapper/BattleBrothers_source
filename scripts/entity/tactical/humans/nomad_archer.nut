@@ -1,7 +1,5 @@
 this.nomad_archer <- this.inherit("scripts/entity/tactical/human", {
-	m = {
-		IsLow = false
-	},
+	m = {},
 	function create()
 	{
 		this.m.Type = this.Const.EntityType.NomadArcher;
@@ -46,27 +44,26 @@ this.nomad_archer <- this.inherit("scripts/entity/tactical/human", {
 
 		b.IsSpecializedInBows = true;
 		b.Vision = 8;
-
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 30)
-		{
-			b.RangedSkill += 5;
-
-			if (this.World.getTime().Days >= 60)
-			{
-				this.m.Skills.add(this.new("scripts/skills/perks/perk_head_hunter"));
-				b.RangedDefense += 5;
-			}
-		}
-
 		this.m.Skills.add(this.new("scripts/skills/actives/throw_dirt_skill"));
 		this.m.Skills.add(this.new("scripts/skills/actives/rotation"));
 		this.m.Skills.add(this.new("scripts/skills/actives/recover_skill"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_relentless"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 20)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Nomads.ArcherBullseyeDay)
 		{
 			this.m.Skills.add(this.new("scripts/skills/perks/perk_bullseye"));
+
+			if (this.World.getTime().Days >= this.Const.World.Scaling.Nomads.ArcherStatIncreaseDay)
+			{
+				b.RangedSkill += 5;
+			}
+
+			if (this.World.getTime().Days >= this.Const.World.Scaling.Nomads.ArcherHeadHunterDay)
+			{
+				this.m.Skills.add(this.new("scripts/skills/perks/perk_head_hunter"));
+				b.RangedDefense += 5;
+			}
 		}
 	}
 

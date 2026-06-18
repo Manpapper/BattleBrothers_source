@@ -95,21 +95,48 @@ this.noble_footman <- this.inherit("scripts/entity/tactical/human", {
 
 		shield.setFaction(banner);
 		this.m.Items.equip(shield);
-		r = this.Math.rand(1, 3);
 
-		if (r == 1)
+		if (this.Const.DLC.Unhold && (banner == 5 || banner == 7 || banner == 10))
 		{
-			local armor = this.new("scripts/items/armor/mail_hauberk");
-			armor.setVariant(28);
-			this.m.Items.equip(armor);
-		}
-		else if (r == 2)
-		{
-			this.m.Items.equip(this.new("scripts/items/armor/mail_shirt"));
+			r = this.Math.rand(1, 4);
+
+			if (r == 1)
+			{
+				local armor = this.new("scripts/items/armor/mail_hauberk");
+				armor.setVariant(28);
+				this.m.Items.equip(armor);
+			}
+			else if (r == 2)
+			{
+				this.m.Items.equip(this.new("scripts/items/armor/mail_shirt"));
+			}
+			else if (r == 3)
+			{
+				this.m.Items.equip(this.new("scripts/items/armor/leather_scale_armor"));
+			}
+			else
+			{
+				this.m.Items.equip(this.new("scripts/items/armor/basic_mail_shirt"));
+			}
 		}
 		else
 		{
-			this.m.Items.equip(this.new("scripts/items/armor/basic_mail_shirt"));
+			r = this.Math.rand(1, 3);
+
+			if (r == 1)
+			{
+				local armor = this.new("scripts/items/armor/mail_hauberk");
+				armor.setVariant(28);
+				this.m.Items.equip(armor);
+			}
+			else if (r == 2)
+			{
+				this.m.Items.equip(this.new("scripts/items/armor/mail_shirt"));
+			}
+			else
+			{
+				this.m.Items.equip(this.new("scripts/items/armor/basic_mail_shirt"));
+			}
 		}
 
 		local helmet;

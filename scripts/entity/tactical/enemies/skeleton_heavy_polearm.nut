@@ -22,7 +22,7 @@ this.skeleton_heavy_polearm <- this.inherit("scripts/entity/tactical/skeleton", 
 		b.IsImmuneToBleeding = true;
 		b.IsImmuneToPoison = true;
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 100)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.AncientDead.HonorGuardPolearmSpecDay)
 		{
 			b.IsSpecializedInPolearms = true;
 		}

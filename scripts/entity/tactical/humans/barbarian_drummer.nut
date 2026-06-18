@@ -57,7 +57,7 @@ this.barbarian_drummer <- this.inherit("scripts/entity/tactical/human", {
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_brawny"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 30)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Barbarians.DrummerDodgeDay)
 		{
 			this.m.Skills.add(this.new("scripts/skills/effects/dodge_effect"));
 		}

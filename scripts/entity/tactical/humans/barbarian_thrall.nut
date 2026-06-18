@@ -53,7 +53,7 @@ this.barbarian_thrall <- this.inherit("scripts/entity/tactical/human", {
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_quick_hands"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_pathfinder"));
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 20)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Barbarians.ThrallRelentlessDay)
 		{
 			this.m.Skills.add(this.new("scripts/skills/perks/perk_relentless"));
 		}

@@ -32,7 +32,7 @@ this.goblin_ambusher <- this.inherit("scripts/entity/tactical/goblin", {
 			b.IsSpecializedInBows = true;
 			b.Vision = 8;
 
-			if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 180)
+			if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Goblins.AmbusherExtraDamageDay)
 			{
 				b.DamageDirectMult = 1.35;
 			}

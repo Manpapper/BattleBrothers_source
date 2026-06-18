@@ -23,7 +23,7 @@ this.skeleton_heavy <- this.inherit("scripts/entity/tactical/skeleton", {
 		b.IsSpecializedInAxes = true;
 		b.IsSpecializedInCleavers = true;
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 100)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.AncientDead.HonorGuardPolearmSpecDay)
 		{
 			b.IsSpecializedInPolearms = true;
 		}

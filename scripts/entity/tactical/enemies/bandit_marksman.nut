@@ -54,7 +54,7 @@ this.bandit_marksman <- this.inherit("scripts/entity/tactical/human", {
 			b.Vision = 8;
 		}
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 40)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Brigands.MarksmanStatIncreaseDay)
 		{
 			b.RangedDefense += 5;
 		}
@@ -62,7 +62,7 @@ this.bandit_marksman <- this.inherit("scripts/entity/tactical/human", {
 		this.m.Skills.add(this.new("scripts/skills/actives/rotation"));
 		this.m.Skills.add(this.new("scripts/skills/actives/recover_skill"));
 
-		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= 20)
+		if (!this.Tactical.State.isScenarioMode() && this.World.getTime().Days >= this.Const.World.Scaling.Brigands.MarksmanBullseyeDay)
 		{
 			this.m.Skills.add(this.new("scripts/skills/perks/perk_bullseye"));
 		}
