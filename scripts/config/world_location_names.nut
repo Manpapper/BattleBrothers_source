@@ -696,7 +696,7 @@ gt.Const.World.LocationNames.OrcCave <- [
 	"Headchopper\'s Grotto",
 	"Cavern of the Green Death",
 	"Grunter\'s Grotto",
-	"Orc infested Cave",
+	"Orc Infested Cave",
 	"Flesheater\'s Cavern"
 ];
 gt.Const.World.LocationNames.BarbarianShelter <- [

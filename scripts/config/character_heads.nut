@@ -532,6 +532,14 @@ gt.Const.Bodies.Gladiator <- [
 	"bust_naked_body_southern_01",
 	"bust_naked_body_southern_02"
 ];
+gt.Const.Bodies.Big <- [
+	"bust_naked_body_01",
+	"bust_naked_body_02"
+];
+gt.Const.Bodies.SouthernBig <- [
+	"bust_naked_body_southern_01",
+	"bust_naked_body_southern_02"
+];
 gt.Const.Bodies.SouthernSlave <- [
 	"bust_naked_body_southern_00"
 ];

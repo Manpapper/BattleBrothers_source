@@ -4743,6 +4743,23 @@ gt.Const.World.Spawn.BanditBoss <- [
 		Troops = [
 			{
 				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 12
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 3
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
 				Num = 7
 			},
 			{
@@ -4755,6 +4772,48 @@ gt.Const.World.Spawn.BanditBoss <- [
 			},
 			{
 				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 9
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 9
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 6
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
 				Num = 1
 			}
 		]
@@ -4781,6 +4840,48 @@ gt.Const.World.Spawn.BanditBoss <- [
 		Troops = [
 			{
 				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 15
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 15
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 2
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
 				Num = 13
 			},
 			{
@@ -4802,6 +4903,81 @@ gt.Const.World.Spawn.BanditBoss <- [
 		Troops = [
 			{
 				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 13
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 8
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 13
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 8
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 2
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 13
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 8
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 3
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
 				Num = 8
 			},
 			{
@@ -4814,6 +4990,27 @@ gt.Const.World.Spawn.BanditBoss <- [
 			},
 			{
 				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 8
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 6
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 3
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
 				Num = 1
 			}
 		]
@@ -4844,6 +5041,48 @@ gt.Const.World.Spawn.BanditBoss <- [
 		Troops = [
 			{
 				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 12
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 6
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 6
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 12
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 6
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 6
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 2
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
 				Num = 8
 			},
 			{
@@ -4865,6 +5104,27 @@ gt.Const.World.Spawn.BanditBoss <- [
 		Troops = [
 			{
 				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 8
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
 				Num = 9
 			},
 			{
@@ -4886,10 +5146,44 @@ gt.Const.World.Spawn.BanditBoss <- [
 			},
 			{
 				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 9
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
 				Num = 5
 			},
 			{
 				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 9
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
 				Num = 1
 			}
 		]
@@ -4916,7 +5210,75 @@ gt.Const.World.Spawn.BanditBoss <- [
 		Troops = [
 			{
 				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 13
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 3
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 13
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 3
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 2
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
 				Num = 10
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 10
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 12
 			},
 			{
 				Type = this.Const.World.Spawn.Troops.BanditMarksman,
@@ -4940,8 +5302,25 @@ gt.Const.World.Spawn.BanditBoss <- [
 				Num = 4
 			},
 			{
-				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
 				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 12
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 2
 			}
 		]
 	},
@@ -4971,6 +5350,27 @@ gt.Const.World.Spawn.BanditBoss <- [
 		Troops = [
 			{
 				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 9
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 3
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
 				Num = 4
 			},
 			{
@@ -4983,6 +5383,27 @@ gt.Const.World.Spawn.BanditBoss <- [
 			},
 			{
 				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 10
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
 				Num = 1
 			}
 		]
@@ -5059,6 +5480,23 @@ gt.Const.World.Spawn.BanditBoss <- [
 		Cost = 0,
 		Troops = [
 			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 11
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
 				Type = this.Const.World.Spawn.Troops.BanditThug,
 				Num = 1
 			},
@@ -5084,12 +5522,204 @@ gt.Const.World.Spawn.BanditBoss <- [
 		Cost = 0,
 		Troops = [
 			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 12
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.HedgeKnight,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 12
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.HedgeKnight,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 2
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 12
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 12
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 2
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditThug,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 12
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 3
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
 				Type = this.Const.World.Spawn.Troops.BanditRaider,
 				Num = 13
 			},
 			{
 				Type = this.Const.World.Spawn.Troops.BanditMarksman,
 				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.HedgeKnight,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 13
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.HedgeKnight,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 13
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 13
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
 			},
 			{
 				Type = this.Const.World.Spawn.Troops.HedgeKnight,
@@ -5144,6 +5774,139 @@ gt.Const.World.Spawn.BanditBoss <- [
 			{
 				Type = this.Const.World.Spawn.Troops.HedgeKnight,
 				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 13
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.MasterArcher,
+				Num = 2
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.HedgeKnight,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 13
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.MasterArcher,
+				Num = 2
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.HedgeKnight,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 3
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 13
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.MasterArcher,
+				Num = 2
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 13
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.MasterArcher,
+				Num = 2
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.HedgeKnight,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 13
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 5
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.MasterArcher,
+				Num = 2
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.HedgeKnight,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 2
 			},
 			{
 				Type = this.Const.World.Spawn.Troops.BanditLeader,
@@ -5215,6 +5978,56 @@ gt.Const.World.Spawn.BanditBoss <- [
 			{
 				Type = this.Const.World.Spawn.Troops.BanditLeader,
 				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 12
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.MasterArcher,
+				Num = 3
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.Swordmaster,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 12
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.MasterArcher,
+				Num = 3
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.Swordmaster,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 3
 			}
 		]
 	},
@@ -5257,6 +6070,27 @@ gt.Const.World.Spawn.BanditBoss <- [
 		Troops = [
 			{
 				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 16
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 8
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 1
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
 				Num = 17
 			},
 			{
@@ -5294,6 +6128,31 @@ gt.Const.World.Spawn.BanditBoss <- [
 		Cost = 0,
 		Troops = [
 			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 17
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarksman,
+				Num = 6
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.MasterArcher,
+				Num = 2
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 1
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditLeader,
+				Num = 2
+			}
+		]
+	},
+	{
+		Cost = 0,
+		Troops = [
+			{
 				Type = this.Const.World.Spawn.Troops.HedgeKnight,
 				Num = 1
 			},
@@ -5316,6 +6175,776 @@ gt.Const.World.Spawn.BanditBoss <- [
 		]
 	}
 ];
+gt.Const.World.Spawn.BanditMarauders <- [
+	{
+		Cost = 0,
+		MovementSpeedMult = 1.0,
+		VisibilityMult = 1.0,
+		VisionMult = 1.0,
+		Body = "figure_bandit_03",
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 12
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.Wardog,
+				Num = 3
+			}
+		]
+	},
+	{
+		Cost = 0,
+		MovementSpeedMult = 1.0,
+		VisibilityMult = 1.0,
+		VisionMult = 1.0,
+		Body = "figure_bandit_03",
+		Troops = [
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditRaider,
+				Num = 4
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.BanditMarauder,
+				Num = 12
+			},
+			{
+				Type = this.Const.World.Spawn.Troops.Wardog,
+				Num = 2
+			}
+		]
+	}
+];
+
+for( local i = 1; i < 6; i = ++i )
+{
+	gt.Const.World.Spawn.BanditMarauders.extend([
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_05",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditThug,
+					Num = 7
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_05",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_05",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 4
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_05",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 3
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_05",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 2
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_05",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 1
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_05",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditThug,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 4
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_05",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditThug,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 3
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_05",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditThug,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 2
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_05",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditThug,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 1
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_05",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 2
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.HedgeKnight,
+					Num = 1
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_05",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i + 2
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.HedgeKnight,
+					Num = 1
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_05",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i + 7
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_04",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 2
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 6
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
+					Num = 1
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_04",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i + 2
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
+					Num = 1
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_04",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 2
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 6
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
+					Num = 1
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 2
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_04",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i + 2
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
+					Num = 1
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 2
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_04",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 2 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 6 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
+					Num = 1
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 2 + i
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_04",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i + 2
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
+					Num = 1
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 2 + i
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_04",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 2 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 6 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
+					Num = 2
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 2 + i
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_04",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i + 2
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
+					Num = 2
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 2 + i
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_04",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 2 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 6 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
+					Num = 1
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 2 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.HedgeKnight,
+					Num = 1
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_04",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i + 2
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
+					Num = 1
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 2 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.HedgeKnight,
+					Num = 1
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_04",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 2 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 6 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
+					Num = 1
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 2 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.MasterArcher,
+					Num = 1
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_04",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i + 2
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
+					Num = 1
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 2 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.MasterArcher,
+					Num = 1
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_04",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaiderLOW,
+					Num = 2 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 6 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
+					Num = 1
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 2 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.Swordmaster,
+					Num = 1
+				}
+			]
+		},
+		{
+			Cost = 0,
+			MovementSpeedMult = 1.0,
+			VisibilityMult = 1.0,
+			VisionMult = 1.0,
+			Body = "figure_bandit_04",
+			Troops = [
+				{
+					Type = this.Const.World.Spawn.Troops.BanditRaider,
+					Num = 4 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarauder,
+					Num = i + 2
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditLeader,
+					Num = 1
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.BanditMarksman,
+					Num = 2 + i
+				},
+				{
+					Type = this.Const.World.Spawn.Troops.Swordmaster,
+					Num = 1
+				}
+			]
+		}
+	]);
+}
+
 gt.Const.World.Spawn.BanditsDisguisedAsDirewolves <- [
 	{
 		Cost = 0,
@@ -5579,4 +7208,5 @@ this.calculateCosts(this.Const.World.Spawn.BanditRaiders);
 this.calculateCosts(this.Const.World.Spawn.BanditDefenders);
 this.calculateCosts(this.Const.World.Spawn.BanditBoss);
 this.calculateCosts(this.Const.World.Spawn.BanditsDisguisedAsDirewolves);
+this.calculateCosts(this.Const.World.Spawn.BanditMarauders);
 

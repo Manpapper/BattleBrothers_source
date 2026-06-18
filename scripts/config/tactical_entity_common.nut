@@ -96,7 +96,6 @@ gt.Const.Tactical.Common <- {
 			return;
 		}
 
-		local damageMult = _entity.getCurrentProperties().IsResistantToMiasma ? 0.5 : 1.0;
 		this.Tactical.spawnIconEffect("status_effect_00", _tile, this.Const.Tactical.Settings.SkillIconOffsetX, this.Const.Tactical.Settings.SkillIconOffsetY, this.Const.Tactical.Settings.SkillIconScale, this.Const.Tactical.Settings.SkillIconFadeInDuration, this.Const.Tactical.Settings.SkillIconStayDuration, this.Const.Tactical.Settings.SkillIconFadeOutDuration, this.Const.Tactical.Settings.SkillIconMovement);
 		local sounds = [];
 
@@ -119,6 +118,7 @@ gt.Const.Tactical.Common <- {
 		}
 
 		this.Sound.play(sounds[this.Math.rand(0, sounds.len() - 1)], this.Const.Sound.Volume.Actor, _entity.getPos());
+		local damageMult = _entity.getCurrentProperties().DamageReceivedMiasmaMult;
 		local hitInfo = clone this.Const.Tactical.HitInfo;
 		hitInfo.DamageRegular = this.Math.rand(5, 10) * damageMult;
 		hitInfo.DamageDirect = 1.0;
@@ -142,23 +142,7 @@ gt.Const.Tactical.Common <- {
 			"sounds/combat/dlc6/status_on_fire_03.wav"
 		];
 		this.Sound.play(sounds[this.Math.rand(0, sounds.len() - 1)], this.Const.Sound.Volume.Actor, _entity.getPos());
-		local damageMult = 1.0;
-
-		if (_entity.getType() == this.Const.EntityType.Schrat)
-		{
-			damageMult = 3.0;
-		}
-
-		if (_entity.getSkills().hasSkill("racial.skeleton"))
-		{
-			damageMult = 0.33;
-		}
-
-		if (_entity.getSkills().hasSkill("items.firearms_resistance") || _entity.getSkills().hasSkill("racial.serpent"))
-		{
-			damageMult = 0.66;
-		}
-
+		local damageMult = _entity.getCurrentProperties().DamageReceivedFireMult;
 		local damage = this.Math.rand(15, 30);
 		local hitInfo = clone this.Const.Tactical.HitInfo;
 		hitInfo.DamageRegular = damage * damageMult;

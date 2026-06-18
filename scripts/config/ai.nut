@@ -239,7 +239,9 @@ gt.Const.AI <- {
 			Flurry = 86,
 			Spike = 87,
 			FleshPull = 88,
-			COUNT = 89
+			SwitchToFromDagger = 89,
+			AttackSpecial = 90,
+			COUNT = 91
 		},
 		Name = [
 			"None",
@@ -330,7 +332,9 @@ gt.Const.AI <- {
 			"Attack.CorpseHurl",
 			"Attack.Flurry",
 			"Attack.Spike",
-			"Flesh Pull"
+			"FleshPull",
+			"SwitchToFrom.Dagger",
+			"Attack.Special"
 		],
 		Order = {
 			Retreat = 2,
@@ -351,6 +355,7 @@ gt.Const.AI <- {
 			Hide = 16,
 			ThrowNet = 20,
 			AttackDefault = 20,
+			AttackSpecial = 20,
 			AttackBow = 21,
 			AttackHandgonne = 21,
 			Mortar = 21,
@@ -381,6 +386,7 @@ gt.Const.AI <- {
 			SwitchToMelee = 34,
 			SwitchToRanged = 35,
 			SwitchToShield = 35,
+			SwitchToFromDagger = 35,
 			PickupWeapon = 35,
 			LineBreaker = 36,
 			Riposte = 37,
@@ -444,6 +450,7 @@ gt.Const.AI <- {
 			SwitchToMelee = 100,
 			SwitchToRanged = 100,
 			SwitchToShield = 100,
+			SwitchToFromDagger = 100,
 			BreakFree = 100,
 			ThrowBomb = 100,
 			Explode = 100,
@@ -913,6 +920,7 @@ gt.Const.AI <- {
 		SwitchToVSSpearwallPOW = 1.3,
 		SwitchToMeleeAtNightMult = 2.0,
 		SwitchToRangedAtNightMult = 0.5,
+		AlreadySwitchedMult = 0.33,
 		ReloadMaxDanger = 4.0,
 		RootNotEngagedBonus = 20.0,
 		RootNoRangedWeaponBonus = 20.0,

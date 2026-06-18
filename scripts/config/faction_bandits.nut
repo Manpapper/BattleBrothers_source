@@ -162,4 +162,23 @@ gt.Const.Tactical.Actor.BanditLeader <- {
 	],
 	FatigueRecoveryRate = 20
 };
+gt.Const.Tactical.Actor.BanditMarauder <- {
+	XP = 300,
+	ActionPoints = 9,
+	Hitpoints = 115,
+	Bravery = 70,
+	Stamina = 130,
+	MeleeSkill = 75,
+	RangedSkill = 65,
+	MeleeDefense = 15,
+	RangedDefense = 10,
+	Initiative = 115,
+	FatigueEffectMult = 1.0,
+	MoraleEffectMult = 1.0,
+	Armor = [
+		0,
+		0
+	],
+	FatigueRecoveryRate = 20
+};
 

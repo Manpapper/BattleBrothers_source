@@ -162,4 +162,23 @@ gt.Const.Tactical.Actor.Noble <- {
 	],
 	FatigueRecoveryRate = 20
 };
+gt.Const.Tactical.Actor.ManAtArms <- {
+	XP = 250,
+	ActionPoints = 9,
+	Hitpoints = 70,
+	Bravery = 70,
+	Stamina = 120,
+	MeleeSkill = 70,
+	RangedSkill = 50,
+	MeleeDefense = 10,
+	RangedDefense = 5,
+	Initiative = 110,
+	FatigueEffectMult = 1.0,
+	MoraleEffectMult = 1.0,
+	Armor = [
+		0,
+		0
+	],
+	FatigueRecoveryRate = 15
+};
 

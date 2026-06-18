@@ -243,7 +243,9 @@ gt.Const.Strings.EntityName <- [
 	"Greater Flesh Golem",
 	"Fault Finder",
 	"The Grand Diviner",
-	"Flesh Cradle"
+	"Flesh Cradle",
+	"Brigand Marauder",
+	"Man-at-Arms"
 ];
 gt.Const.Strings.EntityNamePlural <- [
 	"Necromancers",
@@ -357,7 +359,9 @@ gt.Const.Strings.EntityNamePlural <- [
 	"Greater Flesh Golems",
 	"Fault Finders",
 	"The Grand Diviner",
-	"Flesh Cradles"
+	"Flesh Cradles",
+	"Brigand Marauders",
+	"Men-at-Arms"
 ];
 gt.Const.Strings.Tactical.EntityName <- {
 	Boulder = "Boulder",
@@ -1355,7 +1359,7 @@ gt.Const.Strings.PerkDescription <- {
 	Dodge = "Too fast for you! Gain [color=" + this.Const.UI.Color.PositiveValue + "]15%[/color] of the character\'s current Initiative as a bonus to Melee and Ranged Defense.",
 	Nimble = "Specialize in light armor! By nimbly dodging or deflecting blows, convert any hits to glancing hits. Hitpoint damage taken is reduced by up to [color=" + this.Const.UI.Color.PositiveValue + "]60%[/color], but lowered exponentially by the total penalty to Maximum Fatigue from body and head armor above [color=" + this.Const.UI.Color.PositiveValue + "]15[/color]. The lighter your armor and helmet, the more you benefit.\n\nBrawny does not affect this perk.\n\nDoes not affect damage from mental attacks or status effects, but can help to avoid receiving them.",
 	BattleForged = "Specialize in heavy armor! Armor damage taken is reduced by a percentage equal to [color=" + this.Const.UI.Color.PositiveValue + "]5%[/color] of the current total armor value of both body and head armor. The heavier your armor and helmet, the more you benefit.\n\nDoes not affect damage from mental attacks or status effects, but can help to avoid receiving them.",
-	Duelist = "Become one with your weapon and go for the weak spots! With the offhand free or carrying a throwable tool (e.g. throwing net), an additional [color=" + this.Const.UI.Color.PositiveValue + "]+25%[/color] of any damage ignores armor. Does not work with two-handed weapons.",
+	Duelist = "Become one with your weapon and go for the weak spots! With the offhand free or carrying a buckler or throwable tool (e.g. throwing net), an additional [color=" + this.Const.UI.Color.PositiveValue + "]+25%[/color] of any damage ignores armor. Does not work with two-handed weapons.",
 	CripplingStrikes = "Cripple your enemies! Lowers the threshold to inflict injuries by [color=" + this.Const.UI.Color.NegativeValue + "]33%[/color] for both melee and ranged attacks.",
 	QuickHands = "Looking for this? Swapping any item in battle except for shields becomes a free action with no Action Point cost once every turn.",
 	Bullseye = "Nailed it! The penalty to hitchance when shooting at a target you have no clear line of fire to is reduced from [color=" + this.Const.UI.Color.NegativeValue + "]75%[/color] to [color=" + this.Const.UI.Color.NegativeValue + "]50%[/color] for ranged weapons.",
@@ -1392,7 +1396,7 @@ gt.Const.Strings.PerkDescription <- {
 	SpecThrowing = "Master throwing weapons to wound or kill the enemy before they even get close. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nDamage is increased by [color=" + this.Const.UI.Color.PositiveValue + "]30%[/color] when attacking at 2 tiles of distance.\n\nDamage is increased by [color=" + this.Const.UI.Color.PositiveValue + "]20%[/color] when attacking at 3 tiles of distance.",
 	SpecAxe = "Master combat with axes and destroying shields. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nSplit Shield damage to shields is increased by [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color] when used with axes.\n\nRound Swing gains [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit.\n\nThe Longaxe no longer has a penalty for attacking targets directly adjacent.",
 	SpecCleaver = "Master cleavers to inflict gruesome wounds. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nBleeding damage inflicted by cleavers and whips is doubled to [color=" + this.Const.UI.Color.PositiveValue + "]10[/color] and [color=" + this.Const.UI.Color.PositiveValue + "]20[/color] per turn, respectively.\n\nDisarm only has half the penalty to hit.",
-	SpecDagger = "Master swift and deadly daggers. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nStab, Puncture and Deathblow have a reduced Action Point cost to allow for an additional attack each turn.",
+	SpecDagger = "Master swift and deadly daggers. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nStab, Puncture, Deathblow, Perforate, and Skewer have a reduced Action Point cost, potentially allowing for an additional attack each turn.",
 	SpecSword = "Master the art of swordfighting and using your opponent\'s mistakes to your advantage. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nRiposte no longer has a penalty to hitchance.\n\nGash has a [color=" + this.Const.UI.Color.NegativeValue + "]50%[/color] lower threshold to inflict injuries.\n\nSplit and Swing no longer have a penalty to hitchance and gain [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit.",
 	SpecSpear = "Master fighting with spears and keeping the enemy at bay. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nSpearwall is no longer disabled once an opponent manages to overcome it. Instead, Spearwall can still be used and continues to give free attacks on any further opponent attempting to enter the Zone of Control.\n\nThe Spetum and Warfork no longer have a penalty for attacking targets directly adjacent.",
 	SpecPolearm = "Master polearms and keeping the enemy at bay. Skills build up [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.\n\nPolearm skills have their Action Point cost reduced to [color=" + this.Const.UI.Color.NegativeValue + "]5[/color], and no longer have a penalty for attacking targets directly adjacent.",

@@ -339,6 +339,8 @@ gt.Const.EntityType <- {
 	FaultFinder = 109,
 	GrandDiviner = 110,
 	FleshCradle = 111,
+	BanditMarauder = 112,
+	ManAtArms = 113,
 	function convertOldToNew( _id )
 	{
 		switch(_id)
@@ -553,6 +555,7 @@ gt.Const.EntityType <- {
 		case this.Const.EntityType.Sergeant:
 		case this.Const.EntityType.Knight:
 		case this.Const.EntityType.MilitaryDonkey:
+		case this.Const.EntityType.ManAtArms:
 			return this.Const.FactionType.NobleHouse;
 
 		case this.Const.EntityType.BountyHunter:
@@ -576,6 +579,7 @@ gt.Const.EntityType <- {
 		case this.Const.EntityType.BanditMarksman:
 		case this.Const.EntityType.BanditRaider:
 		case this.Const.EntityType.BanditLeader:
+		case this.Const.EntityType.BanditMarauder:
 			return this.Const.FactionType.Bandits;
 
 		case this.Const.EntityType.GoblinAmbusher:
@@ -757,6 +761,8 @@ gt.Const.EntityIcon <- [
 	"greater_flesh_golem_orientation",
 	"fault_finder_orientation",
 	"grand_diviner_orientation",
-	"flesh_cradle_orientation"
+	"flesh_cradle_orientation",
+	"bandit_marauder_orientation",
+	"manatarms_orientation"
 ];
 
