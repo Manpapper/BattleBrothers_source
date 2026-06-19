@@ -12,6 +12,11 @@ this.firearms_resistance_skill <- this.inherit("scripts/skills/skill", {
 		this.m.IsRemovedAfterBattle = false;
 	}
 
+	function onUpdate( _properties )
+	{
+		_properties.DamageReceivedFireMult *= 0.66;
+	}
+
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
 		if (_skill == null)
