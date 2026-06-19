@@ -60,7 +60,7 @@ this.strike_down_skill <- this.inherit("scripts/skills/skill", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Has a [color=" + this.Const.UI.Color.PositiveValue + "]100%[/color] chance to severely stun on a hit"
+				text = "Has a [color=" + this.Const.UI.Color.PositiveValue + "]100%[/color] chance to stun for two turns on a hit"
 			});
 		}
 		else
