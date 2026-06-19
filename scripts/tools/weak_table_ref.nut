@@ -4,6 +4,11 @@ gt.WeakTableRef <- class
 	WeakTable = null;
 	constructor( _table )
 	{
+		if (_table != null && (_table instanceof this.WeakTableRef))
+		{
+			_table = _table.get();
+		}
+
 		if (_table != null && typeof _table == "table")
 		{
 			this.WeakTable = _table.weakref();
