@@ -3,7 +3,8 @@ this.world_screen_topbar_daytime_module <- this.inherit("scripts/ui/screens/ui_m
 		OnPausePressedListener = null,
 		OnTimePausePressedListener = null,
 		OnTimeNormalPressedListener = null,
-		OnTimeFastPressedListener = null
+		OnTimeFastPressedListener = null,
+		OnTimeVeryFastPressedListener = null
 	},
 	function clearEventListener()
 	{
@@ -11,6 +12,7 @@ this.world_screen_topbar_daytime_module <- this.inherit("scripts/ui/screens/ui_m
 		this.m.OnTimePausePressedListener = null;
 		this.m.OnTimeNormalPressedListener = null;
 		this.m.OnTimeFastPressedListener = null;
+		this.m.OnTimeVeryFastPressedListener = null;
 	}
 
 	function setOnPausePressedListener( _listener )
@@ -31,6 +33,11 @@ this.world_screen_topbar_daytime_module <- this.inherit("scripts/ui/screens/ui_m
 	function setOnTimeFastPressedListener( _listener )
 	{
 		this.m.OnTimeFastPressedListener = _listener;
+	}
+
+	function setOnTimeVeryFastPressedListener( _listener )
+	{
+		this.m.OnTimeVeryFastPressedListener = _listener;
 	}
 
 	function create()
@@ -74,6 +81,16 @@ this.world_screen_topbar_daytime_module <- this.inherit("scripts/ui/screens/ui_m
 		this.m.JSHandle.asyncCall("enableNormalTimeButton", _enabled);
 	}
 
+	function enableFastTimeButton( _enabled )
+	{
+		this.m.JSHandle.asyncCall("enableFastTimeButton", _enabled);
+	}
+
+	function enableVeryFastTimeButton( _enabled )
+	{
+		this.m.JSHandle.asyncCall("enableVeryFastTimeButton", _enabled);
+	}
+
 	function onPauseButtonPressed()
 	{
 		if (this.m.OnPausePressedListener != null)
@@ -103,6 +120,14 @@ this.world_screen_topbar_daytime_module <- this.inherit("scripts/ui/screens/ui_m
 		if (this.m.OnTimeFastPressedListener != null)
 		{
 			this.m.OnTimeFastPressedListener();
+		}
+	}
+
+	function onTimeVeryFastButtonPressed()
+	{
+		if (this.m.OnTimeVeryFastPressedListener != null)
+		{
+			this.m.OnTimeVeryFastPressedListener();
 		}
 	}
 

@@ -81,8 +81,8 @@ this.town_travel_dialog_module <- this.inherit("scripts/ui/screens/ui_module", {
 			this.Music.setTrackList(_dest.getMusic(), this.Const.Music.CrossFadeTime);
 		}
 
-		_dest.onEnter();
 		this.World.State.setLastEnteredTown(_dest);
+		_dest.onEnter();
 		this.m.Parent.setTown(this.WeakTableRef(_dest));
 		this.m.Parent.refresh();
 		this.Sound.setAmbience(0, this.World.State.getSurroundingAmbienceSounds(), this.Const.Sound.Volume.Ambience * this.Const.Sound.Volume.AmbienceTerrainInSettlement, this.World.getTime().IsDaytime ? this.Const.Sound.AmbienceMinDelay : this.Const.Sound.AmbienceMinDelayAtNight);
