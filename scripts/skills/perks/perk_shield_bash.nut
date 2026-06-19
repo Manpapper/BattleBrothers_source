@@ -13,5 +13,17 @@ this.perk_shield_bash <- this.inherit("scripts/skills/skill", {
 		this.m.IsHidden = false;
 	}
 
+	function onTriggeredMovement( _skill, _targetEntity, _hitInfo )
+	{
+		if (_skill != null && _skill.getID() == "actives.knock_back")
+		{
+			local p = this.getContainer().getActor().getCurrentProperties();
+			local damage = this.Math.rand(10, 25) * p.DamageTotalMult;
+			_hitInfo.DamageRegular += damage * p.DamageRegularMult;
+			_hitInfo.DamageFatigue += 10;
+			_hitInfo.DamageArmor += this.Math.floor(damage * 0.5);
+		}
+	}
+
 });
 

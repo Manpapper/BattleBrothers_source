@@ -82,6 +82,21 @@ this.golem_racial <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
+		local halfResistance = [
+			"actives.puncture",
+			"actives.thrust",
+			"actives.stab",
+			"actives.deathblow",
+			"actives.impale",
+			"actives.rupture",
+			"actives.prong",
+			"actives.lunge",
+			"actives.estoc_stab",
+			"actives.perforate",
+			"actives.skewer",
+			"actives.throw_spear"
+		];
+
 		if (_skill.getID() == "actives.throw_golem")
 		{
 			_properties.DamageReceivedTotalMult = 0.0;
@@ -98,7 +113,7 @@ this.golem_racial <- this.inherit("scripts/skills/skill", {
 		{
 			_properties.DamageReceivedRegularMult *= 0.25;
 		}
-		else if (_skill.getID() == "actives.puncture" || _skill.getID() == "actives.thrust" || _skill.getID() == "actives.stab" || _skill.getID() == "actives.deathblow" || _skill.getID() == "actives.impale" || _skill.getID() == "actives.rupture" || _skill.getID() == "actives.prong" || _skill.getID() == "actives.lunge")
+		else if (halfResistance.find(_skill.getID()) != null)
 		{
 			_properties.DamageReceivedRegularMult *= 0.5;
 		}

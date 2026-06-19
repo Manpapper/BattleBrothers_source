@@ -20,6 +20,7 @@ this.serpent_racial <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
+		_properties.DamageReceivedFireMult *= 0.66;
 		local actor = this.getContainer().getActor();
 		local myTile = actor.getTile();
 

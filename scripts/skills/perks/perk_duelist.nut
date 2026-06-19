@@ -18,7 +18,7 @@ this.perk_duelist <- this.inherit("scripts/skills/skill", {
 		local items = this.getContainer().getActor().getItems();
 		local off = items.getItemAtSlot(this.Const.ItemSlot.Offhand);
 
-		if (off == null && !items.hasBlockedSlot(this.Const.ItemSlot.Offhand) || off != null && off.isItemType(this.Const.Items.ItemType.Tool))
+		if (off == null && !items.hasBlockedSlot(this.Const.ItemSlot.Offhand) || off != null && off.isItemType(this.Const.Items.ItemType.Tool) || off != null && off.getID() == "shield.buckler" || off != null && off.getID() == "shield.named_buckler")
 		{
 			_properties.DamageDirectAdd += 0.25;
 		}

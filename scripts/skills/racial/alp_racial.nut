@@ -39,6 +39,22 @@ this.alp_racial <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
+		local halfResistance = [
+			"actives.puncture",
+			"actives.thrust",
+			"actives.stab",
+			"actives.deathblow",
+			"actives.impale",
+			"actives.rupture",
+			"actives.prong",
+			"actives.lunge",
+			"actives.estoc_stab",
+			"actives.perforate",
+			"actives.skewer",
+			"actives.fire_handgonne",
+			"actives.throw_spear"
+		];
+
 		if (_skill.getID() == "actives.aimed_shot" || _skill.getID() == "actives.quick_shot")
 		{
 			_properties.DamageReceivedRegularMult *= 0.1;
@@ -51,7 +67,7 @@ this.alp_racial <- this.inherit("scripts/skills/skill", {
 		{
 			_properties.DamageReceivedRegularMult *= 0.25;
 		}
-		else if (_skill.getID() == "actives.puncture" || _skill.getID() == "actives.thrust" || _skill.getID() == "actives.stab" || _skill.getID() == "actives.deathblow" || _skill.getID() == "actives.impale" || _skill.getID() == "actives.prong" || _skill.getID() == "actives.rupture" || _skill.getID() == "actives.lunge" || _skill.getID() == "actives.fire_handgonne" || _skill.getID() == "actives.throw_spear")
+		else if (halfResistance.find(_skill.getID()) != null)
 		{
 			_properties.DamageReceivedRegularMult *= 0.5;
 		}

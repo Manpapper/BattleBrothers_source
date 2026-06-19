@@ -971,6 +971,24 @@ this.skill_container <- {
 		this.update();
 	}
 
+	function onTriggeredMovement( _caller, _targetEntity, _hitInfo )
+	{
+		this.m.IsUpdating = true;
+
+		foreach( i, skill in this.m.Skills )
+		{
+			if (skill.isGarbage())
+			{
+				continue;
+			}
+
+			skill.onTriggeredMovement(_caller, _targetEntity, _hitInfo);
+		}
+
+		this.m.IsUpdating = false;
+		this.update();
+	}
+
 	function compareSkillsByOrder( _skill1, _skill2 )
 	{
 		if (_skill1.getOrder() < _skill2.getOrder())
