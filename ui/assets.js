@@ -74,6 +74,8 @@ var Asset =
 	BUTTON_PLAY_DISABLED:					'ui/buttons/time_normal_sw.png',
 	BUTTON_FAST_FORWARD:					'ui/buttons/time_fast.png',
 	BUTTON_FAST_FORWARD_DISABLED:			'ui/buttons/time_fast_sw.png',
+	BUTTON_VERY_FAST_FORWARD:				'ui/buttons/time_very_fast.png',
+	BUTTON_VERY_FAST_FORWARD_DISABLED:		'ui/buttons/time_very_fast_sw.png',
 
     // UI Icons
 	ICON_ACTION_POINTS:						'ui/icons/action_points.png',
