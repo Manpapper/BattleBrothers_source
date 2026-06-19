@@ -52,7 +52,7 @@ this.houndmaster_background <- this.inherit("scripts/skills/backgrounds/characte
 				id = 14,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "Wardogs unleashed by this character will start at confident morale."
+				text = "Wardogs unleashed by this character will start at confident morale"
 			}
 		];
 	}
