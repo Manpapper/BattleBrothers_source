@@ -232,6 +232,56 @@ this.marketplace_oriental_building <- this.inherit("scripts/entity/world/settlem
 			});
 		}
 
+		if (this.m.Settlement.getSize() >= 3)
+		{
+			list.push({
+				R = 90,
+				P = 1.0,
+				S = "accessory/falcon_item"
+			});
+		}
+
+		if (this.Const.DLC.Unhold && this.m.Settlement.getSize() >= 3)
+		{
+			list.extend([
+				{
+					R = 65,
+					P = 1.0,
+					S = "misc/paint_set_item"
+				},
+				{
+					R = 75,
+					P = 1.0,
+					S = "misc/paint_remover_item"
+				},
+				{
+					R = 75,
+					P = 1.0,
+					S = "misc/paint_black_item"
+				},
+				{
+					R = 75,
+					P = 1.0,
+					S = "misc/paint_red_item"
+				},
+				{
+					R = 75,
+					P = 1.0,
+					S = "misc/paint_orange_red_item"
+				},
+				{
+					R = 75,
+					P = 1.0,
+					S = "misc/paint_white_blue_item"
+				},
+				{
+					R = 75,
+					P = 1.0,
+					S = "misc/paint_white_green_yellow_item"
+				}
+			]);
+		}
+
 		if (this.Const.DLC.Unhold)
 		{
 			list.extend([

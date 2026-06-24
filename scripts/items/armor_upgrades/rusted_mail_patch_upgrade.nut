@@ -29,13 +29,13 @@ this.rusted_mail_patch_upgrade <- this.inherit("scripts/items/armor_upgrades/arm
 			id = 14,
 			type = "text",
 			icon = "ui/icons/armor_body.png",
-			text = "[color=" + this.Const.UI.Color.PositiveValue + "]+20[/color] Durability"
+			text = "[color=" + this.Const.UI.Color.PositiveValue + "]+15[/color] Durability"
 		});
 		result.push({
 			id = 14,
 			type = "text",
 			icon = "ui/icons/fatigue.png",
-			text = "[color=" + this.Const.UI.Color.NegativeValue + "]-2[/color] Maximum Fatigue"
+			text = "[color=" + this.Const.UI.Color.NegativeValue + "]-4[/color] Maximum Fatigue"
 		});
 		return result;
 	}

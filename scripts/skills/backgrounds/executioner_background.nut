@@ -4,11 +4,11 @@ this.executioner_background <- this.inherit("scripts/skills/backgrounds/characte
 	{
 		this.character_background.create();
 		this.m.ID = "background.executioner";
-		this.m.Name = "Bourreau";
+		this.m.Name = "Executioner";
 		this.m.Icon = "ui/backgrounds/background_72.png";
-		this.m.BackgroundDescription = "Les bourreaux sont austères et habitués à la violence, même s'ils n'ont guère d'expérience de la guerre proprement dite.";
-		this.m.GoodEnding = "Alors que la compagnie %companyname% visitait la ville pour se reposer et reprendre des forces, une princesse locale a eu le coup de foudre pour %name%, l'homme sauvage. Il avait été \"acheté\" pour une somme considérable d’or, puis offert à la noble. Vous êtes allé rendre visite à cet homme récemment. Au dîner, il était assis à une table royale, arborant un sourire niais et imitant tant bien que mal les nobles qui l’entouraient. Sa nouvelle épouse, dont l’origine restait un mystère, l’adorait, et lui l’adorait en retour. Lorsque vous lui avez dit au revoir, il vous a offert une lourde couronne d’or qu’il venait de retirer de sa tête. Elle était chargée de traditions et d’histoires anciennes. Vous lui avait dit qu'il serait mieux qu’il la garde. Le sauvage haussa les épaules et s’éloigna en faisant tourner le diadème autour de son doigt.";
-		this.m.BadEnding = "%name% le sauvage est resté quelque temps au sein de la compagnie %companyname%, alors en pleine désagrégation, puis, d'un seul coup, il a disparu. La compagnie est partie à sa recherche dans la forêt et a fini par trouver une sorte de note rudimentaire : un énorme tas de couronnes à côté d'un dessin tracé dans la terre représentant la compagnie %companyname% et certains de ses membres, tous enlacés par un grand bonhomme allumette, avec un sourire niais sur le visage. Il y avait également une offrande : un lapin mort, à moitié dévoré.";
+		this.m.BackgroundDescription = "Executioners are dour and used to violence, although they have little experience in true warfare.";
+		this.m.GoodEnding = "%name% eventually retired from the company and once again found himself plying the executioner\'s trade. His considerable decapitation skills only honed further by sellswording, the man has apparently gained such notoriety in his field that the local nobility frequently get into feuds over who may keep him on retainer.";
+		this.m.BadEnding = "His skill with the headsman\'s blade sharpened further by combat, %name% left the company and resumed work as an executioner. The townsfolk found little spectacle in his efficiency, however, and he was soon replaced with a more crowd-pleasing amateur. Left destitute, it wasn\'t long before the man was found hanging from a tree outside of town.";
 		this.m.HiringCost = 100;
 		this.m.DailyCost = 12;
 		this.m.Excluded = [
@@ -31,13 +31,13 @@ this.executioner_background <- this.inherit("scripts/skills/backgrounds/characte
 			this.Const.Attributes.RangedSkill
 		];
 		this.m.Titles = [
-			"preneur de tête",
-			"séparateur de cou",
-			"la Hache",
-			"le juge",
-			"le bourreau",
-			"le bourreau",
-			"le pendeur"
+			"Headtaker",
+			"Neckrender",
+			"the Axe",
+			"the Judicator",
+			"the Headsman",
+			"the Executioner",
+			"the Hangman"
 		];
 		this.m.Faces = this.Const.Faces.AllMale;
 		this.m.Hairs = this.Const.Hair.UntidyMale;
@@ -65,14 +65,14 @@ this.executioner_background <- this.inherit("scripts/skills/backgrounds/characte
 				id = 11,
 				type = "text",
 				icon = "ui/icons/chance_to_hit_head.png",
-				text = "Chance augmentés de toucher la tête"
+				text = "Higher Chance To Hit Head"
 			}
 		];
 	}
 
 	function onBuildDescription()
 	{
-		return "{Comme c'est le cas pour beaucoup d'hommes, le aprcours de %name% a été dicté par l'entreprise familiale : exécuter des criminels pour le compte du bourgmestre de %randomtown%. | Quand il était petit, %name% rêvait de devenir un chevalier vêtu d'une armure étincelante. Une fois adulte, il devint un bourreau vêtu d'une capuche sombre. | Toute la famille de %name% a été massacrée lors d'une attaque de bandits. Ne pouvant pas participer lui-même à la chasse à l'homme, il est devenu l'apprenti du bourreau local dans l'espoir de pouvoir un jour se venger à sa manière. | Autrefois brigand lui-même, %name% a changé d'avis et s'est rendu aux autorités. La garde locale lui a proposé une grâce s'il acceptait d'exécuter tous les criminels qu'elle capturerait, et il exerce ce métier depuis lors. | Avec ce regard lointain de celui qui a vu beaucoup de morts, et cette lame usée de celui qui les a infligées, il est évident que %name% est un bourreau. | %name%, un bourreau, est à peu près aussi joyeux que la potence qu'il manie.} {Bien qu’il était satisfait de son métier, celui-ci le rendait impopulaire. Après avoir procédé à la décapitation d\'{ un jeune de la région condamné pour avoir volé un noble | une prostituée bien-aimée qui a couché avec le mauvais seigneur | un artisan réputé, accusé de détournement de fonds}, il a été mis au ban de la ville par ses concitoyens. | Il s'est toujours considéré comme un élément indispensable, bien que macabre, de la justice au service du peuple. Mais lorsqu'il a appris {que son employeur concluait des accords secrets avec des brigands | que le seigneur local ordonnait l'exécution d'innocents | qu'un homme qu'il a exécuté était innocent | les horreurs que le seigneur local a commises avec les têtes des condamnés}, il a démissionné de son poste, dégoûté. | Un jour, on lui confia la mission d’éliminer un étrange adepte d’une secte venu de contrées lointaines. Après avoir brisé une troisième lame en coupant le cou de cet homme étrangement enjoué, il décida qu’il était temps de se trouver un nouveau métier. | Mais un jour, il s’est réveillé et s’est rendu compte qu’il ne supportait plus l’idée de tuer un homme incapable de se défendre. | Mais il finit par se lasser de son rôle, ne trouvant guère de satisfaction à tuer des hommes après qu’ils avaient déjà commis leurs méfaits.} {Comme peu d'autres carrières s'offraient à lui, %name% a estimé que le métier de mercenaire était celui qui correspondait le mieux à ses talents. | Même s'il n'est pas un guerrier, %name% sait manier l'épée; c'est donc tout naturellement qu'il s'est reconverti dans le métier d'épéiste. | Avec un savoir-faire principalement axé sur les décolletés, %name% s'est dit qu'il pouvait soit devenir mercenaire, soit tailleur. La première option semblait mieux rémunérée, et le voilà donc ici aujourd'hui. | Ayant besoin de se réorienter professionnellement mais ne disposant que de peu d'autres compétences, %name% s'est dit que le métier de mercenaire revenait en quelque sorte à exécuter quelqu'un, mais en plusieurs étapes.} {L'homme se tient silencieusement devant vous, les yeux écarquillés, l'air plein d'attente, mais sans dire un mot. Bon, d'accord. | Moins à l'aise dans la conversation que dans l'art de tuer, il vous adresse un salut marmonné, l'air nerveux, et vous interroge sur la rémunération. | Peu loquace, il vous lance un grognement plein d'attente. Tant qu'il peut tuer, vous vous dites que ce silence ne vous dérange pas. | Il s'approche et vous aboie quelque chose que sa lourde capuche étouffe au point de le rendre incompréhensible. Après quelques instants de silence, il ajoute \"s'il vous plaît ?\" et vous comprenez qu'il vous demande de le laisser se joindre à vous. Oh.}";
+		return "{As with many men, %name%\'s direction in life was dictated by the family business: executing criminals for the burgomeister of %randomtown%. | As a boy, %name% dreamed of becoming a knight clad in shining armor. As a man, he became an executioner clad in a dark hood. | %name%\'s whole family was slain in a bandit raid. Unable to join the manhunt himself, he became an apprentice to the local executioner in the hopes of one day meting out revenge in his own way. | Once a brigand himself, %name% had a change of heart and turned himself in. The local guard offered him a pardon if he agreed to execute any criminals they captured, and he\'s been in the trade ever since. | With the distant stare of one who has seen much death, and the worn blade of one who has dealt it, it\'s obvious that %name% is an executioner. | An executioner, %name% is about as cheerful as the gallows he operates.} {Though content with his profession, it made him unpopular. After carrying out the beheading of {a local youth sentenced for stealing from a noble | a beloved whore who slept with the wrong lord | a respected craftsman accused of embezzling}, he was ostracized by the townsfolk. | He always viewed himself as a necessary, if grisly, part of law for the common folk. But when he learned {his employer was making backroom deals with brigands | the local lord was ordering the deaths of the innocent | a man he executed was innocent | of the horrible things the local lord did with the heads of the condemned}, he resigned his post in disgust. | One day he was tasked with killing a strange cultist from distant lands. After he broke a third blade halfway through the strangely cheerful man\'s neck, he decided it was time to find a new profession. | But one day he woke up and found he could no longer stomach the idea of slaying a man who couldn\'t fight back. | But eventually he grew unhappy with his role, finding little satisfaction in slaying men after they\'d already performed their evil works.} {With few other careers available to him, %name% decided mercenary work seemed the best fit for his talents. | While not a warrior, %name% knows how to handle a blade, and so sellswording was the obvious career change. | With a skillset predominantly based around necklines, %name% decided he could either become a mercenary or a tailor. The former seemed like it paid better, and now here he is. | In need of a new career but with few other skills, %name% decided that mercenary work was sort of like executing with more steps.} {The man stands silently before you, staring wide-eyed and expectant but not saying a word. Ok then. | Less confident in conversation than in killing, he mumbles out a nervous greeting to you and asks about pay. | Not much for words, he grunts expectantly at you. As long as he can kill, you suppose you don\'t mind the quiet. | He approaches and barks something at you that his heavy hood muffles beyond comprehension. After a few moments of silence he follows up with \'...please?\' and you realize he\'s asking to join the company. Oh.}";
 	}
 
 	function onChangeAttributes()

@@ -29,38 +29,5 @@ this.kettle_hat_with_rusty_mail <- this.inherit("scripts/items/helmets/helmet", 
 		this.setVariant(11);
 	}
 
-	function onPaint( _color )
-	{
-		switch(_color)
-		{
-		case this.Const.Items.Paint.None:
-			this.m.Variant = 11;
-			break;
-
-		case this.Const.Items.Paint.Black:
-			this.m.Variant = 119;
-			break;
-
-		case this.Const.Items.Paint.WhiteBlue:
-			this.m.Variant = 116;
-			break;
-
-		case this.Const.Items.Paint.WhiteGreenYellow:
-			this.m.Variant = 117;
-			break;
-
-		case this.Const.Items.Paint.OrangeRed:
-			this.m.Variant = 118;
-			break;
-
-		case this.Const.Items.Paint.Red:
-			this.m.Variant = 175;
-			break;
-		}
-
-		this.updateVariant();
-		this.updateAppearance();
-	}
-
 });
 

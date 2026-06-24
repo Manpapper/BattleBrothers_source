@@ -68,29 +68,6 @@ this.knight <- this.inherit("scripts/entity/tactical/human", {
 	function assignRandomEquipment()
 	{
 		local r;
-		local banner = 6;
-
-		if (("State" in this.Tactical) && this.Tactical.State != null && !this.Tactical.State.isScenarioMode())
-		{
-			banner = this.World.FactionManager.getFaction(this.getFaction()).getBanner();
-		}
-		else
-		{
-			banner = this.getFaction();
-		}
-
-		if (this.Tactical.State.isScenarioMode())
-		{
-			banner = 9;
-		}
-
-		this.m.Surcoat = banner;
-
-		if (this.Math.rand(1, 100) <= 90)
-		{
-			this.getSprite("surcoat").setBrush("surcoat_" + (banner < 10 ? "0" + banner : banner));
-		}
-
 		local weapons = [
 			"weapons/fighting_axe",
 			"weapons/noble_sword",
@@ -110,9 +87,7 @@ this.knight <- this.inherit("scripts/entity/tactical/human", {
 
 		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Offhand))
 		{
-			local shield = this.new("scripts/items/" + shields[this.Math.rand(0, shields.len() - 1)]);
-			shield.setFaction(banner);
-			this.m.Items.equip(shield);
+			this.m.Items.equip(this.new("scripts/items/" + shields[this.Math.rand(0, shields.len() - 1)]));
 		}
 
 		local armor = [
@@ -125,34 +100,21 @@ this.knight <- this.inherit("scripts/entity/tactical/human", {
 		{
 			local a = this.new("scripts/items/" + armor[this.Math.rand(0, armor.len() - 1)]);
 
-			if (this.Math.rand(1, 100) <= 40 && this.Const.DLC.Unhold)
+			if (this.Const.DLC.Unhold && this.Math.rand(1, 100) < (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Head) ? 40 : 75))
 			{
-				local upgrade = this.new("scripts/items/armor_upgrades/heraldic_plates_upgrade");
+				local banner = this.getBanner();
+				local upgrades = [
+					"armor_upgrades/joint_cover_upgrade",
+					"armor_upgrades/mail_patch_upgrade"
+				];
 
-				if (banner == 7 || banner == 10)
+				if (banner == 3 || banner == 4 || banner == 6 || banner == 7 || banner == 9 || banner == 10)
 				{
-					upgrade.setVariant(18);
-					upgrade.updateVariant();
-					a.setUpgrade(upgrade);
+					upgrades.push("armor_upgrades/heraldic_plates_upgrade");
 				}
-				else if (banner == 3)
-				{
-					upgrade.setVariant(17);
-					upgrade.updateVariant();
-					a.setUpgrade(upgrade);
-				}
-				else if (banner == 4 || banner == 9)
-				{
-					upgrade.setVariant(16);
-					upgrade.updateVariant();
-					a.setUpgrade(upgrade);
-				}
-				else if (banner == 6)
-				{
-					upgrade.setVariant(14);
-					upgrade.updateVariant();
-					a.setUpgrade(upgrade);
-				}
+
+				local upgrade = this.new("scripts/items/" + upgrades[this.Math.rand(0, upgrades.len() - 1)]);
+				a.setUpgrade(upgrade);
 			}
 
 			this.m.Items.equip(a);
@@ -165,15 +127,10 @@ this.knight <- this.inherit("scripts/entity/tactical/human", {
 
 		if (this.m.Items.hasEmptySlot(this.Const.ItemSlot.Head))
 		{
-			local helmet = this.new("scripts/items/" + helmets[this.Math.rand(0, helmets.len() - 1)]);
-
-			if (helmet.getID() == "armor.head.faction_helm")
-			{
-				helmet.setVariant(banner);
-			}
-
-			this.m.Items.equip(helmet);
+			this.m.Items.equip(this.new("scripts/items/" + helmets[this.Math.rand(0, helmets.len() - 1)]));
 		}
+
+		this.colorMatchEquipment();
 	}
 
 	function makeMiniboss()
@@ -181,22 +138,6 @@ this.knight <- this.inherit("scripts/entity/tactical/human", {
 		if (!this.actor.makeMiniboss())
 		{
 			return false;
-		}
-
-		local banner = 9;
-
-		if (("State" in this.Tactical) && this.Tactical.State != null && !this.Tactical.State.isScenarioMode())
-		{
-			banner = this.World.FactionManager.getFaction(this.getFaction()).getBanner();
-		}
-		else
-		{
-			banner = this.getFaction();
-		}
-
-		if (this.Tactical.State.isScenarioMode())
-		{
-			banner = 9;
 		}
 
 		this.getSprite("miniboss").setBrush("bust_miniboss");
@@ -219,7 +160,6 @@ this.knight <- this.inherit("scripts/entity/tactical/human", {
 			"helmets/named/heraldic_mail_helmet",
 			"helmets/named/heraldic_mail_helmet"
 		];
-		local h;
 		local r = this.Math.rand(1, 4);
 
 		if (r == 1)
@@ -232,169 +172,224 @@ this.knight <- this.inherit("scripts/entity/tactical/human", {
 		}
 		else if (r == 3)
 		{
-			local a = this.new("scripts/items/" + armor[this.Math.rand(0, armor.len() - 1)]);
-
-			if (a.getID() == "armor.body.heraldic_mail")
-			{
-				if (banner == 4 || banner <= 2)
-				{
-					a.setVariant(121);
-					a.updateVariant();
-				}
-				else if (banner == 3 || banner == 8)
-				{
-					a.setVariant(119);
-					a.updateVariant();
-				}
-				else if (banner == 5 || banner == 10 || banner == 7)
-				{
-					a.setVariant(120);
-					a.updateVariant();
-				}
-				else if (banner == 9 || banner == 6)
-				{
-					a.setVariant(36);
-					a.updateVariant();
-				}
-			}
-			else if (a.getID() == "armor.body.green_coat_of_plates")
-			{
-				if (banner == 6 || banner == 8 || banner <= 2)
-				{
-					a.setVariant(126);
-					a.updateVariant();
-				}
-				else if (banner == 3)
-				{
-					a.setVariant(125);
-					a.updateVariant();
-				}
-				else if (banner == 4 || banner == 9)
-				{
-					a.setVariant(124);
-					a.updateVariant();
-				}
-				else if (banner == 5 || banner == 7 || banner == 10)
-				{
-					a.setVariant(43);
-					a.updateVariant();
-				}
-			}
-
-			this.m.Items.equip(a);
+			this.m.Items.equip(this.new("scripts/items/" + armor[this.Math.rand(0, armor.len() - 1)]));
 		}
 		else
 		{
-			h = this.new("scripts/items/" + helmets[this.Math.rand(0, helmets.len() - 1)]);
-			local armor = [
-				"armor/coat_of_plates",
-				"armor/coat_of_scales"
-			];
-			local a = this.new("scripts/items/" + armor[this.Math.rand(0, armor.len() - 1)]);
-
-			if (this.Math.rand(1, 100) <= 75 && this.Const.DLC.Unhold)
-			{
-				local upgrades = [
-					"armor_upgrades/heraldic_plates_upgrade",
-					"armor_upgrades/joint_cover_upgrade",
-					"armor_upgrades/mail_patch_upgrade"
-				];
-				local upgrade = this.new("scripts/items/" + upgrades[this.Math.rand(0, upgrades.len() - 1)]);
-
-				if (upgrade.getID() == "armor_upgrade.heraldic_plates")
-				{
-					if (banner == 7 || banner == 10)
-					{
-						upgrade.setVariant(18);
-						upgrade.updateVariant();
-					}
-					else if (banner == 3)
-					{
-						upgrade.setVariant(17);
-						upgrade.updateVariant();
-					}
-					else if (banner == 4 || banner == 9)
-					{
-						upgrade.setVariant(16);
-						upgrade.updateVariant();
-					}
-					else if (banner == 6)
-					{
-						upgrade.setVariant(14);
-						upgrade.updateVariant();
-					}
-					else
-					{
-						upgrade = this.new("scripts/items/armor_upgrades/joint_cover_upgrade");
-					}
-				}
-
-				a.setUpgrade(upgrade);
-			}
-
-			this.m.Items.equip(a);
-
-			if (h.getID() == "armor.head.heraldic_mail")
-			{
-				if (banner == 10 || banner == 7)
-				{
-					h.setVariant(262);
-				}
-				else if (banner <= 2)
-				{
-					h.setVariant(264);
-				}
-				else if (banner == 8 || banner == 3)
-				{
-					h.setVariant(265);
-				}
-				else if (banner == 9 || banner == 4)
-				{
-					h.setVariant(263);
-				}
-				else if (banner == 5)
-				{
-					h.setVariant(266);
-				}
-				else if (banner == 6)
-				{
-					h.setVariant(53);
-				}
-			}
-			else if (h.getID() == "armor.head.sallet_green")
-			{
-				if (banner == 10)
-				{
-					h.setVariant(49);
-				}
-				else if (banner <= 2)
-				{
-					h.setVariant(260);
-				}
-				else if (banner == 8 || banner == 3)
-				{
-					h.setVariant(258);
-				}
-				else if (banner == 9 || banner == 4)
-				{
-					h.setVariant(257);
-				}
-				else if (banner == 5)
-				{
-					h.setVariant(259);
-				}
-				else if (banner == 6 || banner == 7)
-				{
-					h.setVariant(261);
-				}
-			}
-
-			this.m.Items.equip(h);
+			this.m.Items.equip(this.new("scripts/items/" + helmets[this.Math.rand(0, helmets.len() - 1)]));
 		}
 
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_killing_frenzy"));
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_hold_out"));
 		return true;
+	}
+
+	function getBanner()
+	{
+		local banner = 6;
+
+		if (("State" in this.Tactical) && this.Tactical.State != null && !this.Tactical.State.isScenarioMode())
+		{
+			banner = this.World.FactionManager.getFaction(this.getFaction()).getBanner();
+		}
+		else
+		{
+			banner = this.getFaction();
+		}
+
+		if (this.Tactical.State.isScenarioMode())
+		{
+			banner = 9;
+		}
+
+		return banner;
+	}
+
+	function colorMatchEquipment()
+	{
+		local banner = this.getBanner();
+		this.m.Surcoat = banner;
+
+		if (this.Math.rand(1, 100) <= 90)
+		{
+			this.getSprite("surcoat").setBrush("surcoat_" + (banner < 10 ? "0" + banner : banner));
+		}
+
+		local items = this.getItems();
+		local armor = items.getItemAtSlot(this.Const.ItemSlot.Body);
+
+		if (armor.getID() == "armor.body.heraldic_mail")
+		{
+			if (banner == 4 || banner <= 2)
+			{
+				armor.setVariant(121);
+			}
+			else if (banner == 3 || banner == 8)
+			{
+				armor.setVariant(119);
+			}
+			else if (banner == 5 || banner == 10 || banner == 7)
+			{
+				armor.setVariant(120);
+			}
+			else if (banner == 9 || banner == 6)
+			{
+				armor.setVariant(36);
+			}
+		}
+		else if (armor.getID() == "armor.body.green_coat_of_plates")
+		{
+			if (banner == 6 || banner == 8 || banner <= 2)
+			{
+				armor.setVariant(126);
+			}
+			else if (banner == 3)
+			{
+				armor.setVariant(125);
+			}
+			else if (banner == 4 || banner == 9)
+			{
+				armor.setVariant(124);
+			}
+			else if (banner == 5 || banner == 7 || banner == 10)
+			{
+				armor.setVariant(43);
+			}
+		}
+
+		armor.updateVariant();
+		armor.updateAppearance();
+		local helmet = items.getItemAtSlot(this.Const.ItemSlot.Head);
+
+		if (helmet.getID() == "armor.head.heraldic_mail")
+		{
+			if (banner == 10 || banner == 7)
+			{
+				helmet.setVariant(262);
+			}
+			else if (banner <= 2)
+			{
+				helmet.setVariant(264);
+			}
+			else if (banner == 8 || banner == 3)
+			{
+				helmet.setVariant(265);
+			}
+			else if (banner == 9 || banner == 4)
+			{
+				helmet.setVariant(263);
+			}
+			else if (banner == 5)
+			{
+				helmet.setVariant(266);
+			}
+			else if (banner == 6)
+			{
+				helmet.setVariant(53);
+			}
+		}
+		else if (helmet.getID() == "armor.head.sallet_green")
+		{
+			if (banner == 10)
+			{
+				helmet.setVariant(49);
+			}
+			else if (banner <= 2)
+			{
+				helmet.setVariant(260);
+			}
+			else if (banner == 8 || banner == 3)
+			{
+				helmet.setVariant(258);
+			}
+			else if (banner == 9 || banner == 4)
+			{
+				helmet.setVariant(257);
+			}
+			else if (banner == 5)
+			{
+				helmet.setVariant(259);
+			}
+			else if (banner == 6 || banner == 7)
+			{
+				helmet.setVariant(261);
+			}
+		}
+		else if (helmet.getID() == "armor.head.faction_helm")
+		{
+			helmet.setVariant(banner);
+		}
+		else if (helmet.getID() == "armor.head.full_helm")
+		{
+			if (this.Math.rand(1, 100) < 70)
+			{
+				if (banner == 5 || banner == 10)
+				{
+					helmet.setVariant(149);
+				}
+				else if (banner <= 2)
+				{
+					helmet.setVariant(150);
+				}
+				else if (banner == 3 || banner == 8)
+				{
+					helmet.setVariant(151);
+				}
+				else if (banner == 4 || banner == 9)
+				{
+					helmet.setVariant(183);
+				}
+				else if (banner == 6)
+				{
+					helmet.setVariant(148);
+				}
+				else
+				{
+					helmet.setPlainVariant();
+				}
+			}
+			else
+			{
+				helmet.setPlainVariant();
+			}
+		}
+
+		helmet.updateVariant();
+		helmet.updateAppearance();
+		local shield = items.getItemAtSlot(this.Const.ItemSlot.Offhand);
+
+		if (shield != null && (shield.getID() == "shield.faction_heater_shield" || shield.getID() == "shield.faction_kite_shield"))
+		{
+			shield.setFaction(banner);
+			shield.updateAppearance();
+		}
+
+		local upgrade = armor.getUpgrade();
+
+		if (upgrade != null && upgrade.getID() == "armor_upgrade.heraldic_plates")
+		{
+			if (banner == 7 || banner == 10)
+			{
+				upgrade.setVariant(18);
+			}
+			else if (banner == 3)
+			{
+				upgrade.setVariant(17);
+			}
+			else if (banner == 4 || banner == 9)
+			{
+				upgrade.setVariant(16);
+			}
+			else if (banner == 6)
+			{
+				upgrade.setVariant(14);
+			}
+
+			upgrade.updateVariant();
+			upgrade.updateAppearance(items.getAppearance());
+		}
+
+		items.updateAppearance();
 	}
 
 });
